@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Walimatulurus Sikin & Aziman</title>
+<title>Walimatulurus Norasikin & Mohamad Aziman</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +18,6 @@
 ========================================================= */
 
 :root {
-
     --sage: #7c9277;
     --sage-dark: #52664e;
     --sage-light: #dfe7dc;
@@ -31,9 +29,7 @@
     --gold-light: #d8c79d;
 
     --text: #3f463d;
-
     --white: #ffffff;
-
 }
 
 
@@ -52,15 +48,10 @@ html {
 }
 
 body {
-
     font-family: "Montserrat", sans-serif;
-
     background: var(--cream);
-
     color: var(--text);
-
     overflow-x: hidden;
-
 }
 
 body.locked {
@@ -73,17 +64,12 @@ body.locked {
 ========================================================= */
 
 .opening {
-
     position: fixed;
-
     inset: 0;
-
     z-index: 99999;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background:
@@ -97,106 +83,64 @@ body.locked {
     transition:
         opacity 1s ease,
         visibility 1s ease;
-
 }
 
 .opening.hide {
-
     opacity: 0;
-
     visibility: hidden;
-
     pointer-events: none;
-
 }
 
 .opening::before {
-
     content: "";
 
     position: absolute;
 
     width: 420px;
-
     height: 420px;
 
-    border:
-        1px solid
-        rgba(182,154,99,.35);
-
+    border: 1px solid rgba(182,154,99,.35);
     border-radius: 50%;
 
-    animation:
-        rotateCircle 25s linear infinite;
-
+    animation: rotateCircle 25s linear infinite;
 }
 
 .opening-content {
-
     position: relative;
-
     z-index: 2;
 
-    width: min(90%, 430px);
-
+    width: min(90%, 500px);
     text-align: center;
-
 }
 
 .opening-bismillah {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
+    font-family: "Cormorant Garamond", serif;
     font-size: 24px;
-
     color: var(--sage-dark);
-
-    margin-bottom: 30px;
-
+    margin-bottom: 25px;
 }
 
 .opening-small {
-
     font-size: 10px;
-
     letter-spacing: 4px;
-
     text-transform: uppercase;
-
     color: var(--gold);
-
     margin-bottom: 10px;
-
 }
 
 .opening-names {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 55px;
-
+    font-family: "Cormorant Garamond", serif;
+    font-size: 50px;
     line-height: .85;
-
     color: var(--sage-dark);
-
-    margin-bottom: 35px;
-
+    margin-bottom: 30px;
 }
 
 .opening-names span {
-
     display: block;
-
     color: var(--gold);
-
-    font-size: 35px;
-
+    font-size: 32px;
     margin: 12px 0;
-
 }
 
 
@@ -205,31 +149,24 @@ body.locked {
 ========================================================= */
 
 .envelope-wrapper {
-
     position: relative;
 
     width: 320px;
-
     height: 210px;
 
     margin: 0 auto 35px;
 
     cursor: pointer;
-
     perspective: 1000px;
-
 }
 
 .envelope {
-
     position: absolute;
 
     width: 100%;
-
     height: 100%;
 
     left: 0;
-
     bottom: 0;
 
     background: #e8dfca;
@@ -237,17 +174,13 @@ body.locked {
     border-radius: 5px;
 
     box-shadow:
-        0 20px 50px
-        rgba(70,80,60,.18);
+        0 20px 50px rgba(70,80,60,.18);
 
     overflow: visible;
-
 }
 
 .envelope-body {
-
     position: absolute;
-
     inset: 0;
 
     background:
@@ -258,73 +191,49 @@ body.locked {
         );
 
     border-radius: 5px;
-
     overflow: hidden;
-
     z-index: 2;
-
 }
 
 .envelope-body::before {
-
     content: "";
 
     position: absolute;
 
     left: 0;
-
     bottom: 0;
 
     width: 0;
-
     height: 0;
 
-    border-left:
-        160px solid #d5c7a9;
-
-    border-top:
-        105px solid transparent;
-
-    border-bottom:
-        105px solid transparent;
-
+    border-left: 160px solid #d5c7a9;
+    border-top: 105px solid transparent;
+    border-bottom: 105px solid transparent;
 }
 
 .envelope-body::after {
-
     content: "";
 
     position: absolute;
 
     right: 0;
-
     bottom: 0;
 
     width: 0;
-
     height: 0;
 
-    border-right:
-        160px solid #d5c7a9;
-
-    border-top:
-        105px solid transparent;
-
-    border-bottom:
-        105px solid transparent;
-
+    border-right: 160px solid #d5c7a9;
+    border-top: 105px solid transparent;
+    border-bottom: 105px solid transparent;
 }
 
 .envelope-flap {
-
     position: absolute;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
-
     height: 100%;
 
     background:
@@ -344,32 +253,25 @@ body.locked {
     transform-origin: top center;
 
     transition:
-        transform 1s
-        cubic-bezier(.4,.2,.2,1);
+        transform 1s cubic-bezier(.4,.2,.2,1);
 
     z-index: 4;
 
     filter:
         drop-shadow(
-            0 3px 3px
-            rgba(0,0,0,.08)
+            0 3px 3px rgba(0,0,0,.08)
         );
-
 }
 
 .seal {
-
     position: absolute;
 
     left: 50%;
-
     top: 48%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     width: 62px;
-
     height: 62px;
 
     border-radius: 50%;
@@ -381,41 +283,31 @@ body.locked {
             #a78950
         );
 
-    border:
-        4px solid #e3d3aa;
+    border: 4px solid #e3d3aa;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     color: white;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 23px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
 
     box-shadow:
-        0 5px 15px
-        rgba(0,0,0,.15);
+        0 5px 15px rgba(0,0,0,.15);
 
     z-index: 6;
 
     transition:
         opacity .5s ease,
         transform .6s ease;
-
 }
 
 .invitation-card {
-
     position: absolute;
 
     left: 50%;
-
     bottom: 15px;
 
     transform:
@@ -423,22 +315,17 @@ body.locked {
         translateY(0);
 
     width: 88%;
-
     height: 180px;
 
     background: white;
 
-    border:
-        1px solid var(--gold-light);
+    border: 1px solid var(--gold-light);
 
     box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.12);
+        0 5px 20px rgba(0,0,0,.12);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -446,120 +333,79 @@ body.locked {
     z-index: 1;
 
     transition:
-        transform 1.2s
-        cubic-bezier(.2,.8,.2,1);
+        transform 1.2s cubic-bezier(.2,.8,.2,1);
 
     overflow: hidden;
-
 }
 
 .invitation-card::before {
-
     content: "";
 
     position: absolute;
-
     inset: 10px;
 
-    border:
-        1px solid
-        var(--gold-light);
-
+    border: 1px solid var(--gold-light);
 }
 
 .card-inside-content {
-
     position: relative;
-
     z-index: 2;
-
 }
 
 .card-inside-content small {
-
     color: var(--gold);
-
     font-size: 8px;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
-
 }
 
 .card-inside-content h3 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
+    font-family: "Cormorant Garamond", serif;
     color: var(--sage-dark);
-
-    font-size: 32px;
-
+    font-size: 28px;
     margin-top: 8px;
-
 }
 
 .card-inside-content p {
-
     font-size: 9px;
-
     margin-top: 5px;
-
     color: #777;
-
 }
 
-.envelope-wrapper.open
-.envelope-flap {
-
-    transform:
-        rotateX(180deg);
-
+.envelope-wrapper.open .envelope-flap {
+    transform: rotateX(180deg);
 }
 
-.envelope-wrapper.open
-.seal {
-
+.envelope-wrapper.open .seal {
     opacity: 0;
 
     transform:
         translate(-50%, -50%)
         scale(.5);
-
 }
 
-.envelope-wrapper.open
-.invitation-card {
-
+.envelope-wrapper.open .invitation-card {
     transform:
         translateX(-50%)
         translateY(-125px);
-
 }
 
 .open-label {
-
     display: inline-block;
 
     padding: 13px 25px;
 
     border-radius: 50px;
 
-    background:
-        var(--sage-dark);
+    background: var(--sage-dark);
 
     color: white;
 
     font-size: 11px;
-
     letter-spacing: 1px;
 
     box-shadow:
-        0 8px 25px
-        rgba(82,102,78,.25);
-
+        0 8px 25px rgba(82,102,78,.25);
 }
 
 
@@ -568,22 +414,16 @@ body.locked {
 ========================================================= */
 
 #mainContent {
-
     opacity: 0;
-
     visibility: hidden;
 
     transition:
         opacity 1s ease;
-
 }
 
 #mainContent.show {
-
     opacity: 1;
-
     visibility: visible;
-
 }
 
 
@@ -592,68 +432,44 @@ body.locked {
 ========================================================= */
 
 section {
-
     position: relative;
-
     padding: 80px 20px;
-
 }
 
 .container {
-
     max-width: 1050px;
-
     margin: auto;
-
 }
 
 .section-title {
-
     text-align: center;
-
     margin-bottom: 45px;
-
 }
 
 .section-title .small {
-
     color: var(--gold);
-
     font-size: 12px;
-
     letter-spacing: 4px;
-
     text-transform: uppercase;
-
     margin-bottom: 10px;
-
 }
 
 .section-title h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
+    font-family: "Cormorant Garamond", serif;
 
     font-size: 48px;
-
     font-weight: 600;
 
     color: var(--sage-dark);
-
 }
 
 .section-title .line {
-
     width: 60px;
-
     height: 2px;
 
-    background:
-        var(--gold);
+    background: var(--gold);
 
     margin: 15px auto 0;
-
 }
 
 
@@ -662,11 +478,9 @@ section {
 ========================================================= */
 
 .btn {
-
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 8px;
@@ -682,47 +496,27 @@ section {
     transition: .3s ease;
 
     cursor: pointer;
-
     border: none;
-
 }
 
 .btn-primary {
-
-    background:
-        var(--sage-dark);
-
+    background: var(--sage-dark);
     color: white;
-
 }
 
 .btn-primary:hover {
-
-    background:
-        var(--sage);
-
-    transform:
-        translateY(-2px);
-
+    background: var(--sage);
+    transform: translateY(-2px);
 }
 
 .btn-gold {
-
-    background:
-        var(--gold);
-
+    background: var(--gold);
     color: white;
-
 }
 
 .btn-gold:hover {
-
-    background:
-        #9e844f;
-
-    transform:
-        translateY(-2px);
-
+    background: #9e844f;
+    transform: translateY(-2px);
 }
 
 
@@ -731,13 +525,10 @@ section {
 ========================================================= */
 
 .hero {
-
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -749,58 +540,42 @@ section {
         );
 
     overflow: hidden;
-
 }
 
 .hero::before {
-
     content: "";
 
     position: absolute;
 
     width: 500px;
-
     height: 500px;
 
-    border:
-        1px solid
-        rgba(182,154,99,.3);
+    border: 1px solid rgba(182,154,99,.3);
 
     border-radius: 50%;
 
     animation:
-        rotateCircle 25s
-        linear infinite;
-
+        rotateCircle 25s linear infinite;
 }
 
 .hero-content {
-
     position: relative;
-
     z-index: 2;
 
     padding: 30px;
-
 }
 
 .bismillah {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
+    font-family: "Cormorant Garamond", serif;
 
     font-size: 25px;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     margin-bottom: 20px;
-
 }
 
 .invite {
-
     font-size: 11px;
 
     letter-spacing: 4px;
@@ -810,29 +585,22 @@ section {
     color: var(--gold);
 
     margin-bottom: 20px;
-
 }
 
 .names {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
+    font-family: "Cormorant Garamond", serif;
 
     font-size:
-        clamp(60px, 10vw, 105px);
+        clamp(52px, 10vw, 100px);
 
     line-height: .85;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     font-weight: 500;
-
 }
 
 .ampersand {
-
     display: block;
 
     font-size: 45px;
@@ -842,77 +610,220 @@ section {
     margin: 15px 0;
 
     font-style: italic;
-
 }
 
 .hero-date {
-
     margin-top: 30px;
 
     font-size: 14px;
 
     letter-spacing: 2px;
-
 }
 
-
-/* =========================================================
-   LIHAT JEMPUTAN
-   SCROLL SAHAJA
-========================================================= */
-
-.hero-invitation-button {
-
-    margin-top: 35px;
-
-}
-
-.hero-invitation-button .btn {
-
-    min-width: 180px;
-
-}
-
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro {
-
-    background:
-        var(--cream);
-
-    text-align: center;
-
-}
-
-.intro-text {
-
-    max-width: 720px;
-
-    margin: auto;
+.hero-hijri {
+    margin-top: 8px;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 25px;
+    font-size: 18px;
 
-    line-height: 1.7;
-
-    color: #5a6255;
-
+    color: var(--gold);
 }
 
-.dua {
+.hero-invitation-button {
+    margin-top: 35px;
+}
 
+.hero-invitation-button .btn {
+    min-width: 180px;
+}
+
+
+/* =========================================================
+   INVITATION / PARENTS
+========================================================= */
+
+.intro {
+    background: var(--cream);
+    text-align: center;
+}
+
+.invitation-letter {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 45px 25px;
+
+    position: relative;
+
+    background:
+        rgba(255,255,255,.55);
+
+    border:
+        1px solid
+        rgba(182,154,99,.28);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(70,80,60,.06);
+}
+
+.invitation-letter::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border:
+        1px solid
+        rgba(182,154,99,.2);
+
+    border-radius: 18px;
+
+    pointer-events: none;
+}
+
+.invitation-letter > * {
+    position: relative;
+    z-index: 2;
+}
+
+.one p {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    line-height: 1.55;
+
+    color: #596156;
+
+    margin-bottom: 5px;
+}
+
+.parent {
+    margin: 20px 0 25px;
+}
+
+.parent p {
+    color: var(--sage-dark);
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    line-height: 1.25;
+}
+
+.parent p:nth-child(2) {
+    color: var(--gold);
+    font-size: 24px;
+    margin: 3px 0;
+}
+
+.one p:nth-last-child(1) {
+    margin-top: 10px;
+}
+
+.guest-line {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 20px;
+
+    color: #666c63;
+
+    margin-top: 10px;
+}
+
+.daughter-title {
     margin-top: 25px;
-
-    font-style: italic;
 
     color: var(--gold);
 
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+.two {
+    margin: 25px auto 30px;
+
+    padding: 20px 15px;
+
+    border-top:
+        1px solid
+        var(--gold-light);
+
+    border-bottom:
+        1px solid
+        var(--gold-light);
+}
+
+.two p {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 29px;
+
+    line-height: 1.2;
+
+    color: var(--sage-dark);
+
+    font-weight: 600;
+}
+
+.two p:nth-child(2) {
+    color: var(--gold);
+
+    font-size: 24px;
+
+    margin: 5px 0;
+}
+
+.four {
+    margin-top: 25px;
+}
+
+.four .title {
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    color: var(--gold);
+
+    margin-bottom: 8px;
+}
+
+.four p:not(.title) {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 24px;
+
+    color: var(--sage-dark);
+
+    line-height: 1.4;
+}
+
+.four p:last-child {
+    font-size: 18px;
+
+    color: #777;
 }
 
 
@@ -921,31 +832,19 @@ section {
 ========================================================= */
 
 .countdown-section {
-
-    background:
-        var(--sage-dark);
-
+    background: var(--sage-dark);
     color: white;
-
 }
 
-.countdown-section
-.section-title h2 {
-
+.countdown-section .section-title h2 {
     color: white;
-
 }
 
-.countdown-section
-.section-title .small {
-
-    color:
-        var(--gold-light);
-
+.countdown-section .section-title .small {
+    color: var(--gold-light);
 }
 
 .countdown {
-
     display: grid;
 
     grid-template-columns:
@@ -956,11 +855,9 @@ section {
     max-width: 700px;
 
     margin: auto;
-
 }
 
 .count-box {
-
     background:
         rgba(255,255,255,.08);
 
@@ -975,11 +872,9 @@ section {
     text-align: center;
 
     backdrop-filter: blur(5px);
-
 }
 
 .count-box span {
-
     display: block;
 
     font-family:
@@ -989,20 +884,16 @@ section {
     font-size: 45px;
 
     color: white;
-
 }
 
 .count-box small {
-
-    color:
-        var(--gold-light);
+    color: var(--gold-light);
 
     letter-spacing: 2px;
 
     text-transform: uppercase;
 
     font-size: 9px;
-
 }
 
 
@@ -1011,14 +902,10 @@ section {
 ========================================================= */
 
 .event {
-
-    background:
-        var(--cream-dark);
-
+    background: var(--cream-dark);
 }
 
 .event-card {
-
     max-width: 800px;
 
     margin: auto;
@@ -1039,34 +926,26 @@ section {
     box-shadow:
         0 20px 50px
         rgba(70,80,60,.08);
-
 }
 
 .event-icon {
-
     font-size: 40px;
-
     margin-bottom: 20px;
-
 }
 
 .event-card h3 {
-
     font-family:
         "Cormorant Garamond",
         serif;
 
     font-size: 38px;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     margin-bottom: 25px;
-
 }
 
 .event-info {
-
     display: grid;
 
     grid-template-columns:
@@ -1075,44 +954,32 @@ section {
     gap: 25px;
 
     margin-bottom: 30px;
-
 }
 
 .info-item {
-
     padding: 20px;
-
 }
 
 .info-item .icon {
-
     font-size: 25px;
-
     margin-bottom: 10px;
-
 }
 
 .info-item h4 {
-
     font-size: 12px;
 
     text-transform: uppercase;
 
     letter-spacing: 2px;
 
-    color:
-        var(--gold);
+    color: var(--gold);
 
     margin-bottom: 8px;
-
 }
 
 .info-item p {
-
     line-height: 1.7;
-
     font-size: 14px;
-
 }
 
 
@@ -1121,117 +988,85 @@ section {
 ========================================================= */
 
 .schedule {
-
-    background:
-        var(--cream);
-
+    background: var(--cream);
 }
 
 .timeline {
-
     max-width: 700px;
 
     margin: auto;
 
     position: relative;
-
 }
 
 .timeline::before {
-
     content: "";
 
     position: absolute;
 
     left: 50%;
-
     top: 0;
-
     bottom: 0;
 
     width: 1px;
 
-    background:
-        var(--gold-light);
-
+    background: var(--gold-light);
 }
 
 .timeline-item {
-
     width: 50%;
 
     padding: 20px 35px;
 
     position: relative;
-
 }
 
 .timeline-item:nth-child(odd) {
-
     text-align: right;
-
 }
 
 .timeline-item:nth-child(even) {
-
     margin-left: 50%;
-
 }
 
 .timeline-dot {
-
     position: absolute;
 
     top: 28px;
 
     width: 13px;
-
     height: 13px;
 
-    background:
-        var(--sage);
+    background: var(--sage);
 
     border:
         3px solid
         var(--cream);
 
     border-radius: 50%;
-
 }
 
-.timeline-item:nth-child(odd)
-.timeline-dot {
-
+.timeline-item:nth-child(odd) .timeline-dot {
     right: -7px;
-
 }
 
-.timeline-item:nth-child(even)
-.timeline-dot {
-
+.timeline-item:nth-child(even) .timeline-dot {
     left: -7px;
-
 }
 
 .timeline-time {
-
     font-family:
         "Cormorant Garamond",
         serif;
 
     font-size: 28px;
 
-    color:
-        var(--sage-dark);
-
+    color: var(--sage-dark);
 }
 
 .timeline-text {
-
     font-size: 13px;
-
     margin-top: 5px;
-
 }
 
 
@@ -1240,74 +1075,56 @@ section {
 ========================================================= */
 
 .gallery {
-
-    background:
-        var(--sage-light);
-
+    background: var(--sage-light);
 }
 
 .gallery-grid {
-
     display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
     gap: 15px;
-
 }
 
 .gallery-item {
-
     height: 300px;
 
     overflow: hidden;
 
     border-radius: 15px;
 
-    background:
-        #d3dbd0;
-
+    background: #d3dbd0;
 }
 
 .gallery-item img {
-
     width: 100%;
-
     height: 100%;
 
     object-fit: cover;
 
     transition: .5s;
-
 }
 
 .gallery-item:hover img {
-
-    transform:
-        scale(1.05);
-
+    transform: scale(1.05);
 }
 
 .gallery-placeholder {
-
     height: 100%;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
 
     padding: 20px;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     font-size: 13px;
-
 }
 
 
@@ -1316,16 +1133,11 @@ section {
 ========================================================= */
 
 .rsvp {
-
-    background:
-        var(--cream);
-
+    background: var(--cream);
     text-align: center;
-
 }
 
 .rsvp-card {
-
     max-width: 650px;
 
     margin: auto;
@@ -1339,85 +1151,11 @@ section {
     box-shadow:
         0 15px 45px
         rgba(0,0,0,.06);
-
 }
 
 .rsvp-card p {
-
     line-height: 1.8;
-
     margin-bottom: 25px;
-
-}
-
-
-/* =========================================================
-   GIFT
-========================================================= */
-
-.gift {
-
-    background:
-        var(--cream-dark);
-
-    text-align: center;
-
-}
-
-.gift-box {
-
-    max-width: 600px;
-
-    margin: auto;
-
-    padding: 45px 25px;
-
-    border:
-        1px solid
-        var(--gold-light);
-
-    border-radius: 20px;
-
-}
-
-.gift-box h3 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 38px;
-
-    color:
-        var(--sage-dark);
-
-    margin-bottom: 15px;
-
-}
-
-.qr-placeholder {
-
-    width: 180px;
-
-    height: 180px;
-
-    margin: 25px auto;
-
-    border:
-        2px dashed
-        var(--gold);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    color:
-        var(--gold);
-
-    font-size: 12px;
-
 }
 
 
@@ -1426,41 +1164,31 @@ section {
 ========================================================= */
 
 footer {
-
-    background:
-        var(--sage-dark);
+    background: var(--sage-dark);
 
     color: white;
 
     text-align: center;
 
-    padding: 50px 20px;
-
-    padding-bottom: 130px;
-
+    padding: 50px 20px 130px;
 }
 
 .footer-names {
-
     font-family:
         "Cormorant Garamond",
         serif;
 
     font-size: 45px;
 
-    color:
-        var(--gold-light);
-
+    color: var(--gold-light);
 }
 
 footer p {
-
     margin-top: 15px;
 
     font-size: 11px;
 
     opacity: .7;
-
 }
 
 
@@ -1469,24 +1197,17 @@ footer p {
 ========================================================= */
 
 .fade-up {
-
     opacity: 0;
 
-    transform:
-        translateY(30px);
+    transform: translateY(30px);
 
-    transition:
-        1s ease;
-
+    transition: 1s ease;
 }
 
 .fade-up.show {
-
     opacity: 1;
 
-    transform:
-        translateY(0);
-
+    transform: translateY(0);
 }
 
 
@@ -1495,31 +1216,24 @@ footer p {
 ========================================================= */
 
 .footer {
-
     position: fixed;
 
     left: 50%;
-
     bottom: 18px;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
-    width:
-        min(94%, 560px);
+    width: min(94%, 560px);
 
     z-index: 12000;
 
     pointer-events: none;
-
 }
 
 .footer .menu {
-
     display: flex;
 
     align-items: center;
-
     justify-content: space-around;
 
     gap: 5px;
@@ -1539,20 +1253,15 @@ footer p {
         0 12px 40px
         rgba(60,70,55,.22);
 
-    backdrop-filter:
-        blur(15px);
+    backdrop-filter: blur(15px);
 
-    -webkit-backdrop-filter:
-        blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
     pointer-events: auto;
-
 }
 
 .menu button {
-
     width: 52px;
-
     height: 52px;
 
     border: none;
@@ -1561,8 +1270,7 @@ footer p {
 
     border-radius: 18px;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     cursor: pointer;
 
@@ -1571,44 +1279,33 @@ footer p {
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 3px;
 
     transition: .3s ease;
-
 }
 
 .menu button span {
-
     font-size: 18px;
-
     line-height: 1;
-
 }
 
 .menu button small {
-
     font-size: 7px;
 
     letter-spacing: .5px;
 
     text-transform: uppercase;
-
 }
 
 .menu button:hover,
 .menu button.active {
-
-    background:
-        var(--sage-dark);
+    background: var(--sage-dark);
 
     color: white;
 
-    transform:
-        translateY(-3px);
-
+    transform: translateY(-3px);
 }
 
 
@@ -1617,11 +1314,9 @@ footer p {
 ========================================================= */
 
 .toggle-menu {
-
     position: fixed;
 
     left: 50%;
-
     bottom: 92px;
 
     transform:
@@ -1629,8 +1324,7 @@ footer p {
         translateY(25px)
         scale(.97);
 
-    width:
-        min(92%, 520px);
+    width: min(92%, 520px);
 
     max-height:
         calc(100vh - 120px);
@@ -1652,11 +1346,9 @@ footer p {
         0 20px 60px
         rgba(50,60,45,.25);
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter: blur(18px);
 
-    -webkit-backdrop-filter:
-        blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     opacity: 0;
 
@@ -1670,11 +1362,9 @@ footer p {
         opacity .3s ease,
         transform .35s ease,
         visibility .3s ease;
-
 }
 
 .toggle-menu.open {
-
     opacity: 1;
 
     visibility: visible;
@@ -1685,71 +1375,55 @@ footer p {
         translateX(-50%)
         translateY(0)
         scale(1);
-
 }
 
 .menu-header {
-
     text-align: center;
-
     margin-bottom: 20px;
-
 }
 
 .menu-header small {
-
-    color:
-        var(--gold);
+    color: var(--gold);
 
     font-size: 9px;
 
     letter-spacing: 3px;
 
     text-transform: uppercase;
-
 }
 
 .menu-header h3 {
-
     font-family:
         "Cormorant Garamond",
         serif;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     font-size: 34px;
 
     margin-top: 5px;
-
 }
 
 .close-menu {
-
     position: absolute;
 
     top: 15px;
-
     right: 18px;
 
     width: 32px;
-
     height: 32px;
 
     border: none;
 
     border-radius: 50%;
 
-    background:
-        var(--sage-light);
+    background: var(--sage-light);
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     cursor: pointer;
 
     font-size: 16px;
-
 }
 
 
@@ -1758,13 +1432,10 @@ footer p {
 ========================================================= */
 
 .menu-content {
-
     text-align: center;
-
 }
 
 .menu-content p {
-
     font-size: 13px;
 
     line-height: 1.8;
@@ -1772,30 +1443,23 @@ footer p {
     color: #60665d;
 
     margin-bottom: 18px;
-
 }
 
 .menu-buttons {
-
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
     gap: 10px;
-
 }
 
 .menu-buttons .btn {
-
     width: 100%;
-
 }
 
 .menu-detail {
-
-    background:
-        var(--cream);
+    background: var(--cream);
 
     border-radius: 18px;
 
@@ -1804,15 +1468,12 @@ footer p {
     margin-bottom: 15px;
 
     text-align: center;
-
 }
 
 .menu-detail strong {
-
     display: block;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     font-family:
         "Cormorant Garamond",
@@ -1821,15 +1482,11 @@ footer p {
     font-size: 24px;
 
     margin-bottom: 5px;
-
 }
 
 .menu-detail span {
-
     font-size: 11px;
-
     line-height: 1.7;
-
 }
 
 
@@ -1838,29 +1495,24 @@ footer p {
 ========================================================= */
 
 .calendar-options {
-
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
     gap: 12px;
-
 }
 
 .calendar-option {
-
     border: none;
 
     padding: 18px;
 
     border-radius: 18px;
 
-    background:
-        var(--cream);
+    background: var(--cream);
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     cursor: pointer;
 
@@ -1869,35 +1521,30 @@ footer p {
         sans-serif;
 
     transition: .3s;
-
 }
 
 .calendar-option:hover {
-
-    background:
-        var(--sage-dark);
+    background: var(--sage-dark);
 
     color: white;
 
-    transform:
-        translateY(-2px);
-
+    transform: translateY(-2px);
 }
 
 .calendar-option span {
-
     display: block;
 
     font-size: 25px;
 
     margin-bottom: 8px;
-
 }
 
 .calendar-option small {
+    display: block;
 
     font-size: 10px;
 
+    margin-top: 4px;
 }
 
 
@@ -1906,18 +1553,15 @@ footer p {
 ========================================================= */
 
 .rsvp-options {
-
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
     gap: 12px;
-
 }
 
 .rsvp-option {
-
     border: none;
 
     padding: 22px 10px;
@@ -1933,33 +1577,20 @@ footer p {
     font-size: 11px;
 
     transition: .3s;
-
 }
 
 .rsvp-option.hadir {
-
-    background:
-        var(--sage-dark);
-
+    background: var(--sage-dark);
     color: white;
-
 }
 
 .rsvp-option.tidak {
-
-    background:
-        var(--cream-dark);
-
-    color:
-        var(--sage-dark);
-
+    background: var(--cream-dark);
+    color: var(--sage-dark);
 }
 
 .rsvp-option:hover {
-
-    transform:
-        translateY(-3px);
-
+    transform: translateY(-3px);
 }
 
 
@@ -1968,63 +1599,48 @@ footer p {
 ========================================================= */
 
 .success-box {
-
     text-align: center;
-
     padding: 15px;
-
 }
 
 .success-icon {
-
     font-size: 48px;
-
     margin-bottom: 10px;
-
 }
 
 .success-box h3 {
-
     font-family:
         "Cormorant Garamond",
         serif;
 
-    color:
-        var(--sage-dark);
+    color: var(--sage-dark);
 
     font-size: 32px;
-
 }
 
 .success-box p {
-
     margin-top: 8px;
-
 }
 
 
 /* =========================================================
-   MUSIC BUTTON
+   MUSIC
 ========================================================= */
 
 .music-floating {
-
     position: fixed;
 
     right: 18px;
-
     top: 18px;
 
     width: 48px;
-
     height: 48px;
 
     border-radius: 50%;
 
     border: none;
 
-    background:
-        var(--sage-dark);
+    background: var(--sage-dark);
 
     color: white;
 
@@ -2035,14 +1651,11 @@ footer p {
     box-shadow:
         0 5px 20px
         rgba(0,0,0,.18);
-
 }
 
 .music-floating.playing {
-
     animation:
         pulse 1.5s infinite;
-
 }
 
 
@@ -2051,7 +1664,6 @@ footer p {
 ========================================================= */
 
 .petal-container {
-
     position: fixed;
 
     inset: 0;
@@ -2061,11 +1673,9 @@ footer p {
     overflow: hidden;
 
     z-index: 100;
-
 }
 
 .petal {
-
     position: absolute;
 
     background:
@@ -2076,13 +1686,10 @@ footer p {
 
     animation:
         petalFall linear forwards;
-
 }
 
 @keyframes petalFall {
-
     0% {
-
         transform:
             translate3d(
                 0,
@@ -2090,11 +1697,9 @@ footer p {
                 0
             )
             rotate(0deg);
-
     }
 
     100% {
-
         transform:
             translate3d(
                 var(--translate-x),
@@ -2102,9 +1707,7 @@ footer p {
                 0
             )
             rotate(500deg);
-
     }
-
 }
 
 
@@ -2113,49 +1716,33 @@ footer p {
 ========================================================= */
 
 @keyframes rotateCircle {
-
     from {
-
-        transform:
-            rotate(0deg);
-
+        transform: rotate(0deg);
     }
 
     to {
-
-        transform:
-            rotate(360deg);
-
+        transform: rotate(360deg);
     }
-
 }
 
 @keyframes pulse {
-
     0% {
-
         box-shadow:
             0 0 0 0
             rgba(124,146,119,.6);
-
     }
 
     70% {
-
         box-shadow:
             0 0 0 15px
             rgba(124,146,119,0);
-
     }
 
     100% {
-
         box-shadow:
             0 0 0 0
             rgba(124,146,119,0);
-
     }
-
 }
 
 
@@ -2166,123 +1753,75 @@ footer p {
 @media (max-width: 700px) {
 
     .opening::before {
-
         width: 330px;
-
         height: 330px;
-
     }
 
     .opening-names {
-
-        font-size: 48px;
-
+        font-size: 45px;
     }
 
     .envelope-wrapper {
-
         width: 290px;
-
         height: 190px;
-
     }
 
     .envelope-body::before {
-
-        border-left-width:
-            145px;
-
-        border-top-width:
-            95px;
-
-        border-bottom-width:
-            95px;
-
+        border-left-width: 145px;
+        border-top-width: 95px;
+        border-bottom-width: 95px;
     }
 
     .envelope-body::after {
-
-        border-right-width:
-            145px;
-
-        border-top-width:
-            95px;
-
-        border-bottom-width:
-            95px;
-
+        border-right-width: 145px;
+        border-top-width: 95px;
+        border-bottom-width: 95px;
     }
 
     .invitation-card {
-
         height: 165px;
-
     }
 
     section {
-
-        padding:
-            65px 18px;
-
+        padding: 65px 18px;
     }
 
     .hero {
-
-        min-height:
-            100svh;
-
+        min-height: 100svh;
     }
 
     .hero::before {
-
         width: 330px;
-
         height: 330px;
-
     }
 
     .names {
-
-        font-size: 65px;
-
+        font-size: 60px;
     }
 
     .section-title h2 {
-
         font-size: 40px;
-
     }
 
     .countdown {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
     .count-box span {
-
         font-size: 38px;
-
     }
 
     .event-info {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
         gap: 5px;
-
     }
 
     .timeline::before {
-
         left: 10px;
-
     }
 
     .timeline-item {
-
         width: 100%;
 
         margin-left: 0 !important;
@@ -2290,68 +1829,45 @@ footer p {
         padding-left: 40px;
 
         text-align: left !important;
-
     }
 
-    .timeline-item:nth-child(odd)
-    .timeline-dot,
-    .timeline-item:nth-child(even)
-    .timeline-dot {
-
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
         left: 4px;
-
         right: auto;
-
     }
 
     .gallery-grid {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
     .gallery-item {
-
         height: 220px;
-
     }
 
     .gallery-item:last-child {
-
-        grid-column:
-            span 2;
-
+        grid-column: span 2;
     }
 
     .footer .menu {
-
         border-radius: 22px;
-
     }
 
     .menu button {
-
         width: 48px;
-
         height: 48px;
-
     }
 
     .menu button span {
-
         font-size: 16px;
-
     }
 
     .menu button small {
-
         font-size: 6px;
-
     }
 
     .toggle-menu {
-
         bottom: 88px;
 
         width: 92%;
@@ -2359,23 +1875,32 @@ footer p {
         padding: 25px 18px;
 
         border-radius: 22px;
-
     }
 
     .menu-buttons {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
 
     .calendar-options {
-
         grid-template-columns:
             1fr 1fr;
-
     }
 
+    .invitation-letter {
+        padding: 38px 18px;
+    }
+
+    .parent p {
+        font-size: 24px;
+    }
+
+    .two p {
+        font-size: 25px;
+    }
+
+    .four p:not(.title) {
+        font-size: 21px;
+    }
 }
 
 
@@ -2386,25 +1911,21 @@ footer p {
 @media (max-width: 380px) {
 
     .menu button {
-
         width: 43px;
-
         height: 46px;
-
     }
 
     .menu button small {
-
         font-size: 5px;
-
     }
 
     .menu {
-
         gap: 0 !important;
-
     }
 
+    .names {
+        font-size: 53px;
+    }
 }
 
 </style>
@@ -2430,29 +1951,20 @@ footer p {
     <div class="opening-content">
 
         <div class="opening-bismillah">
-
             بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-
         </div>
-
 
         <div class="opening-small">
-
             Dengan penuh kesyukuran
-
         </div>
 
-
         <div class="opening-names">
-
-            Aziman
+            Norasikin
 
             <span>&</span>
 
-            Sikin
-
+            Mohamad Aziman
         </div>
-
 
         <div
             class="envelope-wrapper"
@@ -2465,7 +1977,6 @@ footer p {
             <div class="envelope">
 
                 <div class="envelope-body"></div>
-
 
                 <div class="invitation-card">
 
@@ -2487,25 +1998,18 @@ footer p {
 
                 </div>
 
-
                 <div class="envelope-flap"></div>
 
-
                 <div class="seal">
-
                     S & A
-
                 </div>
 
             </div>
 
         </div>
 
-
         <div class="open-label">
-
             ✉️ Tekan surat untuk buka
-
         </div>
 
     </div>
@@ -2529,43 +2033,30 @@ footer p {
     <div class="hero-content">
 
         <div class="bismillah">
-
             بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-
         </div>
-
 
         <div class="invite">
-
             Dengan penuh kesyukuran
-
         </div>
 
-
         <div class="names">
-
-            Aziman
+            Norasikin
 
             <span class="ampersand">
                 &
             </span>
 
-            Sikin
-
+            Mohamad Aziman
         </div>
-
 
         <div class="hero-date">
-
-            19 DISEMBER 2026
-
+            SABTU, 19 DISEMBER 2026
         </div>
 
-
-        <!--
-            BUTTON INI HANYA SCROLL
-            KE SECTION JEMPUTAN
-        -->
+        <div class="hero-hijri">
+            Bersamaan 9 Rejab 1448H
+        </div>
 
         <div class="hero-invitation-button">
 
@@ -2598,15 +2089,11 @@ footer p {
         <div class="section-title fade-up">
 
             <div class="small">
-
                 Walimatulurus
-
             </div>
 
             <h2>
-
                 Dengan Sukacitanya
-
             </h2>
 
             <div class="line"></div>
@@ -2614,23 +2101,92 @@ footer p {
         </div>
 
 
-        <div class="intro-text fade-up">
-
-            <p>
-
-                Dengan penuh rasa syukur ke hadrat Allah SWT,
-                kami menjemput Dato'/Datin/Tuan/Puan/Encik/Cik
-                untuk hadir ke majlis perkahwinan kami.
-
-            </p>
+        <div class="invitation-letter fade-up">
 
 
-            <p class="dua">
+            <div class="one">
 
-                Semoga dengan kehadiran dan doa restu
-                anda semua menyerikan lagi hari bahagia kami.
+                <p>
+                    Dengan penuh kesyukuran
+                </p>
 
-            </p>
+                <p>
+                    kami
+                </p>
+
+
+                <div class="parent">
+
+                    <p>
+                        M Nasar Bin Bakri
+                    </p>
+
+                    <p>
+                        &
+                    </p>
+
+                    <p>
+                        Katirah Binti Mansor
+                    </p>
+
+                </div>
+
+
+                <p>
+                    Menjemput
+                </p>
+
+
+                <p class="guest-line">
+                    Dato' | Datin | Tuan | Puan | Encik | Cik
+                </p>
+
+
+                <p>
+                    seisi keluarga hadir ke
+                </p>
+
+
+                <p class="daughter-title">
+                    majlis perkahwinan puteri kami
+                </p>
+
+            </div>
+
+
+            <div class="two">
+
+                <p>
+                    Norasikin Binti M Nasar
+                </p>
+
+                <p>
+                    &
+                </p>
+
+                <p>
+                    Mohamad Aziman Bin Mohd Wagiran
+                </p>
+
+            </div>
+
+
+            <div class="four">
+
+                <p class="title">
+                    Tarikh
+                </p>
+
+                <p>
+                    Sabtu, 19 Disember 2026
+                </p>
+
+                <p>
+                    Bersamaan 9 Rejab 1448H
+                </p>
+
+            </div>
+
 
         </div>
 
@@ -2653,15 +2209,11 @@ footer p {
         <div class="section-title">
 
             <div class="small">
-
                 Menuju Hari Bahagia
-
             </div>
 
             <h2>
-
                 Counting The Days
-
             </h2>
 
             <div class="line"></div>
@@ -2743,15 +2295,11 @@ footer p {
         <div class="section-title fade-up">
 
             <div class="small">
-
                 Majlis Perkahwinan
-
             </div>
 
             <h2>
-
                 Butiran Majlis
-
             </h2>
 
             <div class="line"></div>
@@ -2767,7 +2315,7 @@ footer p {
 
 
             <h3>
-                Aziman & Sikin
+                Norasikin & Mohamad Aziman
             </h3>
 
 
@@ -2786,7 +2334,8 @@ footer p {
 
                     <p>
                         Sabtu<br>
-                        19 Disember 2026
+                        19 Disember 2026<br>
+                        9 Rejab 1448H
                     </p>
 
                 </div>
@@ -2850,9 +2399,7 @@ footer p {
                 class="btn btn-gold"
                 onclick="openGoogleMaps()"
             >
-
                 📍 Lihat Lokasi
-
             </button>
 
         </div>
@@ -3079,93 +2626,20 @@ footer p {
         <div class="rsvp-card fade-up">
 
             <p>
-
                 Kehadiran anda amat kami hargai.
                 Sila maklumkan kehadiran melalui
                 WhatsApp.
-
             </p>
 
 
             <a
-                href="https://wa.me/60177962482?text=Assalamualaikum.%20Saya%20ingin%20mengesahkan%20kehadiran%20ke%20majlis%20Aziman%20%26%20Sikin%20pada%2019%20Disember%202026."
+                href="https://wa.me/60177962482?text=Assalamualaikum.%20Saya%20ingin%20mengesahkan%20kehadiran%20ke%20majlis%20perkahwinan%20Norasikin%20%26%20Mohamad%20Aziman%20pada%2019%20Disember%202026."
                 class="btn btn-primary"
                 target="_blank"
                 rel="noopener"
             >
-
                 💬 RSVP WhatsApp
-
             </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     GIFT
-========================================================= -->
-
-<section
-    class="gift"
-    id="gift"
->
-
-    <div class="container">
-
-        <div class="section-title fade-up">
-
-            <div class="small">
-                Tanda Kasih
-            </div>
-
-            <h2>
-                Wedding Gift
-            </h2>
-
-            <div class="line"></div>
-
-        </div>
-
-
-        <div class="gift-box fade-up">
-
-            <h3>
-                Terima Kasih
-            </h3>
-
-
-            <p>
-
-                Bagi yang ingin menitipkan tanda kasih,
-                ruangan ini boleh digunakan untuk
-                maklumat akaun bank atau QR DuitNow.
-
-            </p>
-
-
-            <div class="qr-placeholder">
-
-                QR CODE<br>
-                MASUKKAN DI SINI
-
-            </div>
-
-
-            <p>
-
-                Nama Bank: __________________
-                <br>
-
-                No. Akaun: __________________
-                <br>
-
-                Nama: __________________
-
-            </p>
 
         </div>
 
@@ -3181,16 +2655,12 @@ footer p {
 <footer>
 
     <div class="footer-names">
-
-        Aziman & Sikin
-
+        Norasikin & Mohamad Aziman
     </div>
-
 
     <p>
         19 Disember 2026
     </p>
-
 
     <p>
         Terima kasih atas doa dan restu anda.
@@ -3232,9 +2702,7 @@ footer p {
     id="musicFloating"
     aria-label="Muzik"
 >
-
     🎵
-
 </button>
 
 
@@ -3253,13 +2721,8 @@ footer p {
             id="home-btn"
             type="button"
         >
-
             <span>⌂</span>
-
-            <small>
-                Utama
-            </small>
-
+            <small>Utama</small>
         </button>
 
 
@@ -3267,13 +2730,8 @@ footer p {
             id="calendar-btn"
             type="button"
         >
-
             <span>📅</span>
-
-            <small>
-                Calendar
-            </small>
-
+            <small>Calendar</small>
         </button>
 
 
@@ -3281,13 +2739,8 @@ footer p {
             id="location-btn"
             type="button"
         >
-
             <span>📍</span>
-
-            <small>
-                Lokasi
-            </small>
-
+            <small>Lokasi</small>
         </button>
 
 
@@ -3295,13 +2748,8 @@ footer p {
             id="music-btn"
             type="button"
         >
-
             <span>🎵</span>
-
-            <small>
-                Muzik
-            </small>
-
+            <small>Muzik</small>
         </button>
 
 
@@ -3309,13 +2757,8 @@ footer p {
             id="rsvp-btn"
             type="button"
         >
-
             <span>💌</span>
-
-            <small>
-                RSVP
-            </small>
-
+            <small>RSVP</small>
         </button>
 
     </nav>
@@ -3368,9 +2811,7 @@ footer p {
                 onclick="addGoogleCalendar()"
             >
 
-                <span>
-                    📅
-                </span>
+                <span>📅</span>
 
                 Google Calendar
 
@@ -3386,9 +2827,7 @@ footer p {
                 onclick="addAppleCalendar()"
             >
 
-                <span>
-                    🍎
-                </span>
+                <span>🍎</span>
 
                 Apple / iPhone
 
@@ -3444,12 +2883,10 @@ footer p {
             </strong>
 
             <span>
-
                 No 66 Blok 5B Jalan Merak,
                 Felda Nitar 01,
                 86800 Mersing,
                 Johor, Malaysia
-
             </span>
 
         </div>
@@ -3461,9 +2898,7 @@ footer p {
                 class="btn btn-gold"
                 onclick="openGoogleMaps()"
             >
-
                 📍 Google Maps
-
             </button>
 
 
@@ -3471,9 +2906,7 @@ footer p {
                 class="btn btn-primary"
                 onclick="openWaze()"
             >
-
                 🚗 Waze
-
             </button>
 
         </div>
@@ -3536,9 +2969,7 @@ footer p {
             class="btn btn-primary"
             id="menuMusicButton"
         >
-
             ▶ Mainkan Muzik
-
         </button>
 
     </div>
@@ -3567,7 +2998,6 @@ footer p {
 
         <small>
             Kehadiran
-
         </small>
 
         <h3>
@@ -3580,10 +3010,8 @@ footer p {
     <div class="menu-content">
 
         <p>
-
             Sila maklumkan kepada kami
             sekiranya anda dapat hadir.
-
         </p>
 
 
@@ -3593,11 +3021,8 @@ footer p {
                 class="rsvp-option hadir"
                 id="btn-hadir"
             >
-
                 😊<br><br>
-
                 Ya, Saya Hadir
-
             </button>
 
 
@@ -3605,11 +3030,8 @@ footer p {
                 class="rsvp-option tidak"
                 id="btn-tidak-hadir"
             >
-
                 🙏<br><br>
-
                 Tidak Dapat Hadir
-
             </button>
 
         </div>
@@ -3652,9 +3074,7 @@ footer p {
 
 
         <p id="successMessage">
-
             Maklumat anda telah diterima.
-
         </p>
 
     </div>
@@ -3668,560 +3088,355 @@ footer p {
    DOM READY
 ========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", () => {
 
 
-        /* =================================================
-           ELEMENTS
-        ================================================= */
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
-        const opening =
-            document.getElementById(
-                "opening"
-            );
+    const opening =
+        document.getElementById("opening");
 
+    const envelope =
+        document.getElementById("envelope");
 
-        const envelope =
-            document.getElementById(
-                "envelope"
-            );
+    const mainContent =
+        document.getElementById("mainContent");
 
+    const audioPlayer =
+        document.getElementById("weddingMusic");
 
-        const mainContent =
-            document.getElementById(
-                "mainContent"
-            );
+    const musicFloating =
+        document.getElementById("musicFloating");
 
-
-        const audioPlayer =
-            document.getElementById(
-                "weddingMusic"
-            );
+    const petalContainer =
+        document.querySelector(".petal-container");
 
 
-        const musicFloating =
-            document.getElementById(
-                "musicFloating"
-            );
+    /* =====================================================
+       SETTINGS
+    ===================================================== */
+
+    const WEDDING_DATE =
+        new Date("2026-12-19T11:00:00+08:00");
+
+    const MAX_PETALS = 45;
+
+    let invitationOpened = false;
+    let petalsStarted = false;
+    let petalTimer = null;
 
 
-        const petalContainer =
-            document.querySelector(
-                ".petal-container"
-            );
+    /* =====================================================
+       OPEN INVITATION
+    ===================================================== */
 
+    function openInvitation() {
 
-        /* =================================================
-           SETTINGS
-        ================================================= */
-
-        const WEDDING_DATE =
-            new Date(
-                "2026-12-19T11:00:00+08:00"
-            );
-
-
-        const MAX_PETALS = 45;
-
-
-        let invitationOpened =
-            false;
-
-
-        let musicStarted =
-            false;
-
-
-        let petalsStarted =
-            false;
-
-
-        let petalTimer =
-            null;
-
-
-        /* =================================================
-           OPEN INVITATION
-        ================================================= */
-
-        function openInvitation() {
-
-            if (
-                invitationOpened
-            ) {
-
-                return;
-
-            }
-
-
-            invitationOpened =
-                true;
-
-
-            envelope.classList.add(
-                "open"
-            );
-
-
-            setTimeout(
-                () => {
-
-                    opening.classList.add(
-                        "hide"
-                    );
-
-
-                    mainContent.classList.add(
-                        "show"
-                    );
-
-
-                    document.body.classList.remove(
-                        "locked"
-                    );
-
-
-                    startPetals();
-
-                },
-                1300
-            );
-
+        if (invitationOpened) {
+            return;
         }
 
+        invitationOpened = true;
 
-        envelope.addEventListener(
+        envelope.classList.add("open");
+
+        setTimeout(() => {
+
+            opening.classList.add("hide");
+
+            mainContent.classList.add("show");
+
+            document.body.classList.remove("locked");
+
+            startPetals();
+
+        }, 1300);
+    }
+
+
+    envelope.addEventListener(
+        "click",
+        openInvitation
+    );
+
+
+    envelope.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                openInvitation();
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       LIHAT JEMPUTAN
+    ===================================================== */
+
+    const lihatJemputan =
+        document.getElementById("lihatJemputan");
+
+
+    if (lihatJemputan) {
+
+        lihatJemputan.addEventListener(
             "click",
-            openInvitation
-        );
-
-
-        envelope.addEventListener(
-            "keydown",
             event => {
 
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
+                event.preventDefault();
 
-                    event.preventDefault();
+                const invitation =
+                    document.getElementById("invitation");
 
-                    openInvitation();
+                if (invitation) {
+
+                    invitation.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
                 }
 
             }
         );
 
-
-        /* =================================================
-           LIHAT JEMPUTAN
-           SCROLL SAHAJA
-        ================================================= */
-
-        const lihatJemputan =
-            document.getElementById(
-                "lihatJemputan"
-            );
+    }
 
 
-        if (lihatJemputan) {
+    /* =====================================================
+       COUNTDOWN
+    ===================================================== */
 
-            lihatJemputan.addEventListener(
-                "click",
-                event => {
+    function updateCountdown() {
 
-                    event.preventDefault();
+        const now = new Date();
 
-
-                    const invitation =
-                        document.getElementById(
-                            "invitation"
-                        );
+        let distance =
+            WEDDING_DATE.getTime() -
+            now.getTime();
 
 
-                    if (invitation) {
-
-                        invitation.scrollIntoView({
-                            behavior:
-                                "smooth",
-                            block:
-                                "start"
-                        });
-
-                    }
-
-                }
-            );
-
+        if (distance < 0) {
+            distance = 0;
         }
 
 
-        /* =================================================
-           COUNTDOWN
-        ================================================= */
-
-        function updateCountdown() {
-
-            const now =
-                new Date();
-
-
-            let distance =
-                WEDDING_DATE.getTime()
-                -
-                now.getTime();
-
-
-            if (
-                distance < 0
-            ) {
-
-                distance = 0;
-
-            }
-
-
-            const days =
-                Math.floor(
-                    distance /
-                    (
-                        1000 *
-                        60 *
-                        60 *
-                        24
-                    )
-                );
-
-
-            const hours =
-                Math.floor(
-                    (
-                        distance %
-                        (
-                            1000 *
-                            60 *
-                            60 *
-                            24
-                        )
-                    )
-                    /
-                    (
-                        1000 *
-                        60 *
-                        60
-                    )
-                );
-
-
-            const minutes =
-                Math.floor(
-                    (
-                        distance %
-                        (
-                            1000 *
-                            60 *
-                            60
-                        )
-                    )
-                    /
-                    (
-                        1000 *
-                        60
-                    )
-                );
-
-
-            const seconds =
-                Math.floor(
-                    (
-                        distance %
-                        (
-                            1000 *
-                            60
-                        )
-                    )
-                    /
-                    1000
-                );
-
-
-            document.getElementById(
-                "days"
-            ).textContent =
-                String(days)
-                    .padStart(2, "0");
-
-
-            document.getElementById(
-                "hours"
-            ).textContent =
-                String(hours)
-                    .padStart(2, "0");
-
-
-            document.getElementById(
-                "minutes"
-            ).textContent =
-                String(minutes)
-                    .padStart(2, "0");
-
-
-            document.getElementById(
-                "seconds"
-            ).textContent =
-                String(seconds)
-                    .padStart(2, "0");
-
-        }
-
-
-        updateCountdown();
-
-
-        setInterval(
-            updateCountdown,
-            1000
-        );
-
-
-        /* =================================================
-           SCROLL REVEAL
-        ================================================= */
-
-        const fadeElements =
-            document.querySelectorAll(
-                ".fade-up"
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
             );
 
 
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target.classList.add(
-                                    "show"
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold:
-                        0.15
-                }
+        const hours =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60 * 24)
+                ) /
+                (1000 * 60 * 60)
             );
 
 
-        fadeElements.forEach(
-            element => {
-
-                observer.observe(
-                    element
-                );
-
-            }
-        );
-
-
-        /* =================================================
-           MENU SYSTEM
-        ================================================= */
-
-        const menuMap = {
-
-            "calendar-btn":
-                "calendar-menu",
-
-            "location-btn":
-                "location-menu",
-
-            "music-btn":
-                "music-menu",
-
-            "rsvp-btn":
-                "rsvp-menu"
-
-        };
-
-
-        function getMenus() {
-
-            return document.querySelectorAll(
-                ".toggle-menu"
-            );
-
-        }
-
-
-        function closeAllMenus() {
-
-            getMenus().forEach(
-                menu => {
-
-                    menu.classList.remove(
-                        "open"
-                    );
-
-                    menu.style.pointerEvents =
-                        "none";
-
-                }
+        const minutes =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60)
+                ) /
+                (1000 * 60)
             );
 
 
-            document
-                .querySelectorAll(
-                    ".menu button"
-                )
-                .forEach(
-                    button => {
+        const seconds =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60)
+                ) /
+                1000
+            );
 
-                        button.classList.remove(
-                            "active"
+
+        document.getElementById("days").textContent =
+            String(days).padStart(2, "0");
+
+
+        document.getElementById("hours").textContent =
+            String(hours).padStart(2, "0");
+
+
+        document.getElementById("minutes").textContent =
+            String(minutes).padStart(2, "0");
+
+
+        document.getElementById("seconds").textContent =
+            String(seconds).padStart(2, "0");
+
+    }
+
+
+    updateCountdown();
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const fadeElements =
+        document.querySelectorAll(".fade-up");
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "show"
                         );
 
                     }
-                );
 
-        }
+                });
 
-
-        function openMenu(
-            menuId,
-            button = null
-        ) {
-
-            const menu =
-                document.getElementById(
-                    menuId
-                );
-
-
-            if (!menu) {
-
-                return;
-
+            },
+            {
+                threshold: 0.15
             }
+        );
 
 
-            closeAllMenus();
+    fadeElements.forEach(element => {
+
+        observer.observe(element);
+
+    });
 
 
-            menu.style.zIndex =
-                "13000";
+    /* =====================================================
+       MENU SYSTEM
+    ===================================================== */
+
+    const menuMap = {
+
+        "calendar-btn":
+            "calendar-menu",
+
+        "location-btn":
+            "location-menu",
+
+        "music-btn":
+            "music-menu",
+
+        "rsvp-btn":
+            "rsvp-menu"
+
+    };
+
+
+    function getMenus() {
+
+        return document.querySelectorAll(
+            ".toggle-menu"
+        );
+
+    }
+
+
+    function closeAllMenus() {
+
+        getMenus().forEach(menu => {
+
+            menu.classList.remove("open");
 
             menu.style.pointerEvents =
-                "auto";
+                "none";
 
-            menu.style.visibility =
-                "visible";
-
-
-            menu.classList.add(
-                "open"
-            );
+        });
 
 
-            if (button) {
+        document
+            .querySelectorAll(".menu button")
+            .forEach(button => {
 
-                button.classList.add(
+                button.classList.remove(
                     "active"
                 );
 
-            }
+            });
 
+    }
+
+
+    function openMenu(menuId, button = null) {
+
+        const menu =
+            document.getElementById(menuId);
+
+
+        if (!menu) {
+            return;
         }
 
 
-        Object.entries(
-            menuMap
-        )
-        .forEach(
-            ([buttonId, menuId]) => {
-
-                const button =
-                    document.getElementById(
-                        buttonId
-                    );
+        closeAllMenus();
 
 
-                if (!button) {
+        menu.style.zIndex =
+            "13000";
 
-                    return;
+        menu.style.pointerEvents =
+            "auto";
 
-                }
-
-
-                button.addEventListener(
-                    "click",
-                    event => {
-
-                        event.preventDefault();
-
-                        event.stopPropagation();
+        menu.style.visibility =
+            "visible";
 
 
-                        const menu =
-                            document.getElementById(
-                                menuId
-                            );
+        menu.classList.add("open");
 
 
-                        if (
-                            menu &&
-                            menu.classList.contains(
-                                "open"
-                            )
-                        ) {
+        if (button) {
 
-                            closeAllMenus();
+            button.classList.add("active");
 
-                        }
+        }
 
-                        else {
+    }
 
-                            openMenu(
-                                menuId,
-                                button
-                            );
 
-                        }
+    Object.entries(menuMap)
+        .forEach(([buttonId, menuId]) => {
 
-                    }
-                );
+            const button =
+                document.getElementById(buttonId);
 
+
+            if (!button) {
+                return;
             }
-        );
 
 
-        /* =================================================
-           HOME BUTTON
-        ================================================= */
-
-        const homeButton =
-            document.getElementById(
-                "home-btn"
-            );
-
-
-        if (homeButton) {
-
-            homeButton.addEventListener(
+            button.addEventListener(
                 "click",
                 event => {
 
@@ -4229,408 +3444,545 @@ document.addEventListener(
 
                     event.stopPropagation();
 
-                    closeAllMenus();
+
+                    const menu =
+                        document.getElementById(
+                            menuId
+                        );
 
 
-                    window.scrollTo({
+                    if (
+                        menu &&
+                        menu.classList.contains("open")
+                    ) {
 
-                        top: 0,
+                        closeAllMenus();
 
-                        behavior:
-                            "smooth"
+                    }
 
-                    });
+                    else {
+
+                        openMenu(
+                            menuId,
+                            button
+                        );
+
+                    }
 
                 }
             );
 
-        }
+        });
 
 
-        /* =================================================
-           CLOSE OUTSIDE
-        ================================================= */
+    /* =====================================================
+       HOME BUTTON
+    ===================================================== */
 
-        document.addEventListener(
+    const homeButton =
+        document.getElementById("home-btn");
+
+
+    if (homeButton) {
+
+        homeButton.addEventListener(
             "click",
             event => {
 
-                if (
-                    event.target.closest(
-                        ".footer .menu"
-                    )
-                ) {
+                event.preventDefault();
 
-                    return;
-
-                }
-
-
-                if (
-                    event.target.closest(
-                        ".toggle-menu"
-                    )
-                ) {
-
-                    return;
-
-                }
-
+                event.stopPropagation();
 
                 closeAllMenus();
 
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
             }
         );
 
+    }
 
-        /* =================================================
-           MENU STOP PROPAGATION
-        ================================================= */
 
-        getMenus().forEach(
-            menu => {
+    /* =====================================================
+       CLOSE OUTSIDE
+    ===================================================== */
 
-                menu.addEventListener(
-                    "click",
-                    event => {
+    document.addEventListener(
+        "click",
+        event => {
 
-                        event.stopPropagation();
+            if (
+                event.target.closest(
+                    ".footer .menu"
+                )
+            ) {
+                return;
+            }
+
+
+            if (
+                event.target.closest(
+                    ".toggle-menu"
+                )
+            ) {
+                return;
+            }
+
+
+            closeAllMenus();
+
+        }
+    );
+
+
+    /* =====================================================
+       MENU STOP PROPAGATION
+    ===================================================== */
+
+    getMenus().forEach(menu => {
+
+        menu.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       CLOSE BUTTON
+    ===================================================== */
+
+    document
+        .querySelectorAll("[data-close]")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+
+                    const menuId =
+                        button.dataset.close;
+
+
+                    const menu =
+                        document.getElementById(
+                            menuId
+                        );
+
+
+                    if (menu) {
+
+                        menu.classList.remove(
+                            "open"
+                        );
+
+                        menu.style.pointerEvents =
+                            "none";
 
                     }
-                );
-
-            }
-        );
-
-
-        /* =================================================
-           CLOSE BUTTON
-        ================================================= */
-
-        document
-            .querySelectorAll(
-                "[data-close]"
-            )
-            .forEach(
-                button => {
-
-                    button.addEventListener(
-                        "click",
-                        event => {
-
-                            event.preventDefault();
-
-                            event.stopPropagation();
-
-
-                            const menuId =
-                                button.dataset.close;
-
-
-                            const menu =
-                                document.getElementById(
-                                    menuId
-                                );
-
-
-                            if (menu) {
-
-                                menu.classList.remove(
-                                    "open"
-                                );
-
-                                menu.style.pointerEvents =
-                                    "none";
-
-                            }
-
-                        }
-                    );
 
                 }
             );
 
+        });
 
-        /* =================================================
-           CALENDAR
-        ================================================= */
 
-        const weddingEvent = {
+    /* =====================================================
+       CALENDAR
+    ===================================================== */
 
-            title:
-                "Majlis Perkahwinan Aziman & Sikin",
+    const weddingEvent = {
 
-            startDate:
-                "20261219T030000Z",
+        title:
+            "Majlis Perkahwinan Norasikin & Mohamad Aziman",
 
-            endDate:
-                "20261219T080000Z",
+        startDate:
+            "20261219T030000Z",
 
-            location:
-                "No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor, Malaysia",
+        endDate:
+            "20261219T080000Z",
 
-            description:
-                "Majlis Perkahwinan Aziman & Sikin. Sabtu, 19 Disember 2026, 11:00 pagi hingga 4:00 petang."
+        location:
+            "No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor, Malaysia",
+
+        description:
+            "Majlis Perkahwinan Norasikin Binti M Nasar & Mohamad Aziman Bin Mohd Wagiran. Sabtu, 19 Disember 2026, 11:00 pagi hingga 4:00 petang."
+
+    };
+
+
+    window.addGoogleCalendar =
+        function() {
+
+            const baseUrl =
+                "https://calendar.google.com/calendar/render?action=TEMPLATE";
+
+
+            const params =
+                new URLSearchParams({
+
+                    text:
+                        weddingEvent.title,
+
+                    dates:
+                        weddingEvent.startDate +
+                        "/" +
+                        weddingEvent.endDate,
+
+                    details:
+                        weddingEvent.description,
+
+                    location:
+                        weddingEvent.location
+
+                });
+
+
+            window.open(
+                baseUrl +
+                "&" +
+                params.toString(),
+
+                "_blank",
+
+                "noopener,noreferrer"
+            );
 
         };
 
 
-        window.addGoogleCalendar =
-            function() {
+    function escapeICSText(text) {
 
-                const baseUrl =
-                    "https://calendar.google.com/calendar/render?action=TEMPLATE";
+        return String(text)
+
+            .replace(
+                /\\/g,
+                "\\\\"
+            )
+
+            .replace(
+                /\n/g,
+                "\\n"
+            )
+
+            .replace(
+                /,/g,
+                "\\,"
+            )
+
+            .replace(
+                /;/g,
+                "\\;"
+            );
+
+    }
 
 
-                const params =
-                    new URLSearchParams({
+    function generateICS() {
 
-                        text:
-                            weddingEvent.title,
-
-                        dates:
-                            weddingEvent.startDate +
-                            "/" +
-                            weddingEvent.endDate,
-
-                        details:
-                            weddingEvent.description,
-
-                        location:
-                            weddingEvent.location
-
-                    });
-
-
-                window.open(
-                    baseUrl +
-                    "&" +
-                    params.toString(),
-                    "_blank",
-                    "noopener,noreferrer"
+        const now =
+            new Date()
+                .toISOString()
+                .replace(
+                    /[-:]/g,
+                    ""
+                )
+                .replace(
+                    /\.\d{3}/,
+                    ""
                 );
 
-            };
+
+        return [
+
+            "BEGIN:VCALENDAR",
+
+            "VERSION:2.0",
+
+            "PRODID:-//Norasikin & Mohamad Aziman//Wedding//MS",
+
+            "CALSCALE:GREGORIAN",
+
+            "METHOD:PUBLISH",
+
+            "BEGIN:VEVENT",
+
+            "UID:norasikin-aziman-wedding-2026@wedding",
+
+            "DTSTAMP:" + now,
+
+            "DTSTART:" +
+                weddingEvent.startDate,
+
+            "DTEND:" +
+                weddingEvent.endDate,
+
+            "SUMMARY:" +
+                escapeICSText(
+                    weddingEvent.title
+                ),
+
+            "LOCATION:" +
+                escapeICSText(
+                    weddingEvent.location
+                ),
+
+            "DESCRIPTION:" +
+                escapeICSText(
+                    weddingEvent.description
+                ),
+
+            "END:VEVENT",
+
+            "END:VCALENDAR"
+
+        ].join("\r\n");
+
+    }
 
 
-        function escapeICSText(
-            text
-        ) {
+    window.addAppleCalendar =
+        function() {
 
-            return String(text)
-                .replace(
-                    /\\/g,
-                    "\\\\"
-                )
-                .replace(
-                    /\n/g,
-                    "\\n"
-                )
-                .replace(
-                    /,/g,
-                    "\\,"
-                )
-                .replace(
-                    /;/g,
-                    "\\;"
+            const blob =
+                new Blob(
+                    [
+                        generateICS()
+                    ],
+                    {
+                        type:
+                            "text/calendar;charset=utf-8"
+                    }
                 );
+
+
+            const url =
+                URL.createObjectURL(blob);
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href = url;
+
+
+            link.download =
+                "Majlis-Perkahwinan-Norasikin-Aziman.ics";
+
+
+            document.body.appendChild(link);
+
+
+            link.click();
+
+
+            link.remove();
+
+
+            setTimeout(
+                () => {
+
+                    URL.revokeObjectURL(url);
+
+                },
+                1000
+            );
+
+        };
+
+
+    /* =====================================================
+       LOCATION
+    ===================================================== */
+
+    const latitude =
+        2.3807618;
+
+    const longitude =
+        103.7116231;
+
+
+    window.openGoogleMaps =
+        function() {
+
+            const url =
+                "https://www.google.com/maps/dir/?api=1" +
+                "&destination=" +
+                latitude +
+                "," +
+                longitude +
+                "&travelmode=driving";
+
+
+            window.open(
+                url,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+        };
+
+
+    window.openWaze =
+        function() {
+
+            const url =
+                "https://www.waze.com/ul?ll=" +
+                latitude +
+                "%2C" +
+                longitude +
+                "&navigate=yes";
+
+
+            window.open(
+                url,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+        };
+
+
+    /* =====================================================
+       MUSIC
+    ===================================================== */
+
+    function hasMusic() {
+
+        return !!audioPlayer.querySelector(
+            "source"
+        );
+
+    }
+
+
+    function startMusic() {
+
+        if (!hasMusic()) {
+
+            alert(
+                "Sila masukkan fail lagu dahulu."
+            );
+
+            return;
 
         }
 
 
-        function generateICS() {
-
-            const now =
-                new Date()
-                    .toISOString()
-                    .replace(
-                        /[-:]/g,
-                        ""
-                    )
-                    .replace(
-                        /\.\d{3}/,
-                        ""
-                    );
+        audioPlayer.volume = 0.7;
 
 
-            return [
+        audioPlayer
+            .play()
+            .then(() => {
 
-                "BEGIN:VCALENDAR",
+                updateMusicUI();
 
-                "VERSION:2.0",
+            })
+            .catch(() => {
 
-                "PRODID:-//Aziman & Sikin//Wedding//MS",
+                alert(
+                    "Tekan butang muzik sekali lagi."
+                );
 
-                "CALSCALE:GREGORIAN",
+            });
 
-                "METHOD:PUBLISH",
+    }
 
-                "BEGIN:VEVENT",
 
-                "UID:aziman-sikin-wedding-2026@wedding",
+    function updateMusicUI() {
 
-                "DTSTAMP:" +
-                    now,
+        if (!audioPlayer.paused) {
 
-                "DTSTART:" +
-                    weddingEvent.startDate,
+            musicFloating.textContent =
+                "🔊";
 
-                "DTEND:" +
-                    weddingEvent.endDate,
+            musicFloating.classList.add(
+                "playing"
+            );
 
-                "SUMMARY:" +
-                    escapeICSText(
-                        weddingEvent.title
-                    ),
+        }
 
-                "LOCATION:" +
-                    escapeICSText(
-                        weddingEvent.location
-                    ),
+        else {
 
-                "DESCRIPTION:" +
-                    escapeICSText(
-                        weddingEvent.description
-                    ),
+            musicFloating.textContent =
+                "🎵";
 
-                "END:VEVENT",
-
-                "END:VCALENDAR"
-
-            ].join(
-                "\r\n"
+            musicFloating.classList.remove(
+                "playing"
             );
 
         }
 
 
-        window.addAppleCalendar =
-            function() {
-
-                const blob =
-                    new Blob(
-                        [
-                            generateICS()
-                        ],
-                        {
-                            type:
-                                "text/calendar;charset=utf-8"
-                        }
-                    );
-
-
-                const url =
-                    URL.createObjectURL(
-                        blob
-                    );
-
-
-                const link =
-                    document.createElement(
-                        "a"
-                    );
-
-
-                link.href =
-                    url;
-
-
-                link.download =
-                    "Majlis-Perkahwinan-Aziman-Sikin.ics";
-
-
-                document.body.appendChild(
-                    link
-                );
-
-
-                link.click();
-
-
-                link.remove();
-
-
-                setTimeout(
-                    () => {
-
-                        URL.revokeObjectURL(
-                            url
-                        );
-
-                    },
-                    1000
-                );
-
-            };
-
-
-        /* =================================================
-           LOCATION
-        ================================================= */
-
-        const latitude =
-            2.3807618;
-
-
-        const longitude =
-            103.7116231;
-
-
-        window.openGoogleMaps =
-            function() {
-
-                const url =
-                    "https://www.google.com/maps/dir/?api=1" +
-                    "&destination=" +
-                    latitude +
-                    "," +
-                    longitude +
-                    "&travelmode=driving";
-
-
-                window.open(
-                    url,
-                    "_blank",
-                    "noopener,noreferrer"
-                );
-
-            };
-
-
-        window.openWaze =
-            function() {
-
-                const url =
-                    "https://www.waze.com/ul?ll=" +
-                    latitude +
-                    "%2C" +
-                    longitude +
-                    "&navigate=yes";
-
-
-                window.open(
-                    url,
-                    "_blank",
-                    "noopener,noreferrer"
-                );
-
-            };
-
-
-        /* =================================================
-           MUSIC
-        ================================================= */
-
-        function hasMusic() {
-
-            return !!audioPlayer.querySelector(
-                "source"
+        const status =
+            document.getElementById(
+                "musicStatus"
             );
+
+
+        const menuButton =
+            document.getElementById(
+                "menuMusicButton"
+            );
+
+
+        if (status) {
+
+            const span =
+                status.querySelector("span");
+
+
+            if (span) {
+
+                span.textContent =
+                    audioPlayer.paused
+                        ? "Tekan butang untuk memainkan muzik."
+                        : "Muzik sedang dimainkan.";
+
+            }
 
         }
 
 
-        function startMusic() {
+        if (menuButton) {
+
+            menuButton.textContent =
+                audioPlayer.paused
+                    ? "▶ Mainkan Muzik"
+                    : "⏸ Hentikan Muzik";
+
+        }
+
+    }
+
+
+    musicFloating.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
 
             if (!hasMusic()) {
 
@@ -4643,115 +3995,31 @@ document.addEventListener(
             }
 
 
-            audioPlayer.volume =
-                0.7;
+            if (audioPlayer.paused) {
 
-
-            audioPlayer
-                .play()
-                .then(
-                    () => {
-
-                        musicStarted =
-                            true;
-
-                        updateMusicUI();
-
-                    }
-                )
-                .catch(
-                    () => {
-
-                        alert(
-                            "Tekan butang muzik sekali lagi."
-                        );
-
-                    }
-                );
-
-        }
-
-
-        function updateMusicUI() {
-
-            const icon =
-                musicFloating;
-
-
-            if (
-                !audioPlayer.paused
-            ) {
-
-                icon.textContent =
-                    "🔊";
-
-                icon.classList.add(
-                    "playing"
-                );
+                startMusic();
 
             }
 
             else {
 
-                icon.textContent =
-                    "🎵";
-
-                icon.classList.remove(
-                    "playing"
-                );
-
-            }
-
-
-            const status =
-                document.getElementById(
-                    "musicStatus"
-                );
-
-
-            const menuButton =
-                document.getElementById(
-                    "menuMusicButton"
-                );
-
-
-            if (
-                status
-            ) {
-
-                const span =
-                    status.querySelector(
-                        "span"
-                    );
-
-
-                if (span) {
-
-                    span.textContent =
-                        audioPlayer.paused
-                            ? "Tekan butang untuk memainkan muzik."
-                            : "Muzik sedang dimainkan.";
-
-                }
-
-            }
-
-
-            if (
-                menuButton
-            ) {
-
-                menuButton.textContent =
-                    audioPlayer.paused
-                        ? "▶ Mainkan Muzik"
-                        : "⏸ Hentikan Muzik";
+                audioPlayer.pause();
 
             }
 
         }
+    );
 
 
-        musicFloating.addEventListener(
+    const musicMenuButton =
+        document.getElementById(
+            "menuMusicButton"
+        );
+
+
+    if (musicMenuButton) {
+
+        musicMenuButton.addEventListener(
             "click",
             event => {
 
@@ -4771,9 +4039,7 @@ document.addEventListener(
                 }
 
 
-                if (
-                    audioPlayer.paused
-                ) {
+                if (audioPlayer.paused) {
 
                     startMusic();
 
@@ -4788,376 +4054,276 @@ document.addEventListener(
             }
         );
 
-
-        const musicMenuButton =
-            document.getElementById(
-                "menuMusicButton"
-            );
+    }
 
 
-        if (musicMenuButton) {
-
-            musicMenuButton.addEventListener(
-                "click",
-                event => {
-
-                    event.preventDefault();
-
-                    event.stopPropagation();
+    audioPlayer.addEventListener(
+        "play",
+        updateMusicUI
+    );
 
 
-                    if (!hasMusic()) {
-
-                        alert(
-                            "Sila masukkan fail lagu dahulu."
-                        );
-
-                        return;
-
-                    }
+    audioPlayer.addEventListener(
+        "pause",
+        updateMusicUI
+    );
 
 
-                    if (
-                        audioPlayer.paused
-                    ) {
+    /* =====================================================
+       PETALS
+    ===================================================== */
 
-                        startMusic();
+    function createPetal() {
 
-                    }
-
-                    else {
-
-                        audioPlayer.pause();
-
-                    }
-
-                }
-            );
-
+        if (!petalContainer) {
+            return;
         }
 
 
-        audioPlayer.addEventListener(
-            "play",
-            () => {
+        if (
+            petalContainer.childElementCount >=
+            MAX_PETALS
+        ) {
+            return;
+        }
 
-                musicStarted =
-                    true;
 
-                updateMusicUI();
+        const petal =
+            document.createElement("div");
 
-            }
+
+        petal.className = "petal";
+
+
+        petal.style.left =
+            Math.random() * 100 + "vw";
+
+
+        petal.style.top =
+            "-20px";
+
+
+        const size =
+            5 + Math.random() * 9;
+
+
+        petal.style.width =
+            size + "px";
+
+
+        petal.style.height =
+            size + "px";
+
+
+        petal.style.opacity =
+            .3 + Math.random() * .5;
+
+
+        const duration =
+            5 + Math.random() * 4;
+
+
+        petal.style.animationDuration =
+            duration + "s";
+
+
+        petal.style.setProperty(
+            "--translate-x",
+            (
+                Math.random() * 300 - 150
+            ) + "px"
         );
 
 
-        audioPlayer.addEventListener(
-            "pause",
+        petalContainer.appendChild(petal);
+
+
+        setTimeout(
             () => {
 
-                updateMusicUI();
+                petal.remove();
 
-            }
+            },
+            duration * 1000
         );
-
-
-        /* =================================================
-           PETALS
-        ================================================= */
-
-        function createPetal() {
-
-            if (
-                !petalContainer
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                petalContainer.childElementCount
-                >=
-                MAX_PETALS
-            ) {
-
-                return;
-
-            }
-
-
-            const petal =
-                document.createElement(
-                    "div"
-                );
-
-
-            petal.className =
-                "petal";
-
-
-            petal.style.left =
-                Math.random() *
-                100 +
-                "vw";
-
-
-            petal.style.top =
-                "-20px";
-
-
-            const size =
-                5 +
-                Math.random() *
-                9;
-
-
-            petal.style.width =
-                size +
-                "px";
-
-
-            petal.style.height =
-                size +
-                "px";
-
-
-            petal.style.opacity =
-                .3 +
-                Math.random() *
-                .5;
-
-
-            const duration =
-                5 +
-                Math.random() *
-                4;
-
-
-            petal.style.animationDuration =
-                duration +
-                "s";
-
-
-            petal.style.setProperty(
-                "--translate-x",
-                (
-                    Math.random() *
-                    300 -
-                    150
-                ) +
-                "px"
-            );
-
-
-            petalContainer.appendChild(
-                petal
-            );
-
-
-            setTimeout(
-                () => {
-
-                    petal.remove();
-
-                },
-                duration * 1000
-            );
-
-        }
-
-
-        function startPetals() {
-
-            if (
-                petalsStarted
-            ) {
-
-                return;
-
-            }
-
-
-            petalsStarted =
-                true;
-
-
-            for (
-                let i = 0;
-                i < 12;
-                i++
-            ) {
-
-                setTimeout(
-                    createPetal,
-                    i * 180
-                );
-
-            }
-
-
-            petalTimer =
-                setInterval(
-                    createPetal,
-                    450
-                );
-
-        }
-
-
-        /* =================================================
-           RSVP
-        ================================================= */
-
-        function showSuccess(
-            message
-        ) {
-
-            const messageElement =
-                document.getElementById(
-                    "successMessage"
-                );
-
-
-            if (
-                messageElement
-            ) {
-
-                messageElement.textContent =
-                    message;
-
-            }
-
-
-            closeAllMenus();
-
-
-            const successMenu =
-                document.getElementById(
-                    "success-menu"
-                );
-
-
-            if (
-                successMenu
-            ) {
-
-                successMenu.classList.add(
-                    "open"
-                );
-
-                successMenu.style.pointerEvents =
-                    "auto";
-
-                successMenu.style.visibility =
-                    "visible";
-
-            }
-
-        }
-
-
-        function openWhatsApp(
-            message
-        ) {
-
-            const phone =
-                "60177962482";
-
-
-            const url =
-                "https://wa.me/" +
-                phone +
-                "?text=" +
-                encodeURIComponent(
-                    message
-                );
-
-
-            window.open(
-                url,
-                "_blank",
-                "noopener,noreferrer"
-            );
-
-        }
-
-
-        const btnHadir =
-            document.getElementById(
-                "btn-hadir"
-            );
-
-
-        if (btnHadir) {
-
-            btnHadir.addEventListener(
-                "click",
-                event => {
-
-                    event.preventDefault();
-
-                    event.stopPropagation();
-
-
-                    showSuccess(
-                        "Terima kasih! Kami menantikan kedatangan anda."
-                    );
-
-
-                    openWhatsApp(
-                        "Assalamualaikum. Saya ingin mengesahkan KEHADIRAN ke majlis Aziman & Sikin pada 19 Disember 2026."
-                    );
-
-                }
-            );
-
-        }
-
-
-        const btnTidakHadir =
-            document.getElementById(
-                "btn-tidak-hadir"
-            );
-
-
-        if (btnTidakHadir) {
-
-            btnTidakHadir.addEventListener(
-                "click",
-                event => {
-
-                    event.preventDefault();
-
-                    event.stopPropagation();
-
-
-                    showSuccess(
-                        "Terima kasih kerana memaklumkan kepada kami."
-                    );
-
-
-                    openWhatsApp(
-                        "Assalamualaikum. Dukacita dimaklumkan saya TIDAK DAPAT HADIR ke majlis Aziman & Sikin pada 19 Disember 2026."
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* =================================================
-           INITIAL
-        ================================================= */
-
-        closeAllMenus();
-
-        updateMusicUI();
 
     }
 
-);
+
+    function startPetals() {
+
+        if (petalsStarted) {
+            return;
+        }
+
+
+        petalsStarted = true;
+
+
+        for (
+            let i = 0;
+            i < 12;
+            i++
+        ) {
+
+            setTimeout(
+                createPetal,
+                i * 180
+            );
+
+        }
+
+
+        petalTimer =
+            setInterval(
+                createPetal,
+                450
+            );
+
+    }
+
+
+    /* =====================================================
+       RSVP
+    ===================================================== */
+
+    function showSuccess(message) {
+
+        const messageElement =
+            document.getElementById(
+                "successMessage"
+            );
+
+
+        if (messageElement) {
+
+            messageElement.textContent =
+                message;
+
+        }
+
+
+        closeAllMenus();
+
+
+        const successMenu =
+            document.getElementById(
+                "success-menu"
+            );
+
+
+        if (successMenu) {
+
+            successMenu.classList.add(
+                "open"
+            );
+
+            successMenu.style.pointerEvents =
+                "auto";
+
+            successMenu.style.visibility =
+                "visible";
+
+        }
+
+    }
+
+
+    function openWhatsApp(message) {
+
+        const phone =
+            "60177962482";
+
+
+        const url =
+            "https://wa.me/" +
+            phone +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+        window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    }
+
+
+    const btnHadir =
+        document.getElementById(
+            "btn-hadir"
+        );
+
+
+    if (btnHadir) {
+
+        btnHadir.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                showSuccess(
+                    "Terima kasih! Kami menantikan kedatangan anda."
+                );
+
+
+                openWhatsApp(
+                    "Assalamualaikum. Saya ingin mengesahkan KEHADIRAN ke majlis perkahwinan Norasikin & Mohamad Aziman pada 19 Disember 2026."
+                );
+
+            }
+        );
+
+    }
+
+
+    const btnTidakHadir =
+        document.getElementById(
+            "btn-tidak-hadir"
+        );
+
+
+    if (btnTidakHadir) {
+
+        btnTidakHadir.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                showSuccess(
+                    "Terima kasih kerana memaklumkan kepada kami."
+                );
+
+
+                openWhatsApp(
+                    "Assalamualaikum. Dukacita dimaklumkan saya TIDAK DAPAT HADIR ke majlis perkahwinan Norasikin & Mohamad Aziman pada 19 Disember 2026."
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       INITIAL
+    ===================================================== */
+
+    closeAllMenus();
+
+    updateMusicUI();
+
+});
 
 </script>
 
