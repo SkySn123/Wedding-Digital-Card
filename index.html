@@ -151,8 +151,10 @@ body.locked {
 .envelope-wrapper {
     position: relative;
 
-    width: 320px;
-    height: 210px;
+    width: min(320px, 90vw);
+
+    /* Nisbah envelope */
+    aspect-ratio: 320 / 210;
 
     margin: 0 auto 35px;
 
@@ -166,11 +168,10 @@ body.locked {
 .envelope {
     position: absolute;
 
+    inset: 0;
+
     width: 100%;
     height: 100%;
-
-    left: 0;
-    bottom: 0;
 
     border-radius: 5px;
 
@@ -184,14 +185,8 @@ body.locked {
 
 
 /* =========================================================
-   ENVELOPE FRONT IMAGE
+   ENVELOPE IMAGE
 ========================================================= */
-
-/*
-   envelope.png akan menjadi keseluruhan badan envelope.
-   Pastikan envelope.png berada dalam folder yang sama
-   dengan fail HTML ini.
-*/
 
 .envelope-image {
     position: absolute;
@@ -203,7 +198,11 @@ body.locked {
 
     display: block;
 
-    object-fit: cover;
+    /*
+       contain = gambar penuh nampak.
+       Tidak dipotong.
+    */
+    object-fit: contain;
     object-position: center;
 
     border-radius: 5px;
@@ -211,15 +210,13 @@ body.locked {
     z-index: 2;
 
     pointer-events: none;
-
     user-select: none;
 }
 
 
-/*
-   Lapisan gelap/lembut di atas gambar
-   supaya envelope nampak lebih premium.
-*/
+/* =========================================================
+   ENVELOPE OVERLAY
+========================================================= */
 
 .envelope::after {
     content: "";
@@ -408,7 +405,7 @@ body.locked {
 
 
 /* =========================================================
-   OPEN ENVELOPE ANIMATION
+   OPEN ENVELOPE
 ========================================================= */
 
 .envelope-wrapper.open .envelope-flap {
@@ -431,7 +428,7 @@ body.locked {
 
 
 /* =========================================================
-   OPEN BUTTON
+   OPEN LABEL
 ========================================================= */
 
 .open-label {
@@ -686,7 +683,7 @@ section {
 
 
 /* =========================================================
-   INVITATION / PARENTS
+   INVITATION
 ========================================================= */
 
 .intro {
@@ -770,10 +767,6 @@ section {
     color: var(--gold);
     font-size: 24px;
     margin: 3px 0;
-}
-
-.one p:nth-last-child(1) {
-    margin-top: 10px;
 }
 
 .guest-line {
@@ -1256,7 +1249,7 @@ footer p {
 
 
 /* =========================================================
-   FLOATING BOTTOM MENU
+   FLOATING MENU
 ========================================================= */
 
 .footer {
@@ -1811,8 +1804,8 @@ footer p {
     }
 
     .envelope-wrapper {
-        width: 290px;
-        height: 190px;
+        width: min(290px, 90vw);
+        aspect-ratio: 320 / 210;
     }
 
     .invitation-card {
@@ -1966,8 +1959,8 @@ footer p {
     }
 
     .envelope-wrapper {
-        width: 270px;
-        height: 176px;
+        width: min(270px, 90vw);
+        aspect-ratio: 320 / 210;
     }
 
 }
@@ -2008,7 +2001,7 @@ footer p {
 
 
 <!-- =========================================================
-     OPENING ENVELOPE
+     OPENING
 ========================================================= -->
 
 <div class="opening" id="opening">
@@ -2042,25 +2035,13 @@ footer p {
 
             <div class="envelope">
 
-
-                <!--
-                    GAMBAR ENVELOPE DEPAN
-
-                    Pastikan fail:
-                    envelope.png
-
-                    berada dalam folder yang sama
-                    dengan fail HTML.
-                -->
-
                 <img
                     src="envelope.png"
                     alt="Envelope jemputan Sikin dan Aziman"
                     class="envelope-image"
+                    draggable="false"
                 >
 
-
-                <!-- Kad jemputan di belakang envelope -->
 
                 <div class="invitation-card">
 
@@ -2083,17 +2064,12 @@ footer p {
                 </div>
 
 
-                <!-- Flap envelope -->
-
                 <div class="envelope-flap"></div>
 
-
-                <!-- Seal -->
 
                 <div class="seal">
                     S & A
                 </div>
-
 
             </div>
 
@@ -2171,10 +2147,7 @@ footer p {
      INVITATION
 ========================================================= -->
 
-<section
-    class="intro"
-    id="invitation"
->
+<section class="intro" id="invitation">
 
     <div class="container">
 
@@ -2278,7 +2251,6 @@ footer p {
 
             </div>
 
-
         </div>
 
     </div>
@@ -2290,10 +2262,7 @@ footer p {
      COUNTDOWN
 ========================================================= -->
 
-<section
-    class="countdown-section"
-    id="countdown"
->
+<section class="countdown-section" id="countdown">
 
     <div class="container">
 
@@ -2315,54 +2284,23 @@ footer p {
         <div class="countdown">
 
             <div class="count-box">
-
-                <span id="days">
-                    00
-                </span>
-
-                <small>
-                    Hari
-                </small>
-
+                <span id="days">00</span>
+                <small>Hari</small>
             </div>
 
-
             <div class="count-box">
-
-                <span id="hours">
-                    00
-                </span>
-
-                <small>
-                    Jam
-                </small>
-
+                <span id="hours">00</span>
+                <small>Jam</small>
             </div>
 
-
             <div class="count-box">
-
-                <span id="minutes">
-                    00
-                </span>
-
-                <small>
-                    Minit
-                </small>
-
+                <span id="minutes">00</span>
+                <small>Minit</small>
             </div>
 
-
             <div class="count-box">
-
-                <span id="seconds">
-                    00
-                </span>
-
-                <small>
-                    Saat
-                </small>
-
+                <span id="seconds">00</span>
+                <small>Saat</small>
             </div>
 
         </div>
@@ -2376,10 +2314,7 @@ footer p {
      EVENT
 ========================================================= -->
 
-<section
-    class="event"
-    id="details"
->
+<section class="event" id="details">
 
     <div class="container">
 
@@ -2411,7 +2346,6 @@ footer p {
 
 
             <div class="event-info">
-
 
                 <div class="info-item">
 
@@ -2504,10 +2438,7 @@ footer p {
      SCHEDULE
 ========================================================= -->
 
-<section
-    class="schedule"
-    id="schedule"
->
+<section class="schedule" id="schedule">
 
     <div class="container">
 
@@ -2527,7 +2458,6 @@ footer p {
 
 
         <div class="timeline">
-
 
             <div class="timeline-item fade-up">
 
@@ -2603,7 +2533,6 @@ footer p {
 
             </div>
 
-
         </div>
 
     </div>
@@ -2615,10 +2544,7 @@ footer p {
      GALLERY
 ========================================================= -->
 
-<section
-    class="gallery"
-    id="gallery"
->
+<section class="gallery" id="gallery">
 
     <div class="container">
 
@@ -2692,10 +2618,7 @@ footer p {
      RSVP
 ========================================================= -->
 
-<section
-    class="rsvp"
-    id="rsvp"
->
+<section class="rsvp" id="rsvp">
 
     <div class="container">
 
@@ -2773,17 +2696,13 @@ footer p {
 >
     <!--
         Masukkan lagu:
-
-        <source
-            src="lagu.mp3"
-            type="audio/mpeg"
-        >
+        <source src="lagu.mp3" type="audio/mpeg">
     -->
 </audio>
 
 
 <!-- =========================================================
-     FLOATING MUSIC
+     MUSIC BUTTON
 ========================================================= -->
 
 <button
@@ -2801,51 +2720,29 @@ footer p {
 
 <div class="footer">
 
-    <nav
-        class="menu"
-        aria-label="Menu utama"
-    >
+    <nav class="menu" aria-label="Menu utama">
 
-        <button
-            id="home-btn"
-            type="button"
-        >
+        <button id="home-btn" type="button">
             <span>⌂</span>
             <small>Utama</small>
         </button>
 
-
-        <button
-            id="calendar-btn"
-            type="button"
-        >
+        <button id="calendar-btn" type="button">
             <span>📅</span>
             <small>Calendar</small>
         </button>
 
-
-        <button
-            id="location-btn"
-            type="button"
-        >
+        <button id="location-btn" type="button">
             <span>📍</span>
             <small>Lokasi</small>
         </button>
 
-
-        <button
-            id="music-btn"
-            type="button"
-        >
+        <button id="music-btn" type="button">
             <span>🎵</span>
             <small>Muzik</small>
         </button>
 
-
-        <button
-            id="rsvp-btn"
-            type="button"
-        >
+        <button id="rsvp-btn" type="button">
             <span>💌</span>
             <small>RSVP</small>
         </button>
@@ -2859,10 +2756,7 @@ footer p {
      CALENDAR MENU
 ========================================================= -->
 
-<div
-    class="toggle-menu"
-    id="calendar-menu"
->
+<div class="toggle-menu" id="calendar-menu">
 
     <button
         class="close-menu"
@@ -2871,7 +2765,6 @@ footer p {
     >
         ×
     </button>
-
 
     <div class="menu-header">
 
@@ -2885,7 +2778,6 @@ footer p {
 
     </div>
 
-
     <div class="menu-content">
 
         <p>
@@ -2893,22 +2785,18 @@ footer p {
             tidak terlepas hari bahagia kami.
         </p>
 
-
         <div class="calendar-options">
 
             <button
                 class="calendar-option"
                 onclick="addGoogleCalendar()"
             >
-
                 <span>📅</span>
-
                 Google Calendar
 
                 <small>
                     Tambah ke Google
                 </small>
-
             </button>
 
 
@@ -2916,15 +2804,12 @@ footer p {
                 class="calendar-option"
                 onclick="addAppleCalendar()"
             >
-
                 <span>🍎</span>
-
                 Apple / iPhone
 
                 <small>
                     Muat turun .ics
                 </small>
-
             </button>
 
         </div>
@@ -2938,10 +2823,7 @@ footer p {
      LOCATION MENU
 ========================================================= -->
 
-<div
-    class="toggle-menu"
-    id="location-menu"
->
+<div class="toggle-menu" id="location-menu">
 
     <button
         class="close-menu"
@@ -2950,7 +2832,6 @@ footer p {
     >
         ×
     </button>
-
 
     <div class="menu-header">
 
@@ -2963,7 +2844,6 @@ footer p {
         </h3>
 
     </div>
-
 
     <div class="menu-content">
 
@@ -2992,7 +2872,6 @@ footer p {
                 📍 Google Maps
             </button>
 
-
             <button
                 class="btn btn-primary"
                 onclick="openWaze()"
@@ -3011,10 +2890,7 @@ footer p {
      MUSIC MENU
 ========================================================= -->
 
-<div
-    class="toggle-menu"
-    id="music-menu"
->
+<div class="toggle-menu" id="music-menu">
 
     <button
         class="close-menu"
@@ -3023,7 +2899,6 @@ footer p {
     >
         ×
     </button>
-
 
     <div class="menu-header">
 
@@ -3036,7 +2911,6 @@ footer p {
         </h3>
 
     </div>
-
 
     <div class="menu-content">
 
@@ -3074,10 +2948,7 @@ footer p {
      RSVP MENU
 ========================================================= -->
 
-<div
-    class="toggle-menu"
-    id="rsvp-menu"
->
+<div class="toggle-menu" id="rsvp-menu">
 
     <button
         class="close-menu"
@@ -3086,7 +2957,6 @@ footer p {
     >
         ×
     </button>
-
 
     <div class="menu-header">
 
@@ -3100,14 +2970,12 @@ footer p {
 
     </div>
 
-
     <div class="menu-content">
 
         <p>
             Sila maklumkan kepada kami
             sekiranya anda dapat hadir.
         </p>
-
 
         <div class="rsvp-options">
 
@@ -3141,10 +3009,7 @@ footer p {
      SUCCESS MENU
 ========================================================= -->
 
-<div
-    class="toggle-menu"
-    id="success-menu"
->
+<div class="toggle-menu" id="success-menu">
 
     <button
         class="close-menu"
@@ -3154,21 +3019,15 @@ footer p {
         ×
     </button>
 
-
     <div class="success-box">
 
-        <div
-            class="success-icon"
-            id="successIcon"
-        >
+        <div class="success-icon" id="successIcon">
             💚
         </div>
-
 
         <h3>
             Terima Kasih
         </h3>
-
 
         <p id="successMessage">
             Maklumat anda telah diterima.
@@ -3186,7 +3045,6 @@ footer p {
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
 
     /* =====================================================
        ELEMENTS
@@ -3383,10 +3241,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateCountdown();
 
-    setInterval(
-        updateCountdown,
-        1000
-    );
+    setInterval(updateCountdown, 1000);
 
 
     /* =====================================================
@@ -3397,34 +3252,51 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".fade-up");
 
 
-    const observer =
-        new IntersectionObserver(
-            entries => {
+    if ("IntersectionObserver" in window) {
 
-                entries.forEach(entry => {
+        const observer =
+            new IntersectionObserver(
+                entries => {
 
-                    if (entry.isIntersecting) {
+                    entries.forEach(entry => {
 
-                        entry.target.classList.add(
-                            "show"
-                        );
+                        if (entry.isIntersecting) {
 
-                    }
+                            entry.target.classList.add(
+                                "show"
+                            );
 
-                });
+                            observer.unobserve(
+                                entry.target
+                            );
 
-            },
-            {
-                threshold: 0.15
-            }
-        );
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
 
 
-    fadeElements.forEach(element => {
+        fadeElements.forEach(element => {
 
-        observer.observe(element);
+            observer.observe(element);
 
-    });
+        });
+
+    }
+    else {
+
+        fadeElements.forEach(element => {
+
+            element.classList.add("show");
+
+        });
+
+    }
 
 
     /* =====================================================
@@ -3496,17 +3368,10 @@ document.addEventListener("DOMContentLoaded", () => {
         closeAllMenus();
 
 
-        menu.style.zIndex =
-            "13000";
+        menu.classList.add("open");
 
         menu.style.pointerEvents =
             "auto";
-
-        menu.style.visibility =
-            "visible";
-
-
-        menu.classList.add("open");
 
 
         if (button) {
@@ -3553,7 +3418,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         closeAllMenus();
 
                     }
-
                     else {
 
                         openMenu(
@@ -3570,7 +3434,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       HOME BUTTON
+       HOME
     ===================================================== */
 
     const homeButton =
@@ -3589,13 +3453,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 closeAllMenus();
 
-
                 window.scrollTo({
-
                     top: 0,
-
                     behavior: "smooth"
-
                 });
 
             }
@@ -3670,27 +3530,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     event.stopPropagation();
 
-
-                    const menuId =
-                        button.dataset.close;
-
-
-                    const menu =
-                        document.getElementById(
-                            menuId
-                        );
-
-
-                    if (menu) {
-
-                        menu.classList.remove(
-                            "open"
-                        );
-
-                        menu.style.pointerEvents =
-                            "none";
-
-                    }
+                    closeAllMenus();
 
                 }
             );
@@ -3761,6 +3601,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         };
 
+
+    /* =====================================================
+       ICS
+    ===================================================== */
 
     function escapeICSText(text) {
 
@@ -3968,40 +3812,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function startMusic() {
-
-        if (!hasMusic()) {
-
-            alert(
-                "Sila masukkan fail lagu dahulu."
-            );
-
-            return;
-
-        }
-
-
-        audioPlayer.volume = 0.7;
-
-
-        audioPlayer
-            .play()
-            .then(() => {
-
-                updateMusicUI();
-
-            })
-            .catch(() => {
-
-                alert(
-                    "Tekan butang muzik sekali lagi."
-                );
-
-            });
-
-    }
-
-
     function updateMusicUI() {
 
         if (!audioPlayer.paused) {
@@ -4014,7 +3824,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         }
-
         else {
 
             musicFloating.textContent =
@@ -4069,6 +3878,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    function toggleMusic() {
+
+        if (!hasMusic()) {
+
+            alert(
+                "Sila masukkan fail lagu dahulu."
+            );
+
+            return;
+
+        }
+
+
+        if (audioPlayer.paused) {
+
+            audioPlayer.volume = 0.7;
+
+            audioPlayer.play()
+                .catch(() => {
+
+                    alert(
+                        "Tekan butang muzik sekali lagi."
+                    );
+
+                });
+
+        }
+        else {
+
+            audioPlayer.pause();
+
+        }
+
+    }
+
+
     musicFloating.addEventListener(
         "click",
         event => {
@@ -4077,29 +3922,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.stopPropagation();
 
-
-            if (!hasMusic()) {
-
-                alert(
-                    "Sila masukkan fail lagu dahulu."
-                );
-
-                return;
-
-            }
-
-
-            if (audioPlayer.paused) {
-
-                startMusic();
-
-            }
-
-            else {
-
-                audioPlayer.pause();
-
-            }
+            toggleMusic();
 
         }
     );
@@ -4121,29 +3944,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 event.stopPropagation();
 
-
-                if (!hasMusic()) {
-
-                    alert(
-                        "Sila masukkan fail lagu dahulu."
-                    );
-
-                    return;
-
-                }
-
-
-                if (audioPlayer.paused) {
-
-                    startMusic();
-
-                }
-
-                else {
-
-                    audioPlayer.pause();
-
-                }
+                toggleMusic();
 
             }
         );
@@ -4229,7 +4030,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        petalContainer.appendChild(petal);
+        petalContainer.appendChild(
+            petal
+        );
 
 
         setTimeout(
