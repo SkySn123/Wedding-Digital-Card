@@ -1,79 +1,117 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
+    // ==========================================
+    // ELEMENT UTAMA
+    // ==========================================
+
     const opening = document.getElementById("opening");
     const seal = document.getElementById("seal");
     const mainContent = document.getElementById("mainContent");
 
     let opened = false;
 
-    // ================================
-    // PAGE 1 DISEMBUNYIKAN PADA AWAL
-    // ================================
-    mainContent.style.opacity = "0";
-    mainContent.style.visibility = "hidden";
-    mainContent.style.pointerEvents = "none";
 
-    // ================================
-    // TEKAN SEAL
-    // ================================
-    seal.addEventListener("click", openInvitation);
+    // ==========================================
+    // SEMBUNYIKAN MAIN CONTENT
+    // ==========================================
 
-    // Keyboard support
-    seal.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openInvitation();
-        }
-    });
+    if (mainContent) {
+        mainContent.style.opacity = "0";
+        mainContent.style.visibility = "hidden";
+        mainContent.style.pointerEvents = "none";
+    }
+
+
+    // ==========================================
+    // BUKA INVITATION
+    // ==========================================
 
     function openInvitation() {
 
         if (opened) return;
+
         opened = true;
 
-        // Seal hilang
-        seal.classList.add("seal-open");
+        if (seal) {
+            seal.classList.add("seal-open");
+        }
 
-        // Buka pintu kiri & kanan
-        document.querySelector(".door-left").classList.add("open");
-        document.querySelector(".door-right").classList.add("open");
+        const doorLeft = document.querySelector(".door-left");
+        const doorRight = document.querySelector(".door-right");
 
-        // Tunggu animasi pintu habis
+        if (doorLeft) {
+            doorLeft.classList.add("open");
+        }
+
+        if (doorRight) {
+            doorRight.classList.add("open");
+        }
+
         setTimeout(() => {
 
-            // Hilangkan opening
-            opening.classList.add("hide");
+            if (opening) {
+                opening.classList.add("hide");
+            }
 
-            // Munculkan Page 1
-            mainContent.style.opacity = "1";
-            mainContent.style.visibility = "visible";
-            mainContent.style.pointerEvents = "auto";
+            if (mainContent) {
+                mainContent.style.opacity = "1";
+                mainContent.style.visibility = "visible";
+                mainContent.style.pointerEvents = "auto";
+            }
 
-            // Benarkan scroll
             document.body.classList.remove("locked");
 
-            // Scroll ke Page 1
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
 
-            // Mulakan bunga
             startPetals();
 
         }, 1500);
     }
 
-    // ================================
+
+    // ==========================================
+    // SEAL CLICK
+    // ==========================================
+
+    if (seal) {
+
+        seal.addEventListener("click", openInvitation);
+
+        seal.addEventListener("keydown", (e) => {
+
+            if (e.key === "Enter" || e.key === " ") {
+
+                e.preventDefault();
+
+                openInvitation();
+
+            }
+
+        });
+
+    }
+
+
+    // ==========================================
     // BUNGA JATUH
-    // ================================
-    const petalContainer = document.querySelector(".petal-container");
+    // ==========================================
+
+    const petalContainer =
+        document.querySelector(".petal-container");
+
     let petalsStarted = false;
+
 
     function createPetal() {
 
-        const petal = document.createElement("div");
+        if (!petalContainer) return;
+
+        const petal =
+            document.createElement("div");
 
         petal.className = "petal";
 
@@ -89,80 +127,132 @@ document.addEventListener("DOMContentLoaded", () => {
         petalContainer.appendChild(petal);
 
         setTimeout(() => {
+
             petal.remove();
+
         }, 9000);
+
     }
+
 
     function startPetals() {
 
-        if (petalsStarted) return;
+        if (petalsStarted || !petalContainer) {
+            return;
+        }
 
         petalsStarted = true;
 
         setInterval(createPetal, 500);
+
     }
 
 
-    // ================================
+    // ==========================================
     // COUNTDOWN
-    // ================================
+    // ==========================================
+
     const WEDDING_DATE =
         new Date("2026-12-19T11:00:00+08:00");
 
+
     function updateCountdown() {
 
-        const now = new Date();
-        const diff = WEDDING_DATE - now;
+        const daysEl =
+            document.getElementById("days");
 
-        if (diff <= 0) {
+        const hoursEl =
+            document.getElementById("hours");
 
-            document.getElementById("days").textContent = "00";
-            document.getElementById("hours").textContent = "00";
-            document.getElementById("minutes").textContent = "00";
-            document.getElementById("seconds").textContent = "00";
+        const minutesEl =
+            document.getElementById("minutes");
 
+        const secondsEl =
+            document.getElementById("seconds");
+
+
+        // Kalau countdown HTML belum ada,
+        // jangan crash.
+
+        if (
+            !daysEl ||
+            !hoursEl ||
+            !minutesEl ||
+            !secondsEl
+        ) {
             return;
         }
 
+
+        const now = new Date();
+
+        const diff =
+            WEDDING_DATE - now;
+
+
+        if (diff <= 0) {
+
+            daysEl.textContent = "00";
+            hoursEl.textContent = "00";
+            minutesEl.textContent = "00";
+            secondsEl.textContent = "00";
+
+            return;
+
+        }
+
+
         const days =
-            Math.floor(diff / 86400000);
+            Math.floor(
+                diff / 86400000
+            );
+
 
         const hours =
             Math.floor(
-                (diff % 86400000) / 3600000
+                (diff % 86400000) /
+                3600000
             );
+
 
         const minutes =
             Math.floor(
-                (diff % 3600000) / 60000
+                (diff % 3600000) /
+                60000
             );
+
 
         const seconds =
             Math.floor(
-                (diff % 60000) / 1000
+                (diff % 60000) /
+                1000
             );
 
-        document.getElementById("days").textContent =
+
+        daysEl.textContent =
             String(days).padStart(2, "0");
 
-        document.getElementById("hours").textContent =
+        hoursEl.textContent =
             String(hours).padStart(2, "0");
 
-        document.getElementById("minutes").textContent =
+        minutesEl.textContent =
             String(minutes).padStart(2, "0");
 
-        document.getElementById("seconds").textContent =
+        secondsEl.textContent =
             String(seconds).padStart(2, "0");
+
     }
+
 
     updateCountdown();
 
     setInterval(updateCountdown, 1000);
 
 
-    // ================================
+    // ==========================================
     // GOOGLE MAPS
-    // ================================
+    // ==========================================
+
     window.openGoogleMaps = function () {
 
         window.open(
@@ -173,9 +263,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    // ================================
+    // ==========================================
     // WAZE
-    // ================================
+    // ==========================================
+
     window.openWaze = function () {
 
         window.open(
@@ -186,9 +277,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    // ================================
+    // ==========================================
     // GOOGLE CALENDAR
-    // ================================
+    // ==========================================
+
     window.addGoogleCalendar = function () {
 
         const title =
@@ -215,15 +307,18 @@ document.addEventListener("DOMContentLoaded", () => {
             "&details=" + encodeURIComponent(details);
 
         window.open(url, "_blank");
+
     };
 
 
-    // ================================
+    // ==========================================
     // APPLE CALENDAR
-    // ================================
+    // ==========================================
+
     window.addAppleCalendar = function () {
 
-        const ics = `BEGIN:VCALENDAR
+        const ics =
+`BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Sikin & Aziman//Wedding//MS
 BEGIN:VEVENT
@@ -236,9 +331,13 @@ END:VEVENT
 END:VCALENDAR`;
 
         const blob =
-            new Blob([ics], {
-                type: "text/calendar;charset=utf-8"
-            });
+            new Blob(
+                [ics],
+                {
+                    type:
+                        "text/calendar;charset=utf-8"
+                }
+            );
 
         const url =
             URL.createObjectURL(blob);
@@ -258,18 +357,23 @@ END:VCALENDAR`;
         document.body.removeChild(a);
 
         URL.revokeObjectURL(url);
+
     };
 
 
-    // ================================
+    // ==========================================
     // POPUP MENU
-    // ================================
+    // ==========================================
+
     const menus = {
+
         calBtn: "calPopup",
         locBtn: "locPopup",
         musBtn: "musPopup",
         rsvpBtn: "rsvpPopup"
+
     };
+
 
     Object.entries(menus).forEach(
         ([buttonId, popupId]) => {
@@ -280,7 +384,11 @@ END:VCALENDAR`;
             const popup =
                 document.getElementById(popupId);
 
-            if (!button || !popup) return;
+
+            if (!button || !popup) {
+                return;
+            }
+
 
             button.addEventListener(
                 "click",
@@ -299,11 +407,13 @@ END:VCALENDAR`;
     );
 
 
-    // ================================
-    // HOME BUTTON
-    // ================================
+    // ==========================================
+    // HOME
+    // ==========================================
+
     const homeBtn =
         document.getElementById("homeBtn");
+
 
     if (homeBtn) {
 
@@ -313,10 +423,16 @@ END:VCALENDAR`;
 
                 closeAllPopups();
 
-                document.getElementById("home")
-                    .scrollIntoView({
+                const home =
+                    document.getElementById("home");
+
+                if (home) {
+
+                    home.scrollIntoView({
                         behavior: "smooth"
                     });
+
+                }
 
             }
         );
@@ -324,9 +440,10 @@ END:VCALENDAR`;
     }
 
 
-    // ================================
+    // ==========================================
     // CLOSE POPUP
-    // ================================
+    // ==========================================
+
     document
         .querySelectorAll(".close-popup")
         .forEach(button => {
@@ -339,10 +456,16 @@ END:VCALENDAR`;
                         button.dataset.close;
 
                     const popup =
-                        document.getElementById(popupId);
+                        document.getElementById(
+                            popupId
+                        );
 
                     if (popup) {
-                        popup.classList.remove("open");
+
+                        popup.classList.remove(
+                            "open"
+                        );
+
                     }
 
                 }
@@ -364,7 +487,10 @@ END:VCALENDAR`;
     }
 
 
-    // Klik luar popup
+    // ==========================================
+    // KLIK LUAR POPUP
+    // ==========================================
+
     document.addEventListener(
         "click",
         (e) => {
@@ -382,9 +508,10 @@ END:VCALENDAR`;
     );
 
 
-    // ================================
+    // ==========================================
     // RSVP
-    // ================================
+    // ==========================================
+
     document
         .querySelectorAll(".rsvp-option")
         .forEach(option => {
@@ -411,6 +538,16 @@ END:VCALENDAR`;
                             "successMsg"
                         );
 
+
+                    if (
+                        !successPopup ||
+                        !title ||
+                        !msg
+                    ) {
+                        return;
+                    }
+
+
                     if (value === "hadir") {
 
                         title.textContent =
@@ -429,9 +566,12 @@ END:VCALENDAR`;
 
                     }
 
+
                     closeAllPopups();
 
-                    successPopup.classList.add("open");
+                    successPopup.classList.add(
+                        "open"
+                    );
 
                 }
             );
@@ -439,23 +579,41 @@ END:VCALENDAR`;
         });
 
 
-    // ================================
+    // ==========================================
     // MUZIK
-    // ================================
+    // ==========================================
+
     const music =
-        document.getElementById("weddingMusic");
+        document.getElementById(
+            "weddingMusic"
+        );
 
     const musicButton =
-        document.getElementById("musPlayBtn");
+        document.getElementById(
+            "musPlayBtn"
+        );
 
     const floatingButton =
-        document.getElementById("musicFloating");
+        document.getElementById(
+            "musicFloating"
+        );
+
 
     let musicPlaying = false;
 
+
     function toggleMusic() {
 
-        if (!music) return;
+        if (!music) {
+
+            alert(
+                "Audio tidak dijumpai. Pastikan <audio id=\"weddingMusic\"> ada dalam HTML."
+            );
+
+            return;
+
+        }
+
 
         if (musicPlaying) {
 
@@ -463,15 +621,22 @@ END:VCALENDAR`;
 
             musicPlaying = false;
 
+
             if (musicButton) {
+
                 musicButton.textContent =
                     "▶ Mainkan Muzik";
+
             }
 
+
             if (floatingButton) {
+
                 floatingButton.textContent =
                     "🎵";
+
             }
+
 
         } else {
 
@@ -480,21 +645,27 @@ END:VCALENDAR`;
 
                     musicPlaying = true;
 
+
                     if (musicButton) {
+
                         musicButton.textContent =
                             "⏸ Hentikan Muzik";
+
                     }
 
+
                     if (floatingButton) {
+
                         floatingButton.textContent =
                             "⏸";
+
                     }
 
                 })
                 .catch(() => {
 
                     alert(
-                        "Sila masukkan fail lagu MP3 pada bahagian audio."
+                        "Sila pastikan fail MP3 wujud dan laluan audio betul."
                     );
 
                 });
@@ -503,18 +674,24 @@ END:VCALENDAR`;
 
     }
 
+
     if (musicButton) {
+
         musicButton.addEventListener(
             "click",
             toggleMusic
         );
+
     }
 
+
     if (floatingButton) {
+
         floatingButton.addEventListener(
             "click",
             toggleMusic
         );
+
     }
 
 });
