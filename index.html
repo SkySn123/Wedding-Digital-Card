@@ -13,10 +13,6 @@
 
 <style>
 
-/* =====================================================
-   THEME
-===================================================== */
-
 :root {
     --lilac: #c9b8e6;
     --lilac-light: #e9e0f5;
@@ -36,11 +32,6 @@
     --shadow:
         0 15px 40px rgba(100, 80, 135, .15);
 }
-
-
-/* =====================================================
-   RESET
-===================================================== */
 
 * {
     box-sizing: border-box;
@@ -83,7 +74,6 @@ button {
 #opening {
     position: fixed;
     inset: 0;
-
     z-index: 9999;
 
     display: flex;
@@ -304,11 +294,6 @@ button {
 
     background: #000;
 }
-
-
-/* =====================================================
-   SKIP VIDEO
-===================================================== */
 
 #skipVideo {
     position: absolute;
@@ -671,6 +656,168 @@ p {
 
 
 /* =====================================================
+   INFO
+===================================================== */
+
+.info-box {
+    margin-top: 30px;
+}
+
+.info-box p {
+    margin: 5px 0;
+}
+
+.info-title {
+    margin-top: 25px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 20px;
+
+    color:
+        var(--lilac-dark);
+}
+
+.parents {
+    margin: 20px 0;
+}
+
+.parents strong {
+    color: var(--text-dark);
+}
+
+.couple-full {
+    margin: 25px 0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 25px;
+
+    color:
+        var(--lilac-dark);
+}
+
+.schedule {
+    margin-top: 30px;
+}
+
+.schedule-row {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 14px 18px;
+
+    margin-bottom: 8px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8f2fb,
+            #eef9fd
+        );
+}
+
+.schedule-row span:last-child {
+    color: var(--blue-dark);
+    font-weight: 500;
+}
+
+.doa {
+    margin-top: 30px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(201,184,230,.25),
+            rgba(185,222,242,.3)
+        );
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+.guest-messages {
+    margin-top: 30px;
+
+    text-align: left;
+}
+
+.message {
+    padding: 18px;
+
+    margin-bottom: 12px;
+
+    border-radius: 16px;
+
+    background:
+        #faf8fd;
+
+    border-left:
+        3px solid
+        var(--lilac);
+}
+
+.message-name {
+    color:
+        var(--lilac-dark);
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-person {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8f2fb,
+            #eef9fd
+        );
+}
+
+.contact-person strong {
+    color:
+        var(--lilac-dark);
+}
+
+.contact-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+
+/* =====================================================
    BOTTOM NAV
 ===================================================== */
 
@@ -763,6 +910,10 @@ p {
     width:
         min(92%, 430px);
 
+    max-height: 80vh;
+
+    overflow-y: auto;
+
     padding: 25px;
 
     border-radius: 25px;
@@ -831,6 +982,8 @@ p {
 
     color:
         var(--lilac-dark);
+
+    font-size: 20px;
 }
 
 .popup-buttons {
@@ -887,7 +1040,7 @@ p {
 
 
 /* =====================================================
-   SUCCESS POPUP
+   SUCCESS
 ===================================================== */
 
 #successPopup {
@@ -1112,20 +1265,11 @@ p {
         height: 45px;
     }
 
-    #skipVideo {
-        right: 15px;
-        bottom: 20px;
-
-        padding: 8px 15px;
-
-        font-size: 11px;
+    .schedule-row {
+        flex-direction: column;
+        gap: 2px;
     }
 }
-
-
-/* =====================================================
-   SCROLLBAR
-===================================================== */
 
 ::-webkit-scrollbar {
     width: 7px;
@@ -1204,192 +1348,542 @@ p {
 <main id="mainContent">
 
 
-    <!-- HOME -->
+<!-- =====================================================
+     HOME
+===================================================== -->
 
-    <section id="home">
+<section id="home">
 
-        <div class="hero">
+    <div class="hero">
 
-            <div class="subtitle">
-                Walimatulurus
+        <div class="subtitle">
+            Walimatulurus
+        </div>
+
+        <h1 class="names">
+            Sikin & Aziman
+        </h1>
+
+        <div class="divider"></div>
+
+        <p>
+            Dengan penuh kesyukuran,
+            kami
+        </p>
+
+        <br>
+
+        <p>
+            <strong>M Nasar Bin Bakri</strong>
+        </p>
+
+        <p>&</p>
+
+        <p>
+            <strong>Katirah Binti Mansor</strong>
+        </p>
+
+        <br>
+
+        <p>
+            menjemput
+            Dato' | Datin | Tuan | Puan |
+            Encik | Cik serta seisi keluarga
+            hadir ke majlis perkahwinan puteri kami
+        </p>
+
+        <br>
+
+        <div class="date">
+            Sabtu, 19 Disember 2026
+        </div>
+
+        <p style="margin-top:10px;">
+            Bersamaan 9 Rejab 1448H
+        </p>
+
+        <br>
+
+        <div class="countdown">
+
+            <div class="countdown-item">
+                <span class="number" id="days">00</span>
+                <span class="label">Hari</span>
             </div>
 
-            <h1 class="names">
-                Sikin & Aziman
-            </h1>
-
-            <div class="divider"></div>
-
-            <p>
-                Dengan penuh kesyukuran,
-                kami menjemput anda hadir
-                ke majlis perkahwinan kami.
-            </p>
-
-            <br>
-
-            <div class="date">
-                19 Disember 2026
+            <div class="countdown-item">
+                <span class="number" id="hours">00</span>
+                <span class="label">Jam</span>
             </div>
 
-            <br><br>
+            <div class="countdown-item">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Minit</span>
+            </div>
 
-            <div class="countdown">
-
-                <div class="countdown-item">
-                    <span
-                        class="number"
-                        id="days">
-                        00
-                    </span>
-
-                    <span class="label">
-                        Hari
-                    </span>
-                </div>
-
-                <div class="countdown-item">
-                    <span
-                        class="number"
-                        id="hours">
-                        00
-                    </span>
-
-                    <span class="label">
-                        Jam
-                    </span>
-                </div>
-
-                <div class="countdown-item">
-                    <span
-                        class="number"
-                        id="minutes">
-                        00
-                    </span>
-
-                    <span class="label">
-                        Minit
-                    </span>
-                </div>
-
-                <div class="countdown-item">
-                    <span
-                        class="number"
-                        id="seconds">
-                        00
-                    </span>
-
-                    <span class="label">
-                        Saat
-                    </span>
-                </div>
-
+            <div class="countdown-item">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Saat</span>
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- DETAIL -->
+<!-- =====================================================
+     DETAIL
+===================================================== -->
 
-    <section>
+<section>
 
-        <div class="container">
+    <div class="container">
 
-            <div class="card">
+        <div class="card">
 
-                <h2>
-                    Majlis Perkahwinan
-                </h2>
+            <h2>
+                Sikin & Aziman
+            </h2>
 
-                <div class="divider"></div>
+            <div class="divider"></div>
+
+            <div class="info-box">
+
+                <div class="parents">
+
+                    <p>
+                        <strong>M Nasar Bin Bakri</strong>
+                    </p>
+
+                    <p>&</p>
+
+                    <p>
+                        <strong>Katirah Binti Mansor</strong>
+                    </p>
+
+                    <p style="margin-top:10px;">
+                        Ibu bapa kepada pengantin perempuan
+                    </p>
+
+                </div>
+
+
+                <div class="couple-full">
+
+                    <p>
+                        Norasikin Binti M Nasar
+                    </p>
+
+                    <p>&</p>
+
+                    <p>
+                        Mohamad Aziman Bin Mohd Wagiran
+                    </p>
+
+                </div>
+
+
+                <div class="info-title">
+                    Tempat
+                </div>
 
                 <p>
-                    <strong>
-                        Sikin & Aziman
-                    </strong>
+                    No 66 Blok 5B Jalan Merak
                 </p>
 
-                <br>
+                <p>
+                    Felda Nitar 01
+                </p>
+
+                <p>
+                    86800 Mersing, Johor
+                </p>
+
+
+                <div class="info-title">
+                    Tarikh
+                </div>
 
                 <p>
                     Sabtu, 19 Disember 2026
                 </p>
 
                 <p>
-                    11:00 pagi – 4:00 petang
+                    Bersamaan 9 Rejab 1448H
                 </p>
 
-                <br>
+
+                <div class="info-title">
+                    Masa
+                </div>
 
                 <p>
-                    No 66 Blok 5B Jalan Merak,<br>
-                    Felda Nitar 01,<br>
-                    86800 Mersing, Johor.
+                    11:00 Pagi – 4:00 Petang
                 </p>
 
-                <br>
+            </div>
 
-                <button
-                    class="btn"
-                    onclick="openGoogleMaps()">
 
-                    📍 Buka Google Maps
+            <br>
 
-                </button>
+            <button
+                class="btn"
+                onclick="openGoogleMaps()">
+
+                📍 Buka Google Maps
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ATURCARA
+===================================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                Aturcara Majlis
+            </h2>
+
+            <div class="divider"></div>
+
+            <div class="schedule">
+
+                <div class="schedule-row">
+
+                    <span>
+                        Kehadiran Tetamu
+                    </span>
+
+                    <span>
+                        11:00 Pagi
+                    </span>
+
+                </div>
+
+
+                <div class="schedule-row">
+
+                    <span>
+                        Ketibaan Pengantin
+                    </span>
+
+                    <span>
+                        12:00 Petang
+                    </span>
+
+                </div>
+
+
+                <div class="schedule-row">
+
+                    <span>
+                        Makan Beradab
+                    </span>
+
+                    <span>
+                        12:30 Petang
+                    </span>
+
+                </div>
+
+
+                <div class="schedule-row">
+
+                    <span>
+                        Majlis Bersurai
+                    </span>
+
+                    <span>
+                        4:00 Petang
+                    </span>
+
+                </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- CALENDAR -->
+<!-- =====================================================
+     DOA
+===================================================== -->
 
-    <section>
+<section>
 
-        <div class="container">
+    <div class="container">
 
-            <div class="card">
+        <div class="card">
 
-                <h2>
-                    Simpan Tarikh
-                </h2>
+            <h2>
+                Doa
+            </h2>
 
-                <div class="divider"></div>
+            <div class="divider"></div>
+
+            <div class="doa">
 
                 <p>
-                    Jangan lupa simpan tarikh
-                    istimewa kami.
+                    Ya Allah, berkatilah majlis perkahwinan ini,
+                    limpahkan baraqah dan rahmat kepada kedua
+                    mempelai ini. Kurniakanlah mereka zuriat yang
+                    soleh dan solehah. Kekalkanlah jodoh mereka
+                    di dunia dan di akhirat dan sempurnakanlah
+                    agama mereka dengan berkat ikatan ini.
                 </p>
-
-                <br>
-
-                <button
-                    class="btn"
-                    onclick="addGoogleCalendar()">
-
-                    📅 Google Calendar
-
-                </button>
-
-                <br><br>
-
-                <button
-                    class="btn"
-                    onclick="addAppleCalendar()">
-
-                    🍎 Apple Calendar
-
-                </button>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UCAPAN
+===================================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                Ucapan
+            </h2>
+
+            <div class="divider"></div>
+
+            <div class="guest-messages">
+
+                <div class="message">
+
+                    <p class="message-name">
+                        Anonymous
+                    </p>
+
+                    <p>
+                        Selamat pengantin baru Sikin & Aziman.
+                        Semoga bahagia hingga ke syurga.
+                    </p>
+
+                </div>
+
+
+                <div class="message">
+
+                    <p class="message-name">
+                        Anonymous
+                    </p>
+
+                    <p>
+                        Semoga dipermudahkan segala urusan
+                        dan dikurniakan keluarga yang bahagia.
+                    </p>
+
+                </div>
+
+
+                <div class="message">
+
+                    <p class="message-name">
+                        Anonymous
+                    </p>
+
+                    <p>
+                        Selamat menempuh alam rumah tangga.
+                    </p>
+
+                </div>
+
+
+                <div class="message">
+
+                    <p class="message-name">
+                        Anonymous
+                    </p>
+
+                    <p>
+                        Semoga kekal bahagia sampai bila-bila.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HUBUNGI
+===================================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                Hubungi
+            </h2>
+
+            <div class="divider"></div>
+
+
+            <div class="contact-person">
+
+                <p>
+                    <strong>
+                        M Nasar
+                    </strong>
+                </p>
+
+                <p>
+                    Bapa Pengantin
+                </p>
+
+                <div class="contact-actions">
+
+                    <button
+                        class="btn"
+                        onclick="makePhoneCall('0197261342')">
+
+                        📞 Telefon
+
+                    </button>
+
+                    <button
+                        class="btn"
+                        onclick="openWhatsApp('0197261342')">
+
+                        💬 WhatsApp
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-person">
+
+                <p>
+                    <strong>
+                        Katirah Mansor
+                    </strong>
+                </p>
+
+                <p>
+                    Ibu Pengantin
+                </p>
+
+                <div class="contact-actions">
+
+                    <button
+                        class="btn"
+                        onclick="makePhoneCall('0197261342')">
+
+                        📞 Telefon
+
+                    </button>
+
+                    <button
+                        class="btn"
+                        onclick="openWhatsApp('0197261342')">
+
+                        💬 WhatsApp
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CALENDAR
+===================================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                Simpan Tarikh
+            </h2>
+
+            <div class="divider"></div>
+
+            <p>
+                Jangan lupa simpan tarikh
+                istimewa kami.
+            </p>
+
+            <p>
+                Sabtu, 19 Disember 2026
+            </p>
+
+            <p>
+                11:00 Pagi – 4:00 Petang
+            </p>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="addGoogleCalendar()">
+
+                📅 Google Calendar
+
+            </button>
+
+            <br><br>
+
+            <button
+                class="btn"
+                onclick="addAppleCalendar()">
+
+                🍎 Apple Calendar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 </main>
@@ -1465,21 +1959,23 @@ p {
      CALENDAR POPUP
 ===================================================== -->
 
-<div
-    class="popup-menu"
-    id="calPopup">
+<div class="popup-menu" id="calPopup">
 
     <button
         class="close-popup"
         data-close="calPopup">
-
         ×
-
     </button>
 
     <h3>
         📅 Simpan Tarikh
     </h3>
+
+    <p>
+        Sabtu, 19 Disember 2026<br>
+        9 Rejab 1448H<br>
+        11:00 Pagi – 4:00 Petang
+    </p>
 
     <div class="popup-buttons">
 
@@ -1508,16 +2004,12 @@ p {
      LOCATION POPUP
 ===================================================== -->
 
-<div
-    class="popup-menu"
-    id="locPopup">
+<div class="popup-menu" id="locPopup">
 
     <button
         class="close-popup"
         data-close="locPopup">
-
         ×
-
     </button>
 
     <h3>
@@ -1559,16 +2051,12 @@ p {
      MUSIC POPUP
 ===================================================== -->
 
-<div
-    class="popup-menu"
-    id="musPopup">
+<div class="popup-menu" id="musPopup">
 
     <button
         class="close-popup"
         data-close="musPopup">
-
         ×
-
     </button>
 
     <h3>
@@ -1576,8 +2064,11 @@ p {
     </h3>
 
     <p>
-        Tekan butang di bawah untuk
-        memainkan atau menghentikan muzik.
+        <strong>DARVIAN DWI</strong>
+    </p>
+
+    <p>
+        SATU SHAF DI BELAKANGKU
     </p>
 
     <br>
@@ -1597,25 +2088,22 @@ p {
      RSVP POPUP
 ===================================================== -->
 
-<div
-    class="popup-menu"
-    id="rsvpPopup">
+<div class="popup-menu" id="rsvpPopup">
 
     <button
         class="close-popup"
         data-close="rsvpPopup">
-
         ×
-
     </button>
 
     <h3>
-        💌 RSVP
+        💌 Sahkan Kehadiran
     </h3>
 
     <p>
-        Adakah anda akan hadir
-        ke majlis kami?
+        Sila sahkan kehadiran anda
+        ke majlis perkahwinan
+        Sikin & Aziman.
     </p>
 
     <br>
@@ -1724,7 +2212,6 @@ const musicButton =
 const floatingButton =
     document.getElementById("musicFloating");
 
-
 let opened = false;
 let petalsStarted = false;
 let musicPlaying = false;
@@ -1732,15 +2219,6 @@ let musicPlaying = false;
 
 /* =====================================================
    OPEN INVITATION
-   FLOW:
-
-   CLICK
-   ↓
-   MUSIC START
-   ↓
-   DOOR OPEN
-   ↓
-   VIDEO
 ===================================================== */
 
 function openInvitation() {
@@ -1751,18 +2229,7 @@ function openInvitation() {
 
     opened = true;
 
-
-    /*
-     * 🎵 MULAKAN LAGU SEBAIK SAHAJA
-     * TETAMU TEKAN PINTU
-     */
-
     startWeddingMusic();
-
-
-    /*
-     * BUKA PINTU
-     */
 
     if (seal) {
         seal.classList.add("seal-open");
@@ -1775,12 +2242,6 @@ function openInvitation() {
     if (doorRight) {
         doorRight.classList.add("open");
     }
-
-
-    /*
-     * Selepas pintu terbuka,
-     * paparkan video.
-     */
 
     setTimeout(
         function () {
@@ -1808,7 +2269,6 @@ if (seal) {
         "click",
         openInvitation
     );
-
 
     seal.addEventListener(
         "keydown",
@@ -1847,35 +2307,15 @@ function showIntroVideo() {
         return;
     }
 
-
     videoIntro.classList.remove("hide");
-
     videoIntro.classList.add("show");
 
-
-    /*
-     * VIDEO MESTI MUTED
-     */
-
     introVideo.muted = true;
-
     introVideo.volume = 0;
 
-
-    /*
-     * Mula video dari awal
-     */
-
     try {
-
         introVideo.currentTime = 0;
-
     } catch (e) {}
-
-
-    /*
-     * Mainkan video
-     */
 
     introVideo.play()
         .catch(
@@ -1885,6 +2325,8 @@ function showIntroVideo() {
                     "Video tidak dapat dimainkan:",
                     error
                 );
+
+                finishIntroVideo();
 
             }
         );
@@ -1903,47 +2345,27 @@ function finishIntroVideo() {
         introVideo.pause();
 
         try {
-
             introVideo.currentTime = 0;
-
         } catch (e) {}
 
     }
 
-
     if (videoIntro) {
 
         videoIntro.classList.remove("show");
-
         videoIntro.classList.add("hide");
 
     }
 
-
-    /*
-     * 🎵 JANGAN START LAGI.
-     *
-     * Lagu sudah dimainkan sejak
-     * tetamu tekan pintu.
-     *
-     * Lagu akan terus berjalan.
-     */
-
     setTimeout(
         function () {
-
             showMainContent();
-
         },
         800
     );
 
 }
 
-
-/*
- * Bila video betul-betul habis
- */
 
 if (introVideo) {
 
@@ -1983,16 +2405,10 @@ function showMainContent() {
 
     if (videoIntro) {
 
-        videoIntro.classList.remove(
-            "show"
-        );
-
-        videoIntro.classList.add(
-            "hide"
-        );
+        videoIntro.classList.remove("show");
+        videoIntro.classList.add("hide");
 
     }
-
 
     if (mainContent) {
 
@@ -2006,17 +2422,14 @@ function showMainContent() {
 
     }
 
-
     document.body.classList.remove(
         "locked"
     );
-
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 
     startPetals();
 
@@ -2038,7 +2451,6 @@ function updateMusicButtons() {
 
     }
 
-
     if (floatingButton) {
 
         floatingButton.textContent =
@@ -2051,28 +2463,20 @@ function updateMusicButtons() {
 }
 
 
-/* =====================================================
-   START WEDDING MUSIC
-===================================================== */
-
 function startWeddingMusic() {
 
     if (!music) {
         return;
     }
 
-
     music.loop = true;
-
     music.volume = 0.8;
-
 
     music.play()
         .then(
             function () {
 
                 musicPlaying = true;
-
                 updateMusicButtons();
 
             }
@@ -2080,15 +2484,7 @@ function startWeddingMusic() {
         .catch(
             function (error) {
 
-                /*
-                 * Sesetengah browser masih boleh
-                 * menyekat audio walaupun user sudah klik.
-                 *
-                 * Tetamu boleh tekan butang 🎵.
-                 */
-
                 musicPlaying = false;
-
                 updateMusicButtons();
 
                 console.log(
@@ -2102,10 +2498,6 @@ function startWeddingMusic() {
 }
 
 
-/* =====================================================
-   TOGGLE MUSIC
-===================================================== */
-
 function toggleMusic() {
 
     if (!music) {
@@ -2117,7 +2509,6 @@ function toggleMusic() {
         return;
     }
 
-
     if (musicPlaying) {
 
         music.pause();
@@ -2128,7 +2519,6 @@ function toggleMusic() {
 
         return;
     }
-
 
     music.play()
         .then(
@@ -2183,37 +2573,29 @@ function createPetal() {
         return;
     }
 
-
     const petal =
         document.createElement("div");
 
     petal.className =
         "petal";
 
-
     petal.style.left =
         Math.random() * 100 + "%";
 
-
     petal.style.animationDuration =
         (4 + Math.random() * 5) + "s";
-
 
     petal.style.opacity =
         0.25 +
         Math.random() * 0.5;
 
-
     petalContainer.appendChild(
         petal
     );
 
-
     setTimeout(
         function () {
-
             petal.remove();
-
         },
         9000
     );
@@ -2230,12 +2612,9 @@ function startPetals() {
         return;
     }
 
-
     petalsStarted = true;
 
-
     createPetal();
-
 
     setInterval(
         createPetal,
@@ -2258,25 +2637,16 @@ const weddingDate =
 function updateCountdown() {
 
     const days =
-        document.getElementById(
-            "days"
-        );
+        document.getElementById("days");
 
     const hours =
-        document.getElementById(
-            "hours"
-        );
+        document.getElementById("hours");
 
     const minutes =
-        document.getElementById(
-            "minutes"
-        );
+        document.getElementById("minutes");
 
     const seconds =
-        document.getElementById(
-            "seconds"
-        );
-
+        document.getElementById("seconds");
 
     if (
         !days ||
@@ -2287,92 +2657,61 @@ function updateCountdown() {
         return;
     }
 
-
     const now =
         new Date();
-
 
     const diff =
         weddingDate - now;
 
-
     if (diff <= 0) {
 
-        days.textContent =
-            "00";
-
-        hours.textContent =
-            "00";
-
-        minutes.textContent =
-            "00";
-
-        seconds.textContent =
-            "00";
+        days.textContent = "00";
+        hours.textContent = "00";
+        minutes.textContent = "00";
+        seconds.textContent = "00";
 
         return;
     }
-
 
     const d =
         Math.floor(
             diff / 86400000
         );
 
-
     const h =
         Math.floor(
-            (diff % 86400000)
-            / 3600000
+            (diff % 86400000) /
+            3600000
         );
-
 
     const m =
         Math.floor(
-            (diff % 3600000)
-            / 60000
+            (diff % 3600000) /
+            60000
         );
-
 
     const s =
         Math.floor(
-            (diff % 60000)
-            / 1000
+            (diff % 60000) /
+            1000
         );
-
 
     days.textContent =
-        String(d).padStart(
-            2,
-            "0"
-        );
-
+        String(d).padStart(2, "0");
 
     hours.textContent =
-        String(h).padStart(
-            2,
-            "0"
-        );
-
+        String(h).padStart(2, "0");
 
     minutes.textContent =
-        String(m).padStart(
-            2,
-            "0"
-        );
-
+        String(m).padStart(2, "0");
 
     seconds.textContent =
-        String(s).padStart(
-            2,
-            "0"
-        );
+        String(s).padStart(2, "0");
 
 }
 
 
 updateCountdown();
-
 
 setInterval(
     updateCountdown,
@@ -2389,7 +2728,6 @@ function () {
 
     const url =
         "https://www.google.com/maps/search/?api=1&query=2.3807618,103.7116231";
-
 
     window.open(
         url,
@@ -2409,6 +2747,43 @@ function () {
     const url =
         "https://www.waze.com/ul?ll=2.3807618%2C103.7116231&navigate=yes";
 
+    window.open(
+        url,
+        "_blank"
+    );
+
+};
+
+
+/* =====================================================
+   TELEFON
+===================================================== */
+
+window.makePhoneCall =
+function (number) {
+
+    window.location.href =
+        "tel:" + number;
+
+};
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+window.openWhatsApp =
+function (number) {
+
+    const cleanNumber =
+        number.replace(
+            /^0/,
+            "60"
+        );
+
+    const url =
+        "https://wa.me/" +
+        cleanNumber;
 
     window.open(
         url,
@@ -2428,22 +2803,22 @@ function () {
     const title =
         "Majlis Perkahwinan Sikin & Aziman";
 
-
     const start =
         "20261219T030000Z";
-
 
     const end =
         "20261219T080000Z";
 
-
     const location =
         "No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor";
 
-
     const details =
-        "Walimatulurus Sikin & Aziman";
-
+        "Walimatulurus Sikin & Aziman\n" +
+        "Norasikin Binti M Nasar & " +
+        "Mohamad Aziman Bin Mohd Wagiran\n" +
+        "Sabtu, 19 Disember 2026\n" +
+        "9 Rejab 1448H\n" +
+        "11:00 Pagi - 4:00 Petang";
 
     const url =
         "https://calendar.google.com/calendar/render" +
@@ -2458,7 +2833,6 @@ function () {
         encodeURIComponent(location) +
         "&details=" +
         encodeURIComponent(details);
-
 
     window.open(
         url,
@@ -2485,9 +2859,9 @@ DTEND:20261219T080000Z
 SUMMARY:Majlis Perkahwinan Sikin & Aziman
 LOCATION:No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor
 DESCRIPTION:Walimatulurus Sikin & Aziman
+UID:sikin-aziman-2026@example.com
 END:VEVENT
 END:VCALENDAR`;
-
 
     const blob =
         new Blob(
@@ -2498,38 +2872,24 @@ END:VCALENDAR`;
             }
         );
 
-
     const url =
-        URL.createObjectURL(
-            blob
-        );
-
+        URL.createObjectURL(blob);
 
     const a =
-        document.createElement(
-            "a"
-        );
-
+        document.createElement("a");
 
     a.href = url;
-
 
     a.download =
         "jemputan-sikin-aziman.ics";
 
-
     document.body.appendChild(a);
-
 
     a.click();
 
-
     document.body.removeChild(a);
 
-
-    URL.revokeObjectURL(
-        url
-    );
+    URL.revokeObjectURL(url);
 
 };
 
@@ -2551,9 +2911,7 @@ const menus = {
 function closeAllPopups() {
 
     document
-        .querySelectorAll(
-            ".popup-menu"
-        )
+        .querySelectorAll(".popup-menu")
         .forEach(
             function (popup) {
 
@@ -2569,21 +2927,17 @@ function closeAllPopups() {
 
 Object.entries(menus)
 .forEach(
-    function (
-        [buttonId, popupId]
-    ) {
+    function ([buttonId, popupId]) {
 
         const button =
             document.getElementById(
                 buttonId
             );
 
-
         const popup =
             document.getElementById(
                 popupId
             );
-
 
         if (
             !button ||
@@ -2592,22 +2946,18 @@ Object.entries(menus)
             return;
         }
 
-
         button.addEventListener(
             "click",
             function (e) {
 
                 e.stopPropagation();
 
-
                 const wasOpen =
                     popup.classList.contains(
                         "open"
                     );
 
-
                 closeAllPopups();
-
 
                 if (!wasOpen) {
 
@@ -2642,12 +2992,10 @@ if (homeBtn) {
 
             closeAllPopups();
 
-
             const home =
                 document.getElementById(
                     "home"
                 );
-
 
             if (home) {
 
@@ -2664,13 +3012,11 @@ if (homeBtn) {
 
 
 /* =====================================================
-   CLOSE POPUP BUTTON
+   CLOSE POPUP
 ===================================================== */
 
 document
-    .querySelectorAll(
-        ".close-popup"
-    )
+    .querySelectorAll(".close-popup")
     .forEach(
         function (button) {
 
@@ -2681,12 +3027,10 @@ document
                     const id =
                         button.dataset.close;
 
-
                     const popup =
                         document.getElementById(
                             id
                         );
-
 
                     if (popup) {
 
@@ -2733,9 +3077,7 @@ document.addEventListener(
 ===================================================== */
 
 document
-    .querySelectorAll(
-        ".rsvp-option"
-    )
+    .querySelectorAll(".rsvp-option")
     .forEach(
         function (option) {
 
@@ -2746,24 +3088,20 @@ document
                     const value =
                         option.dataset.val;
 
-
                     const popup =
                         document.getElementById(
                             "successPopup"
                         );
-
 
                     const title =
                         document.getElementById(
                             "successTitle"
                         );
 
-
                     const msg =
                         document.getElementById(
                             "successMsg"
                         );
-
 
                     if (
                         !popup ||
@@ -2773,14 +3111,12 @@ document
                         return;
                     }
 
-
                     if (
                         value === "hadir"
                     ) {
 
                         title.textContent =
                             "Terima Kasih! 💙";
-
 
                         msg.textContent =
                             "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
@@ -2790,15 +3126,12 @@ document
                         title.textContent =
                             "Terima Kasih! 🙏";
 
-
                         msg.textContent =
                             "Terima kasih kerana memaklumkan kepada kami.";
 
                     }
 
-
                     closeAllPopups();
-
 
                     popup.classList.add(
                         "open"
