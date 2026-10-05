@@ -255,6 +255,94 @@ button {
 
 
 /* =====================================================
+   VIDEO INTRO
+===================================================== */
+
+#videoIntro {
+    position: fixed;
+    inset: 0;
+
+    z-index: 15000;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #000;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+#videoIntro.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#videoIntro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#introVideo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    background: #000;
+}
+
+
+/* =====================================================
+   SKIP VIDEO
+===================================================== */
+
+#skipVideo {
+    position: absolute;
+
+    right: 20px;
+    bottom: 25px;
+
+    z-index: 2;
+
+    padding: 10px 18px;
+
+    border: 1px solid rgba(255,255,255,.7);
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.15);
+
+    color: #fff;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+
+    backdrop-filter: blur(8px);
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+#skipVideo:hover {
+    background: rgba(255,255,255,.3);
+}
+
+
+/* =====================================================
    MAIN
 ===================================================== */
 
@@ -781,6 +869,8 @@ p {
         var(--text-dark);
 
     transition: .25s ease;
+
+    margin-bottom: 10px;
 }
 
 .rsvp-option:hover {
@@ -1021,6 +1111,15 @@ p {
         width: 45px;
         height: 45px;
     }
+
+    #skipVideo {
+        right: 15px;
+        bottom: 20px;
+
+        padding: 8px 15px;
+
+        font-size: 11px;
+    }
 }
 
 
@@ -1055,7 +1154,7 @@ p {
 
 
 <!-- =====================================================
-     OPENING
+     OPENING / DOOR
 ===================================================== -->
 
 <div id="opening">
@@ -1063,7 +1162,37 @@ p {
     <div class="door-left"></div>
     <div class="door-right"></div>
 
-    <button id="seal" aria-label="Buka jemputan"></button>
+    <button
+        id="seal"
+        aria-label="Buka jemputan">
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     VIDEO INTRO
+===================================================== -->
+
+<div id="videoIntro">
+
+    <video
+        id="introVideo"
+        playsinline
+        muted
+        preload="auto">
+
+        <source
+            src="Babybluelilac.mp4"
+            type="video/mp4">
+
+        Browser anda tidak menyokong video.
+
+    </video>
+
+    <button id="skipVideo">
+        Skip
+    </button>
 
 </div>
 
@@ -1108,23 +1237,51 @@ p {
             <div class="countdown">
 
                 <div class="countdown-item">
-                    <span class="number" id="days">00</span>
-                    <span class="label">Hari</span>
+                    <span
+                        class="number"
+                        id="days">
+                        00
+                    </span>
+
+                    <span class="label">
+                        Hari
+                    </span>
                 </div>
 
                 <div class="countdown-item">
-                    <span class="number" id="hours">00</span>
-                    <span class="label">Jam</span>
+                    <span
+                        class="number"
+                        id="hours">
+                        00
+                    </span>
+
+                    <span class="label">
+                        Jam
+                    </span>
                 </div>
 
                 <div class="countdown-item">
-                    <span class="number" id="minutes">00</span>
-                    <span class="label">Minit</span>
+                    <span
+                        class="number"
+                        id="minutes">
+                        00
+                    </span>
+
+                    <span class="label">
+                        Minit
+                    </span>
                 </div>
 
                 <div class="countdown-item">
-                    <span class="number" id="seconds">00</span>
-                    <span class="label">Saat</span>
+                    <span
+                        class="number"
+                        id="seconds">
+                        00
+                    </span>
+
+                    <span class="label">
+                        Saat
+                    </span>
                 </div>
 
             </div>
@@ -1142,12 +1299,16 @@ p {
 
             <div class="card">
 
-                <h2>Majlis Perkahwinan</h2>
+                <h2>
+                    Majlis Perkahwinan
+                </h2>
 
                 <div class="divider"></div>
 
                 <p>
-                    <strong>Sikin & Aziman</strong>
+                    <strong>
+                        Sikin & Aziman
+                    </strong>
                 </p>
 
                 <br>
@@ -1193,7 +1354,9 @@ p {
 
             <div class="card">
 
-                <h2>Simpan Tarikh</h2>
+                <h2>
+                    Simpan Tarikh
+                </h2>
 
                 <div class="divider"></div>
 
@@ -1248,13 +1411,12 @@ p {
     loop
     preload="auto">
 
-    <!--
-    Tukar kepada nama fail MP3 awak.
-    Contoh:
-    <source src="lagu.mp3" type="audio/mpeg">
-    -->
+    <source
+        src="kembang perawan.mp3"
+        type="audio/mpeg">
 
 </audio>
+
 
 <button
     id="musicFloating"
@@ -1415,7 +1577,7 @@ p {
 
     <p>
         Tekan butang di bawah untuk
-        memainkan muzik.
+        memainkan atau menghentikan muzik.
     </p>
 
     <br>
@@ -1500,7 +1662,11 @@ p {
 
         <button
             class="btn"
-            onclick="document.getElementById('successPopup').classList.remove('open')">
+            onclick="
+                document
+                .getElementById('successPopup')
+                .classList.remove('open')
+            ">
 
             Tutup
 
@@ -1513,7 +1679,9 @@ p {
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
 
 /* =====================================================
@@ -1535,23 +1703,66 @@ const doorLeft =
 const doorRight =
     document.querySelector(".door-right");
 
+const videoIntro =
+    document.getElementById("videoIntro");
+
+const introVideo =
+    document.getElementById("introVideo");
+
+const skipVideo =
+    document.getElementById("skipVideo");
+
 const petalContainer =
     document.querySelector(".petal-container");
+
+const music =
+    document.getElementById("weddingMusic");
+
+const musicButton =
+    document.getElementById("musPlayBtn");
+
+const floatingButton =
+    document.getElementById("musicFloating");
 
 
 let opened = false;
 let petalsStarted = false;
+let musicPlaying = false;
 
 
 /* =====================================================
    OPEN INVITATION
+   FLOW:
+
+   CLICK
+   ↓
+   MUSIC START
+   ↓
+   DOOR OPEN
+   ↓
+   VIDEO
 ===================================================== */
 
 function openInvitation() {
 
-    if (opened) return;
+    if (opened) {
+        return;
+    }
 
     opened = true;
+
+
+    /*
+     * 🎵 MULAKAN LAGU SEBAIK SAHAJA
+     * TETAMU TEKAN PINTU
+     */
+
+    startWeddingMusic();
+
+
+    /*
+     * BUKA PINTU
+     */
 
     if (seal) {
         seal.classList.add("seal-open");
@@ -1565,30 +1776,24 @@ function openInvitation() {
         doorRight.classList.add("open");
     }
 
-    setTimeout(function () {
 
-        if (opening) {
-            opening.classList.add("hide");
-        }
+    /*
+     * Selepas pintu terbuka,
+     * paparkan video.
+     */
 
-        if (mainContent) {
+    setTimeout(
+        function () {
 
-            mainContent.style.opacity = "1";
-            mainContent.style.visibility = "visible";
-            mainContent.style.pointerEvents = "auto";
+            if (opening) {
+                opening.classList.add("hide");
+            }
 
-        }
+            showIntroVideo();
 
-        document.body.classList.remove("locked");
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-        startPetals();
-
-    }, 1500);
+        },
+        1500
+    );
 
 }
 
@@ -1603,6 +1808,7 @@ if (seal) {
         "click",
         openInvitation
     );
+
 
     seal.addEventListener(
         "keydown",
@@ -1626,34 +1832,391 @@ if (seal) {
 
 
 /* =====================================================
+   VIDEO
+===================================================== */
+
+function showIntroVideo() {
+
+    if (
+        !videoIntro ||
+        !introVideo
+    ) {
+
+        showMainContent();
+
+        return;
+    }
+
+
+    videoIntro.classList.remove("hide");
+
+    videoIntro.classList.add("show");
+
+
+    /*
+     * VIDEO MESTI MUTED
+     */
+
+    introVideo.muted = true;
+
+    introVideo.volume = 0;
+
+
+    /*
+     * Mula video dari awal
+     */
+
+    try {
+
+        introVideo.currentTime = 0;
+
+    } catch (e) {}
+
+
+    /*
+     * Mainkan video
+     */
+
+    introVideo.play()
+        .catch(
+            function (error) {
+
+                console.log(
+                    "Video tidak dapat dimainkan:",
+                    error
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   VIDEO HABIS
+===================================================== */
+
+function finishIntroVideo() {
+
+    if (introVideo) {
+
+        introVideo.pause();
+
+        try {
+
+            introVideo.currentTime = 0;
+
+        } catch (e) {}
+
+    }
+
+
+    if (videoIntro) {
+
+        videoIntro.classList.remove("show");
+
+        videoIntro.classList.add("hide");
+
+    }
+
+
+    /*
+     * 🎵 JANGAN START LAGI.
+     *
+     * Lagu sudah dimainkan sejak
+     * tetamu tekan pintu.
+     *
+     * Lagu akan terus berjalan.
+     */
+
+    setTimeout(
+        function () {
+
+            showMainContent();
+
+        },
+        800
+    );
+
+}
+
+
+/*
+ * Bila video betul-betul habis
+ */
+
+if (introVideo) {
+
+    introVideo.addEventListener(
+        "ended",
+        finishIntroVideo
+    );
+
+}
+
+
+/* =====================================================
+   SKIP VIDEO
+===================================================== */
+
+if (skipVideo) {
+
+    skipVideo.addEventListener(
+        "click",
+        function (e) {
+
+            e.stopPropagation();
+
+            finishIntroVideo();
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+function showMainContent() {
+
+    if (videoIntro) {
+
+        videoIntro.classList.remove(
+            "show"
+        );
+
+        videoIntro.classList.add(
+            "hide"
+        );
+
+    }
+
+
+    if (mainContent) {
+
+        mainContent.style.opacity = "1";
+
+        mainContent.style.visibility =
+            "visible";
+
+        mainContent.style.pointerEvents =
+            "auto";
+
+    }
+
+
+    document.body.classList.remove(
+        "locked"
+    );
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
+    startPetals();
+
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+function updateMusicButtons() {
+
+    if (musicButton) {
+
+        musicButton.textContent =
+            musicPlaying
+                ? "⏸ Hentikan Muzik"
+                : "▶ Mainkan Muzik";
+
+    }
+
+
+    if (floatingButton) {
+
+        floatingButton.textContent =
+            musicPlaying
+                ? "⏸"
+                : "🎵";
+
+    }
+
+}
+
+
+/* =====================================================
+   START WEDDING MUSIC
+===================================================== */
+
+function startWeddingMusic() {
+
+    if (!music) {
+        return;
+    }
+
+
+    music.loop = true;
+
+    music.volume = 0.8;
+
+
+    music.play()
+        .then(
+            function () {
+
+                musicPlaying = true;
+
+                updateMusicButtons();
+
+            }
+        )
+        .catch(
+            function (error) {
+
+                /*
+                 * Sesetengah browser masih boleh
+                 * menyekat audio walaupun user sudah klik.
+                 *
+                 * Tetamu boleh tekan butang 🎵.
+                 */
+
+                musicPlaying = false;
+
+                updateMusicButtons();
+
+                console.log(
+                    "Muzik autoplay disekat:",
+                    error
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   TOGGLE MUSIC
+===================================================== */
+
+function toggleMusic() {
+
+    if (!music) {
+
+        alert(
+            "Fail kembang perawan.mp3 tidak dijumpai."
+        );
+
+        return;
+    }
+
+
+    if (musicPlaying) {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        updateMusicButtons();
+
+        return;
+    }
+
+
+    music.play()
+        .then(
+            function () {
+
+                musicPlaying = true;
+
+                updateMusicButtons();
+
+            }
+        )
+        .catch(
+            function () {
+
+                alert(
+                    "Muzik tidak dapat dimainkan. Sila semak fail kembang perawan.mp3."
+                );
+
+            }
+        );
+
+}
+
+
+if (musicButton) {
+
+    musicButton.addEventListener(
+        "click",
+        toggleMusic
+    );
+
+}
+
+
+if (floatingButton) {
+
+    floatingButton.addEventListener(
+        "click",
+        toggleMusic
+    );
+
+}
+
+
+/* =====================================================
    PETALS
 ===================================================== */
 
 function createPetal() {
 
-    if (!petalContainer) return;
+    if (!petalContainer) {
+        return;
+    }
+
 
     const petal =
         document.createElement("div");
 
-    petal.className = "petal";
+    petal.className =
+        "petal";
+
 
     petal.style.left =
         Math.random() * 100 + "%";
 
+
     petal.style.animationDuration =
         (4 + Math.random() * 5) + "s";
 
+
     petal.style.opacity =
-        0.25 + Math.random() * 0.5;
+        0.25 +
+        Math.random() * 0.5;
 
-    petalContainer.appendChild(petal);
 
-    setTimeout(function () {
+    petalContainer.appendChild(
+        petal
+    );
 
-        petal.remove();
 
-    }, 9000);
+    setTimeout(
+        function () {
+
+            petal.remove();
+
+        },
+        9000
+    );
 
 }
 
@@ -1667,9 +2230,12 @@ function startPetals() {
         return;
     }
 
+
     petalsStarted = true;
 
+
     createPetal();
+
 
     setInterval(
         createPetal,
@@ -1692,16 +2258,24 @@ const weddingDate =
 function updateCountdown() {
 
     const days =
-        document.getElementById("days");
+        document.getElementById(
+            "days"
+        );
 
     const hours =
-        document.getElementById("hours");
+        document.getElementById(
+            "hours"
+        );
 
     const minutes =
-        document.getElementById("minutes");
+        document.getElementById(
+            "minutes"
+        );
 
     const seconds =
-        document.getElementById("seconds");
+        document.getElementById(
+            "seconds"
+        );
 
 
     if (
@@ -1717,16 +2291,24 @@ function updateCountdown() {
     const now =
         new Date();
 
+
     const diff =
         weddingDate - now;
 
 
     if (diff <= 0) {
 
-        days.textContent = "00";
-        hours.textContent = "00";
-        minutes.textContent = "00";
-        seconds.textContent = "00";
+        days.textContent =
+            "00";
+
+        hours.textContent =
+            "00";
+
+        minutes.textContent =
+            "00";
+
+        seconds.textContent =
+            "00";
 
         return;
     }
@@ -1737,17 +2319,20 @@ function updateCountdown() {
             diff / 86400000
         );
 
+
     const h =
         Math.floor(
             (diff % 86400000)
             / 3600000
         );
 
+
     const m =
         Math.floor(
             (diff % 3600000)
             / 60000
         );
+
 
     const s =
         Math.floor(
@@ -1757,21 +2342,37 @@ function updateCountdown() {
 
 
     days.textContent =
-        String(d).padStart(2,"0");
+        String(d).padStart(
+            2,
+            "0"
+        );
+
 
     hours.textContent =
-        String(h).padStart(2,"0");
+        String(h).padStart(
+            2,
+            "0"
+        );
+
 
     minutes.textContent =
-        String(m).padStart(2,"0");
+        String(m).padStart(
+            2,
+            "0"
+        );
+
 
     seconds.textContent =
-        String(s).padStart(2,"0");
+        String(s).padStart(
+            2,
+            "0"
+        );
 
 }
 
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
@@ -1788,6 +2389,7 @@ function () {
 
     const url =
         "https://www.google.com/maps/search/?api=1&query=2.3807618,103.7116231";
+
 
     window.open(
         url,
@@ -1807,6 +2409,7 @@ function () {
     const url =
         "https://www.waze.com/ul?ll=2.3807618%2C103.7116231&navigate=yes";
 
+
     window.open(
         url,
         "_blank"
@@ -1825,14 +2428,18 @@ function () {
     const title =
         "Majlis Perkahwinan Sikin & Aziman";
 
+
     const start =
         "20261219T030000Z";
+
 
     const end =
         "20261219T080000Z";
 
+
     const location =
         "No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor";
+
 
     const details =
         "Walimatulurus Sikin & Aziman";
@@ -1893,13 +2500,19 @@ END:VCALENDAR`;
 
 
     const url =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(
+            blob
+        );
 
 
     const a =
-        document.createElement("a");
+        document.createElement(
+            "a"
+        );
+
 
     a.href = url;
+
 
     a.download =
         "jemputan-sikin-aziman.ics";
@@ -1907,11 +2520,16 @@ END:VCALENDAR`;
 
     document.body.appendChild(a);
 
+
     a.click();
+
 
     document.body.removeChild(a);
 
-    URL.revokeObjectURL(url);
+
+    URL.revokeObjectURL(
+        url
+    );
 
 };
 
@@ -1933,54 +2551,77 @@ const menus = {
 function closeAllPopups() {
 
     document
-        .querySelectorAll(".popup-menu")
-        .forEach(function (popup) {
+        .querySelectorAll(
+            ".popup-menu"
+        )
+        .forEach(
+            function (popup) {
 
-            popup.classList.remove("open");
+                popup.classList.remove(
+                    "open"
+                );
 
-        });
+            }
+        );
 
 }
 
 
 Object.entries(menus)
-.forEach(function ([buttonId,popupId]) {
+.forEach(
+    function (
+        [buttonId, popupId]
+    ) {
 
-    const button =
-        document.getElementById(
-            buttonId
-        );
-
-    const popup =
-        document.getElementById(
-            popupId
-        );
+        const button =
+            document.getElementById(
+                buttonId
+            );
 
 
-    if (!button || !popup) {
-        return;
-    }
+        const popup =
+            document.getElementById(
+                popupId
+            );
 
 
-    button.addEventListener(
-        "click",
-        function (e) {
-
-            e.stopPropagation();
-
-            const wasOpen =
-                popup.classList.contains("open");
-
-            closeAllPopups();
-
-            if (!wasOpen) {
-                popup.classList.add("open");
-            }
-
+        if (
+            !button ||
+            !popup
+        ) {
+            return;
         }
-    );
 
-});
+
+        button.addEventListener(
+            "click",
+            function (e) {
+
+                e.stopPropagation();
+
+
+                const wasOpen =
+                    popup.classList.contains(
+                        "open"
+                    );
+
+
+                closeAllPopups();
+
+
+                if (!wasOpen) {
+
+                    popup.classList.add(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
 
 
 /* =====================================================
@@ -1988,7 +2629,9 @@ Object.entries(menus)
 ===================================================== */
 
 const homeBtn =
-    document.getElementById("homeBtn");
+    document.getElementById(
+        "homeBtn"
+    );
 
 
 if (homeBtn) {
@@ -1999,8 +2642,12 @@ if (homeBtn) {
 
             closeAllPopups();
 
+
             const home =
-                document.getElementById("home");
+                document.getElementById(
+                    "home"
+                );
+
 
             if (home) {
 
@@ -2021,31 +2668,39 @@ if (homeBtn) {
 ===================================================== */
 
 document
-.querySelectorAll(".close-popup")
-.forEach(function (button) {
+    .querySelectorAll(
+        ".close-popup"
+    )
+    .forEach(
+        function (button) {
 
-    button.addEventListener(
-        "click",
-        function () {
+            button.addEventListener(
+                "click",
+                function () {
 
-            const id =
-                button.dataset.close;
+                    const id =
+                        button.dataset.close;
 
-            const popup =
-                document.getElementById(id);
 
-            if (popup) {
+                    const popup =
+                        document.getElementById(
+                            id
+                        );
 
-                popup.classList.remove(
-                    "open"
-                );
 
-            }
+                    if (popup) {
+
+                        popup.classList.remove(
+                            "open"
+                        );
+
+                    }
+
+                }
+            );
 
         }
     );
-
-});
 
 
 /* =====================================================
@@ -2057,8 +2712,12 @@ document.addEventListener(
     function (e) {
 
         if (
-            !e.target.closest(".popup-menu") &&
-            !e.target.closest(".bottom-nav")
+            !e.target.closest(
+                ".popup-menu"
+            ) &&
+            !e.target.closest(
+                ".bottom-nav"
+            )
         ) {
 
             closeAllPopups();
@@ -2074,177 +2733,82 @@ document.addEventListener(
 ===================================================== */
 
 document
-.querySelectorAll(".rsvp-option")
-.forEach(function (option) {
+    .querySelectorAll(
+        ".rsvp-option"
+    )
+    .forEach(
+        function (option) {
 
-    option.addEventListener(
-        "click",
-        function () {
+            option.addEventListener(
+                "click",
+                function () {
 
-            const value =
-                option.dataset.val;
-
-            const popup =
-                document.getElementById(
-                    "successPopup"
-                );
-
-            const title =
-                document.getElementById(
-                    "successTitle"
-                );
-
-            const msg =
-                document.getElementById(
-                    "successMsg"
-                );
+                    const value =
+                        option.dataset.val;
 
 
-            if (
-                !popup ||
-                !title ||
-                !msg
-            ) {
-                return;
-            }
+                    const popup =
+                        document.getElementById(
+                            "successPopup"
+                        );
 
 
-            if (value === "hadir") {
-
-                title.textContent =
-                    "Terima Kasih! 💙";
-
-                msg.textContent =
-                    "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
-
-            } else {
-
-                title.textContent =
-                    "Terima Kasih! 🙏";
-
-                msg.textContent =
-                    "Terima kasih kerana memaklumkan kepada kami.";
-
-            }
+                    const title =
+                        document.getElementById(
+                            "successTitle"
+                        );
 
 
-            closeAllPopups();
-
-            popup.classList.add("open");
-
-        }
-    );
-
-});
+                    const msg =
+                        document.getElementById(
+                            "successMsg"
+                        );
 
 
-/* =====================================================
-   MUSIC
-===================================================== */
-
-const music =
-    document.getElementById(
-        "weddingMusic"
-    );
-
-const musicButton =
-    document.getElementById(
-        "musPlayBtn"
-    );
-
-const floatingButton =
-    document.getElementById(
-        "musicFloating"
-    );
+                    if (
+                        !popup ||
+                        !title ||
+                        !msg
+                    ) {
+                        return;
+                    }
 
 
-let musicPlaying = false;
+                    if (
+                        value === "hadir"
+                    ) {
+
+                        title.textContent =
+                            "Terima Kasih! 💙";
 
 
-function toggleMusic() {
+                        msg.textContent =
+                            "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
 
-    if (!music) {
+                    } else {
 
-        alert(
-            "Audio tidak dijumpai."
-        );
-
-        return;
-    }
+                        title.textContent =
+                            "Terima Kasih! 🙏";
 
 
-    if (musicPlaying) {
+                        msg.textContent =
+                            "Terima kasih kerana memaklumkan kepada kami.";
 
-        music.pause();
+                    }
 
-        musicPlaying = false;
 
-        if (musicButton) {
+                    closeAllPopups();
 
-            musicButton.textContent =
-                "▶ Mainkan Muzik";
+
+                    popup.classList.add(
+                        "open"
+                    );
+
+                }
+            );
 
         }
-
-        if (floatingButton) {
-
-            floatingButton.textContent =
-                "🎵";
-
-        }
-
-        return;
-    }
-
-
-    music.play()
-    .then(function () {
-
-        musicPlaying = true;
-
-        if (musicButton) {
-
-            musicButton.textContent =
-                "⏸ Hentikan Muzik";
-
-        }
-
-        if (floatingButton) {
-
-            floatingButton.textContent =
-                "⏸";
-
-        }
-
-    })
-    .catch(function () {
-
-        alert(
-            "Browser menghalang muzik atau fail MP3 belum dimasukkan."
-        );
-
-    });
-
-}
-
-
-if (musicButton) {
-
-    musicButton.addEventListener(
-        "click",
-        toggleMusic
     );
-
-}
-
-if (floatingButton) {
-
-    floatingButton.addEventListener(
-        "click",
-        toggleMusic
-    );
-
-}
 
 
 });
