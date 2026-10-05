@@ -417,19 +417,25 @@ p {
 
 /* =====================================================
    HOME
+   ★ HOME SAHAJA DIUBAH
 ===================================================== */
 
 #home {
+    min-height: 100vh;
+
+    padding:
+        35px 16px;
+
     background:
         radial-gradient(
-            circle at 10% 15%,
-            rgba(201,184,230,.55),
+            circle at 10% 10%,
+            rgba(201,184,230,.65),
             transparent 30%
         ),
 
         radial-gradient(
-            circle at 90% 80%,
-            rgba(185,222,242,.65),
+            circle at 90% 90%,
+            rgba(185,222,242,.7),
             transparent 32%
         ),
 
@@ -444,7 +450,7 @@ p {
     content: "";
 
     position: absolute;
-    inset: 25px;
+    inset: 15px;
 
     border:
         1px solid
@@ -455,42 +461,298 @@ p {
     pointer-events: none;
 }
 
-.subtitle {
-    color: var(--blue-dark);
 
-    font-size: 13px;
+/* HOME CARD */
 
-    letter-spacing: 4px;
+.home-card {
+    position: relative;
 
-    text-transform: uppercase;
+    width: 100%;
+    max-width: 760px;
 
-    margin-bottom: 15px;
-}
-
-.names {
-    margin: 15px 0;
-}
-
-.date {
-    display: inline-block;
+    margin: auto;
 
     padding:
-        10px 25px;
+        48px 35px 40px;
 
-    border-radius: 50px;
-
-    color: var(--blue-dark);
+    border-radius: 35px;
 
     background:
-        rgba(255,255,255,.75);
+        rgba(255,255,255,.82);
 
     border:
         1px solid
-        rgba(145,197,225,.5);
+        rgba(255,255,255,.95);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 20px 60px
+        rgba(100,80,135,.18);
+
+    text-align: center;
+}
+
+
+/* decorative frame */
+
+.home-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border:
+        1px solid
+        rgba(201,184,230,.35);
+
+    border-radius: 26px;
+
+    pointer-events: none;
+}
+
+
+/* small top ornament */
+
+.home-ornament {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 12px;
+
+    color:
+        var(--blue-dark);
+
+    font-size: 14px;
+
+    letter-spacing: 6px;
+}
+
+
+/* Walimatulurus */
+
+.home-subtitle {
+    position: relative;
+    z-index: 1;
+
+    color:
+        var(--blue-dark);
+
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 18px;
+}
+
+
+/* Names */
+
+.home-names {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(48px, 9vw, 82px);
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    color:
+        var(--lilac-dark);
+
+    text-shadow:
+        0 3px 15px
+        rgba(128,104,163,.12);
+}
+
+
+/* divider */
+
+.home-divider {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin:
+        24px auto;
+}
+
+.home-divider::before,
+.home-divider::after {
+    content: "";
+
+    width: 75px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--lilac)
+        );
+}
+
+.home-divider::after {
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            transparent
+        );
+}
+
+.home-divider span {
+    color:
+        var(--lilac-dark);
+
+    font-size: 16px;
+}
+
+
+/* date */
+
+.home-date {
+    position: relative;
+    z-index: 1;
+
+    display: inline-block;
+
+    padding:
+        12px 28px;
+
+    border-radius: 50px;
+
+    color:
+        var(--lilac-dark);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(233,224,245,.85),
+            rgba(233,247,252,.9)
+        );
+
+    border:
+        1px solid
+        rgba(145,197,225,.4);
 
     box-shadow:
         0 8px 25px
         rgba(95,148,181,.1);
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+/* hijrah */
+
+.home-hijrah {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 10px;
+
+    color:
+        var(--blue-dark);
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+
+/* countdown */
+
+.home-countdown {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 620px;
+
+    margin:
+        30px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.home-countdown-item {
+    padding:
+        17px 8px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(201,184,230,.38),
+            rgba(185,222,242,.42)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0 8px 22px
+        rgba(111,91,145,.09);
+}
+
+.home-number {
+    display: block;
+
+    font-size: 27px;
+
+    font-weight: 600;
+
+    color:
+        var(--lilac-dark);
+}
+
+.home-label {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color:
+        var(--blue-dark);
 }
 
 
@@ -1215,9 +1477,78 @@ p {
             65px 16px;
     }
 
+    #home {
+        padding:
+            25px 12px;
+    }
+
     #home::before {
-        inset: 15px;
+        inset: 10px;
         border-radius: 22px;
+    }
+
+    .home-card {
+        padding:
+            42px 18px 30px;
+
+        border-radius: 27px;
+    }
+
+    .home-card::before {
+        inset: 9px;
+        border-radius: 20px;
+    }
+
+    .home-subtitle {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .home-names {
+        font-size:
+            clamp(43px, 13vw, 62px);
+    }
+
+    .home-divider {
+        margin:
+            20px auto;
+    }
+
+    .home-divider::before,
+    .home-divider::after {
+        width: 45px;
+    }
+
+    .home-date {
+        padding:
+            10px 20px;
+
+        font-size: 12px;
+    }
+
+    .home-hijrah {
+        font-size: 10px;
+    }
+
+    .home-countdown {
+        gap: 6px;
+        margin-top: 25px;
+    }
+
+    .home-countdown-item {
+        padding:
+            13px 4px;
+
+        border-radius: 14px;
+    }
+
+    .home-number {
+        font-size: 21px;
+    }
+
+    .home-label {
+        font-size: 8px;
+        letter-spacing: 1px;
     }
 
     #seal {
@@ -1356,74 +1687,85 @@ p {
 
     <div class="hero">
 
-        <div class="subtitle">
-            Walimatulurus
-        </div>
+        <div class="home-card">
 
-        <h1 class="names">
-            Sikin & Aziman
-        </h1>
-
-        <div class="divider"></div>
-
-        <p>
-            Dengan penuh kesyukuran,
-            kami
-        </p>
-
-        <br>
-
-        <p>
-            <strong>M Nasar Bin Bakri</strong>
-        </p>
-
-        <p>&</p>
-
-        <p>
-            <strong>Katirah Binti Mansor</strong>
-        </p>
-
-        <br>
-
-        <p>
-            menjemput
-            Dato' | Datin | Tuan | Puan |
-            Encik | Cik serta seisi keluarga
-            hadir ke majlis perkahwinan puteri kami
-        </p>
-
-        <br>
-
-        <div class="date">
-            Sabtu, 19 Disember 2026
-        </div>
-
-        <p style="margin-top:10px;">
-            Bersamaan 9 Rejab 1448H
-        </p>
-
-        <br>
-
-        <div class="countdown">
-
-            <div class="countdown-item">
-                <span class="number" id="days">00</span>
-                <span class="label">Hari</span>
+            <div class="home-ornament">
+                ✦ ♡ ✦
             </div>
 
-            <div class="countdown-item">
-                <span class="number" id="hours">00</span>
-                <span class="label">Jam</span>
+            <div class="home-subtitle">
+                Walimatulurus
             </div>
 
-            <div class="countdown-item">
-                <span class="number" id="minutes">00</span>
-                <span class="label">Minit</span>
+            <h1 class="home-names">
+                Sikin & Aziman
+            </h1>
+
+            <div class="home-divider">
+                <span>♡</span>
             </div>
 
-            <div class="countdown-item">
-                <span class="number" id="seconds">00</span>
-                <span class="label">Saat</span>
+            <div class="home-date">
+                Sabtu, 19 Disember 2026
+            </div>
+
+            <p class="home-hijrah">
+                Bersamaan 9 Rejab 1448H
+            </p>
+
+            <div class="home-countdown">
+
+                <div class="home-countdown-item">
+                    <span
+                        class="home-number"
+                        id="days">
+                        00
+                    </span>
+
+                    <span class="home-label">
+                        Hari
+                    </span>
+                </div>
+
+
+                <div class="home-countdown-item">
+                    <span
+                        class="home-number"
+                        id="hours">
+                        00
+                    </span>
+
+                    <span class="home-label">
+                        Jam
+                    </span>
+                </div>
+
+
+                <div class="home-countdown-item">
+                    <span
+                        class="home-number"
+                        id="minutes">
+                        00
+                    </span>
+
+                    <span class="home-label">
+                        Minit
+                    </span>
+                </div>
+
+
+                <div class="home-countdown-item">
+                    <span
+                        class="home-number"
+                        id="seconds">
+                        00
+                    </span>
+
+                    <span class="home-label">
+                        Saat
+                    </span>
+                </div>
+
             </div>
 
         </div>
