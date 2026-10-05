@@ -1,89 +1,1617 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Majlis Perkahwinan Sikin & Aziman</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   THEME
+===================================================== */
+
+:root {
+    --lilac: #c9b8e6;
+    --lilac-light: #e9e0f5;
+    --lilac-soft: #f7f2fb;
+    --lilac-dark: #8068a3;
+
+    --blue: #91c5e1;
+    --blue-light: #e9f7fc;
+    --blue-soft: #f1faff;
+    --blue-dark: #6097b8;
+
+    --white: #ffffff;
+
+    --text: #656477;
+    --text-dark: #4c4d61;
+
+    --shadow:
+        0 15px 40px rgba(100, 80, 135, .15);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f2fb,
+            #edf9fd
+        );
+
+    overflow-x: hidden;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   OPENING
+===================================================== */
+
+#opening {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(201,184,230,.9),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(185,222,242,.9),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ded3ef,
+            #faf8fd,
+            #e1f4fa
+        );
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#opening.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   DOORS
+===================================================== */
+
+.door-left,
+.door-right {
+    position: absolute;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            145deg,
+            #b7a2d6,
+            #d9cbea
+        );
+
+    box-shadow:
+        inset 0 0 70px
+        rgba(255,255,255,.4);
+
+    transition:
+        transform 1.5s
+        cubic-bezier(.77,0,.175,1);
+}
+
+.door-left {
+    left: 0;
+    transform-origin: left center;
+}
+
+.door-right {
+    right: 0;
+    transform-origin: right center;
+}
+
+.door-left.open {
+    transform: translateX(-100%);
+}
+
+.door-right.open {
+    transform: translateX(100%);
+}
+
+
+/* =====================================================
+   SEAL
+===================================================== */
+
+#seal {
+    position: relative;
+    z-index: 20;
+
+    width: 115px;
+    height: 115px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 6px solid rgba(255,255,255,.9);
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #e8ddf4,
+            #b59bd3 65%,
+            #9879bd
+        );
+
+    box-shadow:
+        0 0 0 8px rgba(255,255,255,.25),
+        0 15px 45px rgba(90,70,125,.3);
+
+    animation:
+        sealFloat 3s ease-in-out infinite;
+
+    transition:
+        .5s ease;
+}
+
+#seal::before {
+    content: "S & A";
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+#seal::after {
+    content: "♡";
+
+    position: absolute;
+    bottom: 14px;
+
+    font-size: 14px;
+}
+
+#seal:hover {
+    transform: scale(1.08);
+}
+
+#seal.seal-open {
+    opacity: 0;
+    transform: scale(1.3);
+}
+
+@keyframes sealFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+#mainContent {
+    min-height: 100vh;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fcfaff,
+            #f5effa 45%,
+            #edf8fc
+        );
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        80px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.hero {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+
+h1,
+h2,
+h3 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    color:
+        var(--lilac-dark);
+}
+
+h1 {
+    font-size:
+        clamp(45px, 10vw, 82px);
+
+    line-height: 1.05;
+}
+
+h2 {
+    font-size:
+        clamp(32px, 7vw, 52px);
+}
+
+p {
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+#home {
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(201,184,230,.55),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(185,222,242,.65),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            135deg,
+            #faf6fd,
+            #edf9fd
+        );
+}
+
+#home::before {
+    content: "";
+
+    position: absolute;
+    inset: 25px;
+
+    border:
+        1px solid
+        rgba(128,104,163,.18);
+
+    border-radius: 30px;
+
+    pointer-events: none;
+}
+
+.subtitle {
+    color: var(--blue-dark);
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.names {
+    margin: 15px 0;
+}
+
+.date {
+    display: inline-block;
+
+    padding:
+        10px 25px;
+
+    border-radius: 50px;
+
+    color: var(--blue-dark);
+
+    background:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(145,197,225,.5);
+
+    box-shadow:
+        0 8px 25px
+        rgba(95,148,181,.1);
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+    padding: 35px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,.78);
+
+    border:
+        1px solid
+        rgba(255,255,255,.9);
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        var(--shadow);
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.countdown {
+    max-width: 650px;
+
+    margin:
+        30px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 12px;
+}
+
+.countdown-item {
+    padding: 18px 10px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(201,184,230,.4),
+            rgba(185,222,242,.45)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.85);
+
+    box-shadow:
+        0 8px 25px
+        rgba(111,91,145,.1);
+}
+
+.countdown-item span {
+    display: block;
+}
+
+.number {
+    font-size: 28px;
+    font-weight: 600;
+
+    color:
+        var(--lilac-dark);
+}
+
+.label {
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color:
+        var(--blue-dark);
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        13px 25px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--lilac-dark),
+            var(--blue-dark)
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(111,91,145,.2);
+
+    transition: .25s ease;
+}
+
+.btn:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(111,91,145,.3);
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.divider {
+    width: 90px;
+    height: 2px;
+
+    margin:
+        20px auto;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--lilac),
+            var(--blue)
+        );
+}
+
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav {
+    position: fixed;
+
+    left: 50%;
+    bottom: 15px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 5000;
+
+    width:
+        min(94%, 520px);
+
+    display: flex;
+
+    padding: 8px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.88);
+
+    border:
+        1px solid
+        rgba(201,184,230,.45);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 10px 35px
+        rgba(95,148,181,.18);
+}
+
+.bottom-nav button {
+    flex: 1;
+
+    border: none;
+
+    padding:
+        10px 5px;
+
+    border-radius: 18px;
+
+    background:
+        transparent;
+
+    color:
+        var(--lilac-dark);
+
+    transition: .25s ease;
+}
+
+.bottom-nav button:hover,
+.bottom-nav button.active {
+    background:
+        linear-gradient(
+            135deg,
+            var(--lilac-light),
+            var(--blue-light)
+        );
+
+    color:
+        var(--blue-dark);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   POPUP
+===================================================== */
+
+.popup-menu {
+    position: fixed;
+
+    left: 50%;
+    bottom: 90px;
+
+    z-index: 6000;
+
+    width:
+        min(92%, 430px);
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid
+        rgba(201,184,230,.45);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(95,148,181,.2);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translate(-50%,20px)
+        scale(.96);
+
+    transition: .3s ease;
+}
+
+.popup-menu.open {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translate(-50%,0)
+        scale(1);
+}
+
+.popup-menu h3 {
+    margin-bottom: 15px;
+}
+
+.close-popup {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        var(--lilac-light);
+
+    color:
+        var(--lilac-dark);
+}
+
+.popup-buttons {
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   RSVP
+===================================================== */
+
+.rsvp-option {
+    width: 100%;
+
+    padding:
+        14px 20px;
+
+    border:
+        1px solid
+        rgba(185,222,242,.7);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f1fb,
+            #eef9fd
+        );
+
+    color:
+        var(--text-dark);
+
+    transition: .25s ease;
+}
+
+.rsvp-option:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--lilac-light),
+            var(--blue-light)
+        );
+}
+
+
+/* =====================================================
+   SUCCESS POPUP
+===================================================== */
+
+#successPopup {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(75,65,95,.25);
+
+    backdrop-filter:
+        blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: .3s ease;
+}
+
+#successPopup.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.popup-content {
+    width: 100%;
+    max-width: 400px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f5effa,
+            #eef9fd
+        );
+
+    box-shadow:
+        0 25px 70px
+        rgba(95,148,181,.25);
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+#musicFloating {
+    position: fixed;
+
+    right: 20px;
+    bottom: 95px;
+
+    z-index: 4500;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--lilac),
+            var(--blue)
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(95,148,181,.25);
+
+    transition: .3s ease;
+}
+
+#musicFloating:hover {
+    transform:
+        scale(1.1);
+}
+
+
+/* =====================================================
+   PETALS
+===================================================== */
+
+.petal-container {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 3000;
+}
+
+.petal {
+    position: absolute;
+
+    top: -30px;
+
+    width: 12px;
+    height: 18px;
+
+    border-radius:
+        80% 20% 80% 20%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ceb9e8,
+            #b9def2
+        );
+
+    animation:
+        petalFall linear forwards;
+}
+
+@keyframes petalFall {
+
+    0% {
+        transform:
+            translateY(-30px)
+            translateX(0)
+            rotate(0);
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            translateX(35px)
+            rotate(180deg);
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(-30px)
+            rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px) {
+
+    section {
+        padding:
+            65px 16px;
+    }
+
+    #home::before {
+        inset: 15px;
+        border-radius: 22px;
+    }
+
+    #seal {
+        width: 100px;
+        height: 100px;
+    }
+
+    .countdown {
+        gap: 7px;
+    }
+
+    .countdown-item {
+        padding:
+            14px 5px;
+    }
+
+    .number {
+        font-size: 23px;
+    }
+
+    .label {
+        font-size: 9px;
+    }
+
+    .card {
+        padding: 24px 18px;
+        border-radius: 22px;
+    }
+
+    .bottom-nav {
+        bottom: 10px;
+        border-radius: 20px;
+    }
+
+    .bottom-nav button {
+        font-size: 11px;
+        padding: 9px 3px;
+    }
+
+    #musicFloating {
+        right: 15px;
+        bottom: 82px;
+
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background:
+        #f5f0fa;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            var(--lilac),
+            var(--blue)
+        );
+}
+
+</style>
+</head>
+
+
+<body class="locked">
+
+
+<!-- =====================================================
+     OPENING
+===================================================== -->
+
+<div id="opening">
+
+    <div class="door-left"></div>
+    <div class="door-right"></div>
+
+    <button id="seal" aria-label="Buka jemputan"></button>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main id="mainContent">
+
+
+    <!-- HOME -->
+
+    <section id="home">
+
+        <div class="hero">
+
+            <div class="subtitle">
+                Walimatulurus
+            </div>
+
+            <h1 class="names">
+                Sikin & Aziman
+            </h1>
+
+            <div class="divider"></div>
+
+            <p>
+                Dengan penuh kesyukuran,
+                kami menjemput anda hadir
+                ke majlis perkahwinan kami.
+            </p>
+
+            <br>
+
+            <div class="date">
+                19 Disember 2026
+            </div>
+
+            <br><br>
+
+            <div class="countdown">
+
+                <div class="countdown-item">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Hari</span>
+                </div>
+
+                <div class="countdown-item">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Jam</span>
+                </div>
+
+                <div class="countdown-item">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Minit</span>
+                </div>
+
+                <div class="countdown-item">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Saat</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DETAIL -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="card">
+
+                <h2>Majlis Perkahwinan</h2>
+
+                <div class="divider"></div>
+
+                <p>
+                    <strong>Sikin & Aziman</strong>
+                </p>
+
+                <br>
+
+                <p>
+                    Sabtu, 19 Disember 2026
+                </p>
+
+                <p>
+                    11:00 pagi – 4:00 petang
+                </p>
+
+                <br>
+
+                <p>
+                    No 66 Blok 5B Jalan Merak,<br>
+                    Felda Nitar 01,<br>
+                    86800 Mersing, Johor.
+                </p>
+
+                <br>
+
+                <button
+                    class="btn"
+                    onclick="openGoogleMaps()">
+
+                    📍 Buka Google Maps
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALENDAR -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="card">
+
+                <h2>Simpan Tarikh</h2>
+
+                <div class="divider"></div>
+
+                <p>
+                    Jangan lupa simpan tarikh
+                    istimewa kami.
+                </p>
+
+                <br>
+
+                <button
+                    class="btn"
+                    onclick="addGoogleCalendar()">
+
+                    📅 Google Calendar
+
+                </button>
+
+                <br><br>
+
+                <button
+                    class="btn"
+                    onclick="addAppleCalendar()">
+
+                    🍎 Apple Calendar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     PETALS
+===================================================== -->
+
+<div class="petal-container"></div>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="weddingMusic"
+    loop
+    preload="auto">
+
+    <!--
+    Tukar kepada nama fail MP3 awak.
+    Contoh:
+    <source src="lagu.mp3" type="audio/mpeg">
+    -->
+
+</audio>
+
+<button
+    id="musicFloating"
+    aria-label="Muzik">
+
+    🎵
+
+</button>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+    <button id="homeBtn">
+        🏠<br>
+        Home
+    </button>
+
+    <button id="calBtn">
+        📅<br>
+        Calendar
+    </button>
+
+    <button id="locBtn">
+        📍<br>
+        Lokasi
+    </button>
+
+    <button id="musBtn">
+        🎵<br>
+        Muzik
+    </button>
+
+    <button id="rsvpBtn">
+        💌<br>
+        RSVP
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     CALENDAR POPUP
+===================================================== -->
+
+<div
+    class="popup-menu"
+    id="calPopup">
+
+    <button
+        class="close-popup"
+        data-close="calPopup">
+
+        ×
+
+    </button>
+
+    <h3>
+        📅 Simpan Tarikh
+    </h3>
+
+    <div class="popup-buttons">
+
+        <button
+            class="btn"
+            onclick="addGoogleCalendar()">
+
+            Google Calendar
+
+        </button>
+
+        <button
+            class="btn"
+            onclick="addAppleCalendar()">
+
+            Apple Calendar
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     LOCATION POPUP
+===================================================== -->
+
+<div
+    class="popup-menu"
+    id="locPopup">
+
+    <button
+        class="close-popup"
+        data-close="locPopup">
+
+        ×
+
+    </button>
+
+    <h3>
+        📍 Lokasi Majlis
+    </h3>
+
+    <p>
+        No 66 Blok 5B Jalan Merak,<br>
+        Felda Nitar 01,<br>
+        86800 Mersing, Johor
+    </p>
+
+    <br>
+
+    <div class="popup-buttons">
+
+        <button
+            class="btn"
+            onclick="openGoogleMaps()">
+
+            Google Maps
+
+        </button>
+
+        <button
+            class="btn"
+            onclick="openWaze()">
+
+            Waze
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MUSIC POPUP
+===================================================== -->
+
+<div
+    class="popup-menu"
+    id="musPopup">
+
+    <button
+        class="close-popup"
+        data-close="musPopup">
+
+        ×
+
+    </button>
+
+    <h3>
+        🎵 Muzik
+    </h3>
+
+    <p>
+        Tekan butang di bawah untuk
+        memainkan muzik.
+    </p>
+
+    <br>
+
+    <button
+        class="btn"
+        id="musPlayBtn">
+
+        ▶ Mainkan Muzik
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     RSVP POPUP
+===================================================== -->
+
+<div
+    class="popup-menu"
+    id="rsvpPopup">
+
+    <button
+        class="close-popup"
+        data-close="rsvpPopup">
+
+        ×
+
+    </button>
+
+    <h3>
+        💌 RSVP
+    </h3>
+
+    <p>
+        Adakah anda akan hadir
+        ke majlis kami?
+    </p>
+
+    <br>
+
+    <button
+        class="rsvp-option"
+        data-val="hadir">
+
+        💙 Ya, saya akan hadir
+
+    </button>
+
+    <button
+        class="rsvp-option"
+        data-val="tidak">
+
+        🙏 Maaf, saya tidak dapat hadir
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     SUCCESS POPUP
+===================================================== -->
+
+<div id="successPopup">
+
+    <div class="popup-content">
+
+        <h2 id="successTitle">
+            Terima Kasih! 💙
+        </h2>
+
+        <div class="divider"></div>
+
+        <p id="successMsg">
+            Terima kasih kerana
+            memaklumkan kepada kami.
+        </p>
+
+        <br>
+
+        <button
+            class="btn"
+            onclick="document.getElementById('successPopup').classList.remove('open')">
+
+            Tutup
+
+        </button>
+
+    </div>
+
+</div>
+
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
 
-    // ==========================================
-    // ELEMENT UTAMA
-    // ==========================================
-
-    const opening = document.getElementById("opening");
-    const seal = document.getElementById("seal");
-    const mainContent = document.getElementById("mainContent");
-
-    let opened = false;
+document.addEventListener("DOMContentLoaded", function () {
 
 
-    // ==========================================
-    // SEMBUNYIKAN MAIN CONTENT
-    // ==========================================
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-    if (mainContent) {
-        mainContent.style.opacity = "0";
-        mainContent.style.visibility = "hidden";
-        mainContent.style.pointerEvents = "none";
-    }
+const opening =
+    document.getElementById("opening");
 
+const seal =
+    document.getElementById("seal");
 
-    // ==========================================
-    // BUKA INVITATION
-    // ==========================================
+const mainContent =
+    document.getElementById("mainContent");
 
-    function openInvitation() {
+const doorLeft =
+    document.querySelector(".door-left");
 
-        if (opened) return;
+const doorRight =
+    document.querySelector(".door-right");
 
-        opened = true;
-
-        if (seal) {
-            seal.classList.add("seal-open");
-        }
-
-        const doorLeft = document.querySelector(".door-left");
-        const doorRight = document.querySelector(".door-right");
-
-        if (doorLeft) {
-            doorLeft.classList.add("open");
-        }
-
-        if (doorRight) {
-            doorRight.classList.add("open");
-        }
-
-        setTimeout(() => {
-
-            if (opening) {
-                opening.classList.add("hide");
-            }
-
-            if (mainContent) {
-                mainContent.style.opacity = "1";
-                mainContent.style.visibility = "visible";
-                mainContent.style.pointerEvents = "auto";
-            }
-
-            document.body.classList.remove("locked");
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-            startPetals();
-
-        }, 1500);
-    }
+const petalContainer =
+    document.querySelector(".petal-container");
 
 
-    // ==========================================
-    // SEAL CLICK
-    // ==========================================
+let opened = false;
+let petalsStarted = false;
+
+
+/* =====================================================
+   OPEN INVITATION
+===================================================== */
+
+function openInvitation() {
+
+    if (opened) return;
+
+    opened = true;
 
     if (seal) {
+        seal.classList.add("seal-open");
+    }
 
-        seal.addEventListener("click", openInvitation);
+    if (doorLeft) {
+        doorLeft.classList.add("open");
+    }
 
-        seal.addEventListener("keydown", (e) => {
+    if (doorRight) {
+        doorRight.classList.add("open");
+    }
 
-            if (e.key === "Enter" || e.key === " ") {
+    setTimeout(function () {
+
+        if (opening) {
+            opening.classList.add("hide");
+        }
+
+        if (mainContent) {
+
+            mainContent.style.opacity = "1";
+            mainContent.style.visibility = "visible";
+            mainContent.style.pointerEvents = "auto";
+
+        }
+
+        document.body.classList.remove("locked");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        startPetals();
+
+    }, 1500);
+
+}
+
+
+/* =====================================================
+   SEAL CLICK
+===================================================== */
+
+if (seal) {
+
+    seal.addEventListener(
+        "click",
+        openInvitation
+    );
+
+    seal.addEventListener(
+        "keydown",
+        function (e) {
+
+            if (
+                e.key === "Enter" ||
+                e.key === " "
+            ) {
 
                 e.preventDefault();
 
@@ -91,233 +1619,256 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-        });
-
-    }
-
-
-    // ==========================================
-    // BUNGA JATUH
-    // ==========================================
-
-    const petalContainer =
-        document.querySelector(".petal-container");
-
-    let petalsStarted = false;
-
-
-    function createPetal() {
-
-        if (!petalContainer) return;
-
-        const petal =
-            document.createElement("div");
-
-        petal.className = "petal";
-
-        petal.style.left =
-            Math.random() * 100 + "%";
-
-        petal.style.animationDuration =
-            (4 + Math.random() * 5) + "s";
-
-        petal.style.opacity =
-            (0.25 + Math.random() * 0.4);
-
-        petalContainer.appendChild(petal);
-
-        setTimeout(() => {
-
-            petal.remove();
-
-        }, 9000);
-
-    }
-
-
-    function startPetals() {
-
-        if (petalsStarted || !petalContainer) {
-            return;
         }
+    );
 
-        petalsStarted = true;
+}
 
-        setInterval(createPetal, 500);
 
+/* =====================================================
+   PETALS
+===================================================== */
+
+function createPetal() {
+
+    if (!petalContainer) return;
+
+    const petal =
+        document.createElement("div");
+
+    petal.className = "petal";
+
+    petal.style.left =
+        Math.random() * 100 + "%";
+
+    petal.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
+
+    petal.style.opacity =
+        0.25 + Math.random() * 0.5;
+
+    petalContainer.appendChild(petal);
+
+    setTimeout(function () {
+
+        petal.remove();
+
+    }, 9000);
+
+}
+
+
+function startPetals() {
+
+    if (
+        petalsStarted ||
+        !petalContainer
+    ) {
+        return;
+    }
+
+    petalsStarted = true;
+
+    createPetal();
+
+    setInterval(
+        createPetal,
+        600
+    );
+
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+const weddingDate =
+    new Date(
+        "2026-12-19T11:00:00+08:00"
+    );
+
+
+function updateCountdown() {
+
+    const days =
+        document.getElementById("days");
+
+    const hours =
+        document.getElementById("hours");
+
+    const minutes =
+        document.getElementById("minutes");
+
+    const seconds =
+        document.getElementById("seconds");
+
+
+    if (
+        !days ||
+        !hours ||
+        !minutes ||
+        !seconds
+    ) {
+        return;
     }
 
 
-    // ==========================================
-    // COUNTDOWN
-    // ==========================================
+    const now =
+        new Date();
 
-    const WEDDING_DATE =
-        new Date("2026-12-19T11:00:00+08:00");
-
-
-    function updateCountdown() {
-
-        const daysEl =
-            document.getElementById("days");
-
-        const hoursEl =
-            document.getElementById("hours");
-
-        const minutesEl =
-            document.getElementById("minutes");
-
-        const secondsEl =
-            document.getElementById("seconds");
+    const diff =
+        weddingDate - now;
 
 
-        // Kalau countdown HTML belum ada,
-        // jangan crash.
+    if (diff <= 0) {
 
-        if (
-            !daysEl ||
-            !hoursEl ||
-            !minutesEl ||
-            !secondsEl
-        ) {
-            return;
-        }
+        days.textContent = "00";
+        hours.textContent = "00";
+        minutes.textContent = "00";
+        seconds.textContent = "00";
 
-
-        const now = new Date();
-
-        const diff =
-            WEDDING_DATE - now;
-
-
-        if (diff <= 0) {
-
-            daysEl.textContent = "00";
-            hoursEl.textContent = "00";
-            minutesEl.textContent = "00";
-            secondsEl.textContent = "00";
-
-            return;
-
-        }
-
-
-        const days =
-            Math.floor(
-                diff / 86400000
-            );
-
-
-        const hours =
-            Math.floor(
-                (diff % 86400000) /
-                3600000
-            );
-
-
-        const minutes =
-            Math.floor(
-                (diff % 3600000) /
-                60000
-            );
-
-
-        const seconds =
-            Math.floor(
-                (diff % 60000) /
-                1000
-            );
-
-
-        daysEl.textContent =
-            String(days).padStart(2, "0");
-
-        hoursEl.textContent =
-            String(hours).padStart(2, "0");
-
-        minutesEl.textContent =
-            String(minutes).padStart(2, "0");
-
-        secondsEl.textContent =
-            String(seconds).padStart(2, "0");
-
+        return;
     }
 
 
-    updateCountdown();
-
-    setInterval(updateCountdown, 1000);
-
-
-    // ==========================================
-    // GOOGLE MAPS
-    // ==========================================
-
-    window.openGoogleMaps = function () {
-
-        window.open(
-            "https://www.google.com/maps/search/?api=1&query=2.3807618,103.7116231",
-            "_blank"
+    const d =
+        Math.floor(
+            diff / 86400000
         );
 
-    };
-
-
-    // ==========================================
-    // WAZE
-    // ==========================================
-
-    window.openWaze = function () {
-
-        window.open(
-            "https://www.waze.com/ul?ll=2.3807618%2C103.7116231&navigate=yes",
-            "_blank"
+    const h =
+        Math.floor(
+            (diff % 86400000)
+            / 3600000
         );
 
-    };
+    const m =
+        Math.floor(
+            (diff % 3600000)
+            / 60000
+        );
+
+    const s =
+        Math.floor(
+            (diff % 60000)
+            / 1000
+        );
 
 
-    // ==========================================
-    // GOOGLE CALENDAR
-    // ==========================================
+    days.textContent =
+        String(d).padStart(2,"0");
 
-    window.addGoogleCalendar = function () {
+    hours.textContent =
+        String(h).padStart(2,"0");
 
-        const title =
-            "Majlis Perkahwinan Sikin & Aziman";
+    minutes.textContent =
+        String(m).padStart(2,"0");
 
-        const start =
-            "20261219T030000Z";
+    seconds.textContent =
+        String(s).padStart(2,"0");
 
-        const end =
-            "20261219T080000Z";
-
-        const location =
-            "No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor";
-
-        const details =
-            "Walimatulurus Sikin & Aziman";
-
-        const url =
-            "https://calendar.google.com/calendar/render" +
-            "?action=TEMPLATE" +
-            "&text=" + encodeURIComponent(title) +
-            "&dates=" + start + "/" + end +
-            "&location=" + encodeURIComponent(location) +
-            "&details=" + encodeURIComponent(details);
-
-        window.open(url, "_blank");
-
-    };
+}
 
 
-    // ==========================================
-    // APPLE CALENDAR
-    // ==========================================
+updateCountdown();
 
-    window.addAppleCalendar = function () {
+setInterval(
+    updateCountdown,
+    1000
+);
 
-        const ics =
+
+/* =====================================================
+   GOOGLE MAPS
+===================================================== */
+
+window.openGoogleMaps =
+function () {
+
+    const url =
+        "https://www.google.com/maps/search/?api=1&query=2.3807618,103.7116231";
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+};
+
+
+/* =====================================================
+   WAZE
+===================================================== */
+
+window.openWaze =
+function () {
+
+    const url =
+        "https://www.waze.com/ul?ll=2.3807618%2C103.7116231&navigate=yes";
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+};
+
+
+/* =====================================================
+   GOOGLE CALENDAR
+===================================================== */
+
+window.addGoogleCalendar =
+function () {
+
+    const title =
+        "Majlis Perkahwinan Sikin & Aziman";
+
+    const start =
+        "20261219T030000Z";
+
+    const end =
+        "20261219T080000Z";
+
+    const location =
+        "No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor";
+
+    const details =
+        "Walimatulurus Sikin & Aziman";
+
+
+    const url =
+        "https://calendar.google.com/calendar/render" +
+        "?action=TEMPLATE" +
+        "&text=" +
+        encodeURIComponent(title) +
+        "&dates=" +
+        start +
+        "/" +
+        end +
+        "&location=" +
+        encodeURIComponent(location) +
+        "&details=" +
+        encodeURIComponent(details);
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+};
+
+
+/* =====================================================
+   APPLE CALENDAR
+===================================================== */
+
+window.addAppleCalendar =
+function () {
+
+    const ics =
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Sikin & Aziman//Wedding//MS
@@ -330,369 +1881,375 @@ DESCRIPTION:Walimatulurus Sikin & Aziman
 END:VEVENT
 END:VCALENDAR`;
 
-        const blob =
-            new Blob(
-                [ics],
-                {
-                    type:
-                        "text/calendar;charset=utf-8"
-                }
-            );
 
-        const url =
-            URL.createObjectURL(blob);
-
-        const a =
-            document.createElement("a");
-
-        a.href = url;
-
-        a.download =
-            "jemputan-sikin-aziman.ics";
-
-        document.body.appendChild(a);
-
-        a.click();
-
-        document.body.removeChild(a);
-
-        URL.revokeObjectURL(url);
-
-    };
+    const blob =
+        new Blob(
+            [ics],
+            {
+                type:
+                    "text/calendar;charset=utf-8"
+            }
+        );
 
 
-    // ==========================================
-    // POPUP MENU
-    // ==========================================
-
-    const menus = {
-
-        calBtn: "calPopup",
-        locBtn: "locPopup",
-        musBtn: "musPopup",
-        rsvpBtn: "rsvpPopup"
-
-    };
+    const url =
+        URL.createObjectURL(blob);
 
 
-    Object.entries(menus).forEach(
-        ([buttonId, popupId]) => {
+    const a =
+        document.createElement("a");
 
-            const button =
-                document.getElementById(buttonId);
+    a.href = url;
+
+    a.download =
+        "jemputan-sikin-aziman.ics";
+
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(url);
+
+};
+
+
+/* =====================================================
+   POPUPS
+===================================================== */
+
+const menus = {
+
+    calBtn: "calPopup",
+    locBtn: "locPopup",
+    musBtn: "musPopup",
+    rsvpBtn: "rsvpPopup"
+
+};
+
+
+function closeAllPopups() {
+
+    document
+        .querySelectorAll(".popup-menu")
+        .forEach(function (popup) {
+
+            popup.classList.remove("open");
+
+        });
+
+}
+
+
+Object.entries(menus)
+.forEach(function ([buttonId,popupId]) {
+
+    const button =
+        document.getElementById(
+            buttonId
+        );
+
+    const popup =
+        document.getElementById(
+            popupId
+        );
+
+
+    if (!button || !popup) {
+        return;
+    }
+
+
+    button.addEventListener(
+        "click",
+        function (e) {
+
+            e.stopPropagation();
+
+            const wasOpen =
+                popup.classList.contains("open");
+
+            closeAllPopups();
+
+            if (!wasOpen) {
+                popup.classList.add("open");
+            }
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   HOME BUTTON
+===================================================== */
+
+const homeBtn =
+    document.getElementById("homeBtn");
+
+
+if (homeBtn) {
+
+    homeBtn.addEventListener(
+        "click",
+        function () {
+
+            closeAllPopups();
+
+            const home =
+                document.getElementById("home");
+
+            if (home) {
+
+                home.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE POPUP BUTTON
+===================================================== */
+
+document
+.querySelectorAll(".close-popup")
+.forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            const id =
+                button.dataset.close;
 
             const popup =
-                document.getElementById(popupId);
+                document.getElementById(id);
+
+            if (popup) {
+
+                popup.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+    );
+
+});
 
 
-            if (!button || !popup) {
+/* =====================================================
+   CLICK OUTSIDE POPUP
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function (e) {
+
+        if (
+            !e.target.closest(".popup-menu") &&
+            !e.target.closest(".bottom-nav")
+        ) {
+
+            closeAllPopups();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   RSVP
+===================================================== */
+
+document
+.querySelectorAll(".rsvp-option")
+.forEach(function (option) {
+
+    option.addEventListener(
+        "click",
+        function () {
+
+            const value =
+                option.dataset.val;
+
+            const popup =
+                document.getElementById(
+                    "successPopup"
+                );
+
+            const title =
+                document.getElementById(
+                    "successTitle"
+                );
+
+            const msg =
+                document.getElementById(
+                    "successMsg"
+                );
+
+
+            if (
+                !popup ||
+                !title ||
+                !msg
+            ) {
                 return;
             }
 
 
-            button.addEventListener(
-                "click",
-                (e) => {
+            if (value === "hadir") {
 
-                    e.stopPropagation();
+                title.textContent =
+                    "Terima Kasih! 💙";
 
-                    closeAllPopups();
+                msg.textContent =
+                    "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
 
-                    popup.classList.add("open");
+            } else {
 
-                }
-            );
+                title.textContent =
+                    "Terima Kasih! 🙏";
+
+                msg.textContent =
+                    "Terima kasih kerana memaklumkan kepada kami.";
+
+            }
+
+
+            closeAllPopups();
+
+            popup.classList.add("open");
 
         }
     );
-
-
-    // ==========================================
-    // HOME
-    // ==========================================
-
-    const homeBtn =
-        document.getElementById("homeBtn");
-
-
-    if (homeBtn) {
-
-        homeBtn.addEventListener(
-            "click",
-            () => {
-
-                closeAllPopups();
-
-                const home =
-                    document.getElementById("home");
-
-                if (home) {
-
-                    home.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
-            }
-        );
-
-    }
-
-
-    // ==========================================
-    // CLOSE POPUP
-    // ==========================================
-
-    document
-        .querySelectorAll(".close-popup")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const popupId =
-                        button.dataset.close;
-
-                    const popup =
-                        document.getElementById(
-                            popupId
-                        );
-
-                    if (popup) {
-
-                        popup.classList.remove(
-                            "open"
-                        );
-
-                    }
-
-                }
-            );
-
-        });
-
-
-    function closeAllPopups() {
-
-        document
-            .querySelectorAll(".popup-menu")
-            .forEach(popup => {
-
-                popup.classList.remove("open");
-
-            });
-
-    }
-
-
-    // ==========================================
-    // KLIK LUAR POPUP
-    // ==========================================
-
-    document.addEventListener(
-        "click",
-        (e) => {
-
-            if (
-                !e.target.closest(".popup-menu") &&
-                !e.target.closest(".bottom-nav")
-            ) {
-
-                closeAllPopups();
-
-            }
-
-        }
-    );
-
-
-    // ==========================================
-    // RSVP
-    // ==========================================
-
-    document
-        .querySelectorAll(".rsvp-option")
-        .forEach(option => {
-
-            option.addEventListener(
-                "click",
-                () => {
-
-                    const value =
-                        option.dataset.val;
-
-                    const successPopup =
-                        document.getElementById(
-                            "successPopup"
-                        );
-
-                    const title =
-                        document.getElementById(
-                            "successTitle"
-                        );
-
-                    const msg =
-                        document.getElementById(
-                            "successMsg"
-                        );
-
-
-                    if (
-                        !successPopup ||
-                        !title ||
-                        !msg
-                    ) {
-                        return;
-                    }
-
-
-                    if (value === "hadir") {
-
-                        title.textContent =
-                            "Terima Kasih! 💙";
-
-                        msg.textContent =
-                            "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
-
-                    } else {
-
-                        title.textContent =
-                            "Terima Kasih! 🙏";
-
-                        msg.textContent =
-                            "Terima kasih kerana memaklumkan kepada kami.";
-
-                    }
-
-
-                    closeAllPopups();
-
-                    successPopup.classList.add(
-                        "open"
-                    );
-
-                }
-            );
-
-        });
-
-
-    // ==========================================
-    // MUZIK
-    // ==========================================
-
-    const music =
-        document.getElementById(
-            "weddingMusic"
-        );
-
-    const musicButton =
-        document.getElementById(
-            "musPlayBtn"
-        );
-
-    const floatingButton =
-        document.getElementById(
-            "musicFloating"
-        );
-
-
-    let musicPlaying = false;
-
-
-    function toggleMusic() {
-
-        if (!music) {
-
-            alert(
-                "Audio tidak dijumpai. Pastikan <audio id=\"weddingMusic\"> ada dalam HTML."
-            );
-
-            return;
-
-        }
-
-
-        if (musicPlaying) {
-
-            music.pause();
-
-            musicPlaying = false;
-
-
-            if (musicButton) {
-
-                musicButton.textContent =
-                    "▶ Mainkan Muzik";
-
-            }
-
-
-            if (floatingButton) {
-
-                floatingButton.textContent =
-                    "🎵";
-
-            }
-
-
-        } else {
-
-            music.play()
-                .then(() => {
-
-                    musicPlaying = true;
-
-
-                    if (musicButton) {
-
-                        musicButton.textContent =
-                            "⏸ Hentikan Muzik";
-
-                    }
-
-
-                    if (floatingButton) {
-
-                        floatingButton.textContent =
-                            "⏸";
-
-                    }
-
-                })
-                .catch(() => {
-
-                    alert(
-                        "Sila pastikan fail MP3 wujud dan laluan audio betul."
-                    );
-
-                });
-
-        }
-
-    }
-
-
-    if (musicButton) {
-
-        musicButton.addEventListener(
-            "click",
-            toggleMusic
-        );
-
-    }
-
-
-    if (floatingButton) {
-
-        floatingButton.addEventListener(
-            "click",
-            toggleMusic
-        );
-
-    }
 
 });
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const music =
+    document.getElementById(
+        "weddingMusic"
+    );
+
+const musicButton =
+    document.getElementById(
+        "musPlayBtn"
+    );
+
+const floatingButton =
+    document.getElementById(
+        "musicFloating"
+    );
+
+
+let musicPlaying = false;
+
+
+function toggleMusic() {
+
+    if (!music) {
+
+        alert(
+            "Audio tidak dijumpai."
+        );
+
+        return;
+    }
+
+
+    if (musicPlaying) {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        if (musicButton) {
+
+            musicButton.textContent =
+                "▶ Mainkan Muzik";
+
+        }
+
+        if (floatingButton) {
+
+            floatingButton.textContent =
+                "🎵";
+
+        }
+
+        return;
+    }
+
+
+    music.play()
+    .then(function () {
+
+        musicPlaying = true;
+
+        if (musicButton) {
+
+            musicButton.textContent =
+                "⏸ Hentikan Muzik";
+
+        }
+
+        if (floatingButton) {
+
+            floatingButton.textContent =
+                "⏸";
+
+        }
+
+    })
+    .catch(function () {
+
+        alert(
+            "Browser menghalang muzik atau fail MP3 belum dimasukkan."
+        );
+
+    });
+
+}
+
+
+if (musicButton) {
+
+    musicButton.addEventListener(
+        "click",
+        toggleMusic
+    );
+
+}
+
+if (floatingButton) {
+
+    floatingButton.addEventListener(
+        "click",
+        toggleMusic
+    );
+
+}
+
+
+});
+
 </script>
+
+</body>
+</html>
