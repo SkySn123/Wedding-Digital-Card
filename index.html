@@ -450,66 +450,6 @@ button {
 }
 
 /* =====================================================
-   LILAC FLOWER - TENGAH ATAS SETIAP PAGE
-===================================================== */
-
-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: -5px;
-    left: 50%;
-
-    width: 180px;
-    height: 180px;
-
-    background-image:
-        url("lilac flower up.png");
-
-    background-size: contain;
-
-    background-repeat: no-repeat;
-
-    background-position: center;
-
-    transform:
-        translateX(-50%)
-        rotate(180deg);
-
-    pointer-events: none;
-
-    z-index: 1;
-}
-
-
-/* Content kekal di atas bunga */
-
-section > .container,
-section > .hero {
-
-    position: relative;
-
-    z-index: 2;
-}
-
-
-/* Mobile */
-
-@media(max-width:600px) {
-
-    section::before {
-
-        width: 130px;
-        height: 130px;
-
-        top: -5px;
-
-    }
-
-}
-/* =====================================================
    SECTIONS
 ===================================================== */
 
