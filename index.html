@@ -3682,86 +3682,104 @@ END:VCALENDAR`;
 
 
                 /* =================================================
-                   RSVP
-                ================================================= */
+   RSVP - HANTAR KE GOOGLE SHEETS
+================================================= */
 
-                document
-                    .querySelectorAll(".rsvp-option")
-                    .forEach(
-                        function (option) {
-
-                            option.addEventListener(
-                                "click",
-                                function () {
-
-                                    const value =
-                                        option.dataset.val;
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbx7tPRmemSBkZbYwGFGA33vfEdu9bI7dzkCr-wwb9cNh60Mf4A3BeoNNmef7s-7-SIV5w/exec";
 
 
-                                    const popup =
-                                        document.getElementById(
-                                            "successPopup"
-                                        );
+document
+    .querySelectorAll(".rsvp-option")
+    .forEach(function (option) {
 
+        option.addEventListener(
+            "click",
+            function () {
 
-                                    const title =
-                                        document.getElementById(
-                                            "successTitle"
-                                        );
+                const value =
+                    option.dataset.val;
 
-
-                                    const msg =
-                                        document.getElementById(
-                                            "successMsg"
-                                        );
-
-
-                                    if (
-                                        !popup ||
-                                        !title ||
-                                        !msg
-                                    ) {
-                                        return;
-                                    }
-
-
-                                    if (
-                                        value === "hadir"
-                                    ) {
-
-                                        title.textContent =
-                                            "Terima Kasih! 💙";
-
-                                        msg.textContent =
-                                            "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
-
-                                    } else {
-
-                                        title.textContent =
-                                            "Terima Kasih! 🙏";
-
-                                        msg.textContent =
-                                            "Terima kasih kerana memaklumkan kepada kami.";
-
-                                    }
-
-
-                                    closeAllPopups();
-
-                                    popup.classList.add(
-                                        "open"
-                                    );
-
-                                }
-                            );
-
-                        }
+                const popup =
+                    document.getElementById(
+                        "successPopup"
                     );
 
-            }
+                const title =
+                    document.getElementById(
+                        "successTitle"
+                    );
 
+                const msg =
+                    document.getElementById(
+                        "successMsg"
+                    );
+
+
+                /* Hantar data ke Google Sheets */
+
+                fetch(
+                    GOOGLE_SCRIPT_URL,
+                    {
+                        method: "POST",
+
+                        mode: "no-cors",
+
+                        headers: {
+                            "Content-Type":
+                                "application/x-www-form-urlencoded"
+                        },
+
+                        body:
+                            "status=" +
+                            encodeURIComponent(value)
+                    }
+                )
+                .then(function () {
+
+                    /* Paparkan mesej berjaya */
+
+                    if (value === "hadir") {
+
+                        title.textContent =
+                            "Terima Kasih! 💙";
+
+                        msg.textContent =
+                            "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
+
+                    } else {
+
+                        title.textContent =
+                            "Terima Kasih! 🙏";
+
+                        msg.textContent =
+                            "Terima kasih kerana memaklumkan kepada kami.";
+
+                    }
+
+
+                    closeAllPopups();
+
+                    popup.classList.add("open");
+
+                })
+                .catch(function (error) {
+
+                    console.error(
+                        "RSVP gagal dihantar:",
+                        error
+                    );
+
+                    alert(
+                        "Maaf, RSVP tidak berjaya dihantar. Sila cuba lagi."
+                    );
+
+                });
+
+            }
         );
 
+    });
     </script>
 
 </body>
