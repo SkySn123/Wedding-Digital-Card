@@ -75,10 +75,6 @@ button {
 
 /* =====================================================
    OPENING
-   PENTING:
-   Opening berada di atas semua kandungan.
-   Video TIDAK akan muncul sehingga opening
-   benar-benar disorokkan.
 ===================================================== */
 
 #opening {
@@ -154,26 +150,17 @@ button {
         transform 1.5s cubic-bezier(.77,0,.175,1);
 }
 
-
-/* LEFT */
-
 .door-left {
     left: 0;
     background-position: left center;
     transform-origin: left center;
 }
 
-
-/* RIGHT */
-
 .door-right {
     right: 0;
     background-position: right center;
     transform-origin: right center;
 }
-
-
-/* OPEN */
 
 .door-left.open {
     transform: translateX(-100%);
@@ -273,10 +260,6 @@ button {
 
 /* =====================================================
    VIDEO INTRO
-   PENTING:
-   Video bermula tersembunyi sepenuhnya.
-   Ia hanya dipaparkan selepas pintu selesai
-   dan #opening sudah hilang.
 ===================================================== */
 
 #videoIntro {
@@ -284,7 +267,7 @@ button {
 
     inset: 0;
 
-    z-index: 15000;
+    z-index: 30000;
 
     width: 100%;
     height: 100%;
@@ -2656,22 +2639,20 @@ let videoFinished = false;
 
 /* =====================================================
    OPEN INVITATION
-
-   FLOW:
+=====================================================
 
    TEKAN SEAL
         ↓
    SEAL HILANG
         ↓
-   PINTU BUKA
+   PINTU MULA BUKA
         ↓
-   TUNGGU 1.5 SAAT
+   0.7 SAAT
         ↓
-   OPENING HILANG
+   LAYER PINTU HILANG
         ↓
-   VIDEO TERUS MUNCUL
+   VIDEO MUNCUL
 
-   TIADA VIDEO DI ATAS PINTU
 ===================================================== */
 
 function openInvitation() {
@@ -2688,7 +2669,7 @@ function openInvitation() {
 
 
     /* ---------------------------------------------
-       1. Seal hilang
+       1. SEAL HILANG
     --------------------------------------------- */
 
     if (seal) {
@@ -2701,7 +2682,7 @@ function openInvitation() {
 
 
     /* ---------------------------------------------
-       2. Pintu buka
+       2. PINTU MULA BUKA
     --------------------------------------------- */
 
     if (doorLeft) {
@@ -2722,21 +2703,15 @@ function openInvitation() {
 
 
     /* ---------------------------------------------
-       3. Muzik mula
+       3. MUZIK MULA TERUS
     --------------------------------------------- */
 
-    setTimeout(
-        function () {
-
-            startWeddingMusic();
-
-        },
-        250
-    );
+    startWeddingMusic();
 
 
     /* ---------------------------------------------
-       4. Tunggu pintu habis terbuka
+       4. SELEPAS 0.7 SAAT
+       TERUS MASUK VIDEO
     --------------------------------------------- */
 
     setTimeout(
@@ -2744,8 +2719,10 @@ function openInvitation() {
 
 
             /*
-               HENTIKAN INTERAKSI DENGAN OPENING
-               DAHULU
+               Hilangkan opening sepenuhnya.
+
+               display:none penting supaya
+               tiada layer kosong di belakang video.
             */
 
             if (opening) {
@@ -2754,51 +2731,56 @@ function openInvitation() {
                     "hide"
                 );
 
+                opening.style.display =
+                    "none";
+
+                opening.style.visibility =
+                    "hidden";
+
+                opening.style.opacity =
+                    "0";
+
+                opening.style.pointerEvents =
+                    "none";
+
+                opening.style.zIndex =
+                    "-1";
+
             }
 
 
             /*
-               Tunggu transition opening selesai.
-               Video baru akan muncul selepas ini.
+               TERUS PAPARKAN VIDEO
             */
 
-            setTimeout(
-                function () {
-
-                    showIntroVideo();
-
-                },
-                400
-            );
+            showIntroVideo();
 
 
         },
-        1500
+        700
     );
 
 }
 
 
 /* =====================================================
-   SEAL CLICK
+   SEAL CLICK SAHAJA
 ===================================================== */
 
 if (seal) {
 
     seal.addEventListener(
         "click",
-        openInvitation
+        function (e) {
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+            openInvitation();
+
+        }
     );
-
-
-    /*
-       Fallback:
-       kalau browser/device tertentu
-       mempunyai masalah dengan listener.
-    */
-
-    seal.onclick =
-        openInvitation;
 
 
     seal.addEventListener(
@@ -2811,6 +2793,8 @@ if (seal) {
             ) {
 
                 e.preventDefault();
+
+                e.stopPropagation();
 
                 openInvitation();
 
@@ -2844,30 +2828,75 @@ function showIntroVideo() {
 
 
     /*
-       Pastikan video betul-betul tersembunyi
-       dahulu sebelum ditunjukkan.
+       Paparkan video.
     */
 
     videoIntro.classList.remove(
         "hide"
     );
 
-
     videoIntro.classList.add(
         "show"
     );
 
 
-    introVideo.muted = true;
-    introVideo.volume = 0;
+    /*
+       Pastikan video berada
+       paling depan.
+    */
 
+    videoIntro.style.display =
+        "flex";
+
+    videoIntro.style.visibility =
+        "visible";
+
+    videoIntro.style.opacity =
+        "1";
+
+    videoIntro.style.pointerEvents =
+        "auto";
+
+    videoIntro.style.zIndex =
+        "30000";
+
+
+    /* ---------------------------------------------
+       VIDEO SETTINGS
+    --------------------------------------------- */
+
+    introVideo.muted =
+        true;
+
+    introVideo.defaultMuted =
+        true;
+
+    introVideo.volume =
+        0;
+
+    introVideo.playsInline =
+        true;
+
+
+    /* ---------------------------------------------
+       RESET VIDEO
+    --------------------------------------------- */
 
     try {
 
-        introVideo.currentTime = 0;
+        introVideo.pause();
 
-    } catch (e) {}
+        introVideo.currentTime =
+            0;
 
+    }
+
+    catch (e) {}
+
+
+    /* ---------------------------------------------
+       PLAY
+    --------------------------------------------- */
 
     const playPromise =
         introVideo.play();
@@ -2937,9 +2966,12 @@ function finishIntroVideo() {
 
         try {
 
-            introVideo.currentTime = 0;
+            introVideo.currentTime =
+                0;
 
-        } catch (e) {}
+        }
+
+        catch (e) {}
 
     }
 
@@ -3029,6 +3061,9 @@ function showMainContent() {
             "hide"
         );
 
+        opening.style.display =
+            "none";
+
     }
 
 
@@ -3101,8 +3136,11 @@ function startWeddingMusic() {
     }
 
 
-    music.loop = true;
-    music.volume = 0.8;
+    music.loop =
+        true;
+
+    music.volume =
+        0.8;
 
 
     const playPromise =
@@ -3117,7 +3155,8 @@ function startWeddingMusic() {
         playPromise.then(
             function () {
 
-                musicPlaying = true;
+                musicPlaying =
+                    true;
 
                 updateMusicButtons();
 
@@ -3125,7 +3164,8 @@ function startWeddingMusic() {
         ).catch(
             function (error) {
 
-                musicPlaying = false;
+                musicPlaying =
+                    false;
 
                 updateMusicButtons();
 
@@ -3163,7 +3203,8 @@ function toggleMusic() {
 
         music.pause();
 
-        musicPlaying = false;
+        musicPlaying =
+            false;
 
         updateMusicButtons();
 
@@ -3176,7 +3217,8 @@ function toggleMusic() {
         .then(
             function () {
 
-                musicPlaying = true;
+                musicPlaying =
+                    true;
 
                 updateMusicButtons();
 
@@ -3227,7 +3269,9 @@ function createPetal() {
 
 
     const petal =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     petal.className =
@@ -3276,7 +3320,9 @@ function startPetals() {
     }
 
 
-    petalsStarted = true;
+    petalsStarted =
+        true;
+
 
     createPetal();
 
@@ -3302,16 +3348,24 @@ const weddingDate =
 function updateCountdown() {
 
     const days =
-        document.getElementById("days");
+        document.getElementById(
+            "days"
+        );
 
     const hours =
-        document.getElementById("hours");
+        document.getElementById(
+            "hours"
+        );
 
     const minutes =
-        document.getElementById("minutes");
+        document.getElementById(
+            "minutes"
+        );
 
     const seconds =
-        document.getElementById("seconds");
+        document.getElementById(
+            "seconds"
+        );
 
 
     if (
@@ -3336,10 +3390,17 @@ function updateCountdown() {
 
     if (diff <= 0) {
 
-        days.textContent = "00";
-        hours.textContent = "00";
-        minutes.textContent = "00";
-        seconds.textContent = "00";
+        days.textContent =
+            "00";
+
+        hours.textContent =
+            "00";
+
+        minutes.textContent =
+            "00";
+
+        seconds.textContent =
+            "00";
 
         return;
 
@@ -3374,16 +3435,28 @@ function updateCountdown() {
 
 
     days.textContent =
-        String(d).padStart(2,"0");
+        String(d).padStart(
+            2,
+            "0"
+        );
 
     hours.textContent =
-        String(h).padStart(2,"0");
+        String(h).padStart(
+            2,
+            "0"
+        );
 
     minutes.textContent =
-        String(m).padStart(2,"0");
+        String(m).padStart(
+            2,
+            "0"
+        );
 
     seconds.textContent =
-        String(s).padStart(2,"0");
+        String(s).padStart(
+            2,
+            "0"
+        );
 
 }
 
@@ -3407,6 +3480,7 @@ function () {
     const url =
         "https://www.google.com/maps/search/?api=1&query=2.3807618,103.7116231";
 
+
     window.open(
         url,
         "_blank"
@@ -3424,6 +3498,7 @@ function () {
 
     const url =
         "https://www.waze.com/ul?ll=2.3807618%2C103.7116231&navigate=yes";
+
 
     window.open(
         url,
@@ -3572,17 +3647,22 @@ END:VCALENDAR`;
         );
 
 
-    a.href = url;
+    a.href =
+        url;
 
     a.download =
         "jemputan-sikin-aziman.ics";
 
 
-    document.body.appendChild(a);
+    document.body.appendChild(
+        a
+    );
 
     a.click();
 
-    document.body.removeChild(a);
+    document.body.removeChild(
+        a
+    );
 
 
     URL.revokeObjectURL(
@@ -3831,9 +3911,11 @@ function (option) {
                 GOOGLE_SCRIPT_URL,
                 {
 
-                    method: "POST",
+                    method:
+                        "POST",
 
-                    mode: "no-cors",
+                    mode:
+                        "no-cors",
 
                     headers: {
 
