@@ -2824,40 +2824,44 @@ section:nth-of-type(7)::before {
 
                 function openInvitation() {
 
-                    if (opened) {
-                        return;
-                    }
+    if (opened) {
+        return;
+    }
 
-                    opened = true;
+    opened = true;
 
-                    startWeddingMusic();
+    startWeddingMusic();
 
-                    if (seal) {
-                        seal.classList.add("seal-open");
-                    }
+    if (seal) {
+        seal.classList.add("seal-open");
+    }
 
-                    if (doorLeft) {
-                        doorLeft.classList.add("open");
-                    }
+    if (doorLeft) {
+        doorLeft.classList.add("open");
+    }
 
-                    if (doorRight) {
-                        doorRight.classList.add("open");
-                    }
+    if (doorRight) {
+        doorRight.classList.add("open");
+    }
 
-                    setTimeout(
-                        function () {
+    /*
+       VIDEO TERUS MUNCUL DI ATAS PINTU
+       tanpa tunggu opening hilang dahulu
+    */
+    showIntroVideo();
 
-                            if (opening) {
-                                opening.classList.add("hide");
-                            }
+    /*
+       Opening hanya disembunyikan selepas
+       pintu selesai bergerak.
+    */
+    setTimeout(function () {
 
-                            showIntroVideo();
+        if (opening) {
+            opening.classList.add("hide");
+        }
 
-                        },
-                        1500
-                    );
-                }
-
+    }, 1500);
+}
 
                 /* =================================================
                    SEAL CLICK
