@@ -2491,7 +2491,6 @@ type="button">
 
 </div>
 
-
 <!-- =====================================================
      RSVP POPUP
 ===================================================== -->
@@ -2512,34 +2511,100 @@ type="button">
 <h3>💌 Sahkan Kehadiran</h3>
 
 <p>
-Sila sahkan kehadiran anda
-ke majlis perkahwinan
-Sikin & Aziman.
+Sila isi maklumat di bawah untuk
+mengesahkan kehadiran anda.
 </p>
 
 <br>
 
-<button
-class="rsvp-option"
-data-val="hadir"
-type="button">
+<!-- NAMA -->
 
+<input
+type="text"
+id="rsvpName"
+placeholder="Nama anda"
+autocomplete="name"
+style="
+width:100%;
+padding:14px 16px;
+border:1px solid rgba(185,222,242,0.7);
+border-radius:16px;
+background:#f9f5fc;
+font-family:inherit;
+font-size:14px;
+color:#4c4d61;
+outline:none;
+margin-bottom:10px;
+">
+
+<!-- KEHADIRAN -->
+
+<select
+id="rsvpAttendance"
+style="
+width:100%;
+padding:14px 16px;
+border:1px solid rgba(185,222,242,0.7);
+border-radius:16px;
+background:#f9f5fc;
+font-family:inherit;
+font-size:14px;
+color:#4c4d61;
+outline:none;
+margin-bottom:10px;
+">
+
+<option value="">
+-- Sila pilih kehadiran --
+</option>
+
+<option value="Hadir">
 💙 Ya, saya akan hadir
+</option>
 
-</button>
+<option value="Tidak Hadir">
+🙏 Maaf, saya tidak dapat hadir
+</option>
+
+</select>
+
+
+<!-- BILANGAN TETAMU -->
+
+<input
+type="number"
+id="rsvpGuests"
+min="1"
+max="20"
+value="1"
+placeholder="Bilangan tetamu"
+style="
+width:100%;
+padding:14px 16px;
+border:1px solid rgba(185,222,242,0.7);
+border-radius:16px;
+background:#f9f5fc;
+font-family:inherit;
+font-size:14px;
+color:#4c4d61;
+outline:none;
+margin-bottom:15px;
+">
+
+
+<!-- BUTTON -->
 
 <button
-class="rsvp-option"
-data-val="tidak"
-type="button">
+class="btn"
+id="submitRSVP"
+type="button"
+style="width:100%;">
 
-🙏 Maaf, saya tidak dapat hadir
+💌 Hantar RSVP
 
 </button>
 
 </div>
-
-
 <!-- =====================================================
      SUCCESS POPUP
 ===================================================== -->
