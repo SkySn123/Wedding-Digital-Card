@@ -4129,37 +4129,106 @@ const GOOGLE_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbzLdxgmLbIJV4LJdIxXtXL18SBWV2pdp3MxJjiqK3w05KKSsjSrxh5sePCVT7imZ3PXdQ/exec";
 
 
-document
-.querySelectorAll(
-    ".rsvp-option"
-)
-.forEach(
-function (option) {
+const submitRSVP =
+document.getElementById("submitRSVP");
 
-    option.addEventListener(
+
+if (submitRSVP) {
+
+    submitRSVP.addEventListener(
         "click",
         function () {
 
-            const value =
-                option.dataset.val;
+            const name =
+                document
+                .getElementById("rsvpName")
+                .value
+                .trim();
 
 
-            const popup =
-                document.getElementById(
-                    "successPopup"
+            const attendance =
+                document
+                .getElementById("rsvpAttendance")
+                .value;
+
+
+            const guests =
+                document
+                .getElementById("rsvpGuests")
+                .value;
+
+
+            /* =========================
+               SEMAK MAKLUMAT
+            ========================= */
+
+            if (!name) {
+
+                alert(
+                    "Sila masukkan nama anda."
                 );
 
+                return;
 
-            const title =
-                document.getElementById(
-                    "successTitle"
+            }
+
+
+            if (!attendance) {
+
+                alert(
+                    "Sila pilih kehadiran anda."
                 );
 
+                return;
 
-            const msg =
-                document.getElementById(
-                    "successMsg"
+            }
+
+
+            if (!guests || guests < 1) {
+
+                alert(
+                    "Sila masukkan bilangan tetamu."
                 );
+
+                return;
+
+            }
+
+
+            /* =========================
+               BUTTON LOADING
+            ========================= */
+
+            submitRSVP.disabled = true;
+
+            submitRSVP.textContent =
+                "Menghantar...";
+
+
+            /* =========================
+               HANTAR KE GOOGLE SHEET
+            ========================= */
+
+            const formData =
+                new URLSearchParams();
+
+
+            formData.append(
+                "nama",
+                name
+            );
+
+
+            formData.append(
+                "kehadiran",
+                attendance
+            );
+
+
+            formData.append(
+                "bilangan_tetamu",
+                guests
+            );
 
 
             fetch(
@@ -4180,18 +4249,39 @@ function (option) {
                     },
 
                     body:
-                        "status=" +
-                        encodeURIComponent(
-                            value
-                        )
+                        formData.toString()
 
                 }
             )
             .then(
                 function () {
 
+
+                    /* =====================
+                       SUCCESS
+                    ===================== */
+
+                    const popup =
+                        document.getElementById(
+                            "successPopup"
+                        );
+
+
+                    const title =
+                        document.getElementById(
+                            "successTitle"
+                        );
+
+
+                    const msg =
+                        document.getElementById(
+                            "successMsg"
+                        );
+
+
                     if (
-                        value === "hadir"
+                        attendance ===
+                        "Hadir"
                     ) {
 
                         title.textContent =
@@ -4199,7 +4289,9 @@ function (option) {
 
 
                         msg.textContent =
-                            "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
+                            "Terima kasih " +
+                            name +
+                            ". Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
 
                     }
 
@@ -4210,13 +4302,19 @@ function (option) {
 
 
                         msg.textContent =
-                            "Terima kasih kerana memaklumkan kepada kami.";
+                            "Terima kasih " +
+                            name +
+                            " kerana memaklumkan kepada kami.";
 
                     }
 
 
+                    /* TUTUP RSVP */
+
                     closeAllPopups();
 
+
+                    /* BUKA SUCCESS */
 
                     if (popup) {
 
@@ -4225,6 +4323,38 @@ function (option) {
                         );
 
                     }
+
+
+                    /* RESET BORANG */
+
+                    document
+                    .getElementById(
+                        "rsvpName"
+                    )
+                    .value = "";
+
+
+                    document
+                    .getElementById(
+                        "rsvpAttendance"
+                    )
+                    .value = "";
+
+
+                    document
+                    .getElementById(
+                        "rsvpGuests"
+                    )
+                    .value = "1";
+
+
+                    /* RESET BUTTON */
+
+                    submitRSVP.disabled =
+                        false;
+
+                    submitRSVP.textContent =
+                        "💌 Hantar RSVP";
 
                 }
             )
@@ -4237,6 +4367,14 @@ function (option) {
                     );
 
 
+                    submitRSVP.disabled =
+                        false;
+
+
+                    submitRSVP.textContent =
+                        "💌 Hantar RSVP";
+
+
                     alert(
                         "Maaf, RSVP tidak berjaya dihantar. Sila cuba lagi."
                     );
@@ -4247,7 +4385,7 @@ function (option) {
         }
     );
 
-});
+} 
 
 
 });
