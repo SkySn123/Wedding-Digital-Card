@@ -417,14 +417,13 @@ p {
 
 /* =====================================================
    HOME
-   ★ HOME SAHAJA DIUBAH
 ===================================================== */
 
 #home {
     min-height: 100vh;
 
     padding:
-        35px 16px;
+        100px 16px 35px;
 
     background:
         radial-gradient(
@@ -462,7 +461,9 @@ p {
 }
 
 
-/* HOME CARD */
+/* =====================================================
+   HOME CARD
+===================================================== */
 
 .home-card {
     position: relative;
@@ -495,6 +496,60 @@ p {
         rgba(100,80,135,.18);
 
     text-align: center;
+}
+
+
+/* =====================================================
+   BUNGA ATAS CARD
+===================================================== */
+
+.home-flower {
+    position: absolute;
+
+    top: -90px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 210px;
+    max-width: 48vw;
+
+    height: auto;
+
+    z-index: 5;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 8px 15px
+            rgba(100,80,135,.12)
+        );
+
+    animation:
+        flowerFloat 4s ease-in-out infinite;
+}
+
+
+/* Animasi bunga perlahan */
+
+@keyframes flowerFloat {
+
+    0%, 100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-5px)
+            rotate(1deg);
+    }
 }
 
 
@@ -1479,7 +1534,7 @@ p {
 
     #home {
         padding:
-            25px 12px;
+            80px 12px 25px;
     }
 
     #home::before {
@@ -1498,6 +1553,18 @@ p {
         inset: 9px;
         border-radius: 20px;
     }
+
+
+    /* BUNGA MOBILE */
+
+    .home-flower {
+        top: -65px;
+
+        width: 155px;
+
+        max-width: 50vw;
+    }
+
 
     .home-subtitle {
         font-size: 11px;
@@ -1688,6 +1755,17 @@ p {
     <div class="hero">
 
         <div class="home-card">
+
+            <!-- =========================================
+                 GAMBAR BUNGA
+                 Tukar bunga.png kepada nama fail anda
+            ========================================== -->
+
+            <img
+                src="bunga.png"
+                alt=""
+                class="home-flower">
+
 
             <div class="home-ornament">
                 ✦ ♡ ✦
