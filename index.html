@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="ms">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Majlis Perkahwinan Sikin & Aziman</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet">
+
 
 <style>
 
+/* =====================================================
+   ROOT
+===================================================== */
+
 :root {
+
     --lilac: #c9b8e6;
     --lilac-light: #e9e0f5;
     --lilac-soft: #f7f2fb;
@@ -33,18 +49,27 @@
         0 15px 40px rgba(100, 80, 135, .15);
 }
 
+
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
+
     font-family: "Poppins", sans-serif;
+
     color: var(--text);
 
     background:
@@ -57,9 +82,11 @@ body {
     overflow-x: hidden;
 }
 
+
 body.locked {
     overflow: hidden;
 }
+
 
 button {
     font-family: inherit;
@@ -72,8 +99,10 @@ button {
 ===================================================== */
 
 #opening {
+
     position: fixed;
     inset: 0;
+
     z-index: 9999;
 
     display: flex;
@@ -83,6 +112,7 @@ button {
     overflow: hidden;
 
     background:
+
         radial-gradient(
             circle at 20% 20%,
             rgba(201,184,230,.9),
@@ -107,9 +137,13 @@ button {
         visibility 1s ease;
 }
 
+
 #opening.hide {
+
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
@@ -120,7 +154,9 @@ button {
 
 .door-left,
 .door-right {
+
     position: absolute;
+
     top: 0;
 
     width: 50%;
@@ -144,19 +180,27 @@ button {
         cubic-bezier(.77,0,.175,1);
 }
 
+
 .door-left {
+
     left: 0;
+
     transform-origin: left center;
 }
 
+
 .door-right {
+
     right: 0;
+
     transform-origin: right center;
 }
+
 
 .door-left.open {
     transform: translateX(-100%);
 }
+
 
 .door-right.open {
     transform: translateX(100%);
@@ -168,7 +212,9 @@ button {
 ===================================================== */
 
 #seal {
+
     position: relative;
+
     z-index: 20;
 
     width: 115px;
@@ -203,7 +249,9 @@ button {
         .5s ease;
 }
 
+
 #seal::before {
+
     content: "S & A";
 
     font-family:
@@ -211,26 +259,35 @@ button {
         serif;
 
     font-size: 24px;
+
     letter-spacing: 3px;
 }
 
+
 #seal::after {
+
     content: "♡";
 
     position: absolute;
+
     bottom: 14px;
 
     font-size: 14px;
 }
 
+
 #seal:hover {
     transform: scale(1.08);
 }
 
+
 #seal.seal-open {
+
     opacity: 0;
+
     transform: scale(1.3);
 }
+
 
 @keyframes sealFloat {
 
@@ -241,6 +298,7 @@ button {
     50% {
         transform: translateY(-8px);
     }
+
 }
 
 
@@ -249,7 +307,9 @@ button {
 ===================================================== */
 
 #videoIntro {
+
     position: fixed;
+
     inset: 0;
 
     z-index: 15000;
@@ -264,7 +324,9 @@ button {
     background: #000;
 
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 
     transition:
@@ -272,19 +334,29 @@ button {
         visibility .8s ease;
 }
 
+
 #videoIntro.show {
+
     opacity: 1;
+
     visibility: visible;
+
     pointer-events: auto;
 }
 
+
 #videoIntro.hide {
+
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
+
 #introVideo {
+
     width: 100%;
     height: 100%;
 
@@ -295,7 +367,9 @@ button {
     background: #000;
 }
 
+
 #skipVideo {
+
     position: absolute;
 
     right: 20px;
@@ -305,14 +379,21 @@ button {
 
     padding: 10px 18px;
 
-    border: 1px solid rgba(255,255,255,.7);
+    border:
+        1px solid
+        rgba(255,255,255,.7);
+
     border-radius: 30px;
 
-    background: rgba(255,255,255,.15);
+    background:
+        rgba(255,255,255,.15);
 
     color: #fff;
 
-    font-family: "Poppins", sans-serif;
+    font-family:
+        "Poppins",
+        sans-serif;
+
     font-size: 12px;
 
     backdrop-filter: blur(8px);
@@ -322,8 +403,11 @@ button {
     transition: .3s ease;
 }
 
+
 #skipVideo:hover {
-    background: rgba(255,255,255,.3);
+
+    background:
+        rgba(255,255,255,.3);
 }
 
 
@@ -332,10 +416,13 @@ button {
 ===================================================== */
 
 #mainContent {
+
     min-height: 100vh;
 
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 
     transition:
@@ -357,6 +444,7 @@ button {
 ===================================================== */
 
 section {
+
     position: relative;
 
     min-height: 100vh;
@@ -365,20 +453,29 @@ section {
         80px 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     overflow: hidden;
 }
 
+
 .container {
+
     width: 100%;
+
     max-width: 900px;
+
     margin: auto;
 }
 
+
 .hero {
+
     width: 100%;
+
     text-align: center;
 }
 
@@ -390,6 +487,7 @@ section {
 h1,
 h2,
 h3 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -398,66 +496,128 @@ h3 {
         var(--lilac-dark);
 }
 
+
 h1 {
+
     font-size:
         clamp(45px, 10vw, 82px);
 
     line-height: 1.05;
 }
 
+
 h2 {
+
     font-size:
         clamp(32px, 7vw, 52px);
 }
 
+
 p {
+
     line-height: 1.8;
 }
 
 
 /* =====================================================
    HOME
+   BACKGROUND BUNGA KESELURUHAN
 ===================================================== */
 
 #home {
+
+    position: relative;
+
     min-height: 100vh;
 
     padding:
-        100px 16px 35px;
+        35px 16px;
 
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(201,184,230,.65),
-            transparent 30%
-        ),
+    overflow: hidden;
 
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(185,222,242,.7),
-            transparent 32%
-        ),
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+    /*
+       ==================================================
+       GAMBAR BUNGA SEBAGAI BACKGROUND KESELURUHAN HOME
+       ==================================================
+    */
+
+    background-image:
 
         linear-gradient(
-            135deg,
-            #faf6fd,
-            #edf9fd
-        );
+            rgba(250,246,253,.28),
+            rgba(237,249,253,.28)
+        ),
+
+        url("bunga.png");
+
+
+    /*
+       Cover = gambar memenuhi keseluruhan Home
+    */
+
+    background-size: cover;
+
+
+    /*
+       Tukar kepada:
+       center top
+       jika bunga nak lebih banyak di bahagian atas
+    */
+
+    background-position:
+        center center;
+
+
+    background-repeat:
+        no-repeat;
 }
 
+
+/*
+   LAPISAN PUTIH LUT SINAR
+   Supaya tulisan lebih jelas
+*/
+
 #home::before {
+
     content: "";
 
     position: absolute;
-    inset: 15px;
 
-    border:
-        1px solid
-        rgba(128,104,163,.18);
+    inset: 0;
 
-    border-radius: 30px;
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(247,242,251,.30),
+            rgba(237,249,253,.25)
+        );
 
     pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/*
+   Kandungan Home duduk di atas background
+*/
+
+#home .hero {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
 }
 
 
@@ -466,9 +626,11 @@ p {
 ===================================================== */
 
 .home-card {
+
     position: relative;
 
     width: 100%;
+
     max-width: 760px;
 
     margin: auto;
@@ -478,18 +640,23 @@ p {
 
     border-radius: 35px;
 
+    /*
+       Card dibuat separa transparent
+       supaya background bunga masih nampak
+    */
+
     background:
-        rgba(255,255,255,.82);
+        rgba(255,255,255,.78);
 
     border:
         1px solid
-        rgba(255,255,255,.95);
+        rgba(255,255,255,.90);
 
     backdrop-filter:
-        blur(18px);
+        blur(8px);
 
     -webkit-backdrop-filter:
-        blur(18px);
+        blur(8px);
 
     box-shadow:
         0 20px 60px
@@ -499,63 +666,12 @@ p {
 }
 
 
-/* =====================================================
-   BUNGA ATAS CARD
-===================================================== */
+/*
+   FRAME DALAM CARD
+*/
 
-.home-flower {
-    position: absolute;
+.home-card::after {
 
-    top: -90px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 210px;
-    max-width: 48vw;
-
-    height: auto;
-
-    z-index: 5;
-
-    object-fit: contain;
-
-    pointer-events: none;
-
-    filter:
-        drop-shadow(
-            0 8px 15px
-            rgba(100,80,135,.12)
-        );
-
-    animation:
-        flowerFloat 4s ease-in-out infinite;
-}
-
-
-/* Animasi bunga perlahan */
-
-@keyframes flowerFloat {
-
-    0%, 100% {
-        transform:
-            translateX(-50%)
-            translateY(0)
-            rotate(0deg);
-    }
-
-    50% {
-        transform:
-            translateX(-50%)
-            translateY(-5px)
-            rotate(1deg);
-    }
-}
-
-
-/* decorative frame */
-
-.home-card::before {
     content: "";
 
     position: absolute;
@@ -572,11 +688,15 @@ p {
 }
 
 
-/* small top ornament */
+/* =====================================================
+   HOME ORNAMENT
+===================================================== */
 
 .home-ornament {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     margin-bottom: 12px;
 
@@ -589,11 +709,15 @@ p {
 }
 
 
-/* Walimatulurus */
+/* =====================================================
+   HOME SUBTITLE
+===================================================== */
 
 .home-subtitle {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     color:
         var(--blue-dark);
@@ -608,11 +732,15 @@ p {
 }
 
 
-/* Names */
+/* =====================================================
+   NAMES
+===================================================== */
 
 .home-names {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     margin: 0;
 
@@ -636,11 +764,15 @@ p {
 }
 
 
-/* divider */
+/* =====================================================
+   DIVIDER
+===================================================== */
 
 .home-divider {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     display: flex;
 
@@ -656,8 +788,10 @@ p {
         24px auto;
 }
 
+
 .home-divider::before,
 .home-divider::after {
+
     content: "";
 
     width: 75px;
@@ -671,7 +805,9 @@ p {
         );
 }
 
+
 .home-divider::after {
+
     background:
         linear-gradient(
             90deg,
@@ -680,7 +816,9 @@ p {
         );
 }
 
+
 .home-divider span {
+
     color:
         var(--lilac-dark);
 
@@ -688,11 +826,15 @@ p {
 }
 
 
-/* date */
+/* =====================================================
+   DATE
+===================================================== */
 
 .home-date {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     display: inline-block;
 
@@ -708,7 +850,7 @@ p {
         linear-gradient(
             135deg,
             rgba(233,224,245,.85),
-            rgba(233,247,252,.9)
+            rgba(233,247,252,.90)
         );
 
     border:
@@ -725,11 +867,15 @@ p {
 }
 
 
-/* hijrah */
+/* =====================================================
+   HIJRAH
+===================================================== */
 
 .home-hijrah {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     margin-top: 10px;
 
@@ -742,13 +888,18 @@ p {
 }
 
 
-/* countdown */
+/* =====================================================
+   HOME COUNTDOWN
+===================================================== */
 
 .home-countdown {
+
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     width: 100%;
+
     max-width: 620px;
 
     margin:
@@ -762,7 +913,9 @@ p {
     gap: 10px;
 }
 
+
 .home-countdown-item {
+
     padding:
         17px 8px;
 
@@ -784,7 +937,9 @@ p {
         rgba(111,91,145,.09);
 }
 
+
 .home-number {
+
     display: block;
 
     font-size: 27px;
@@ -795,7 +950,9 @@ p {
         var(--lilac-dark);
 }
 
+
 .home-label {
+
     display: block;
 
     margin-top: 3px;
@@ -816,6 +973,7 @@ p {
 ===================================================== */
 
 .card {
+
     padding: 35px;
 
     border-radius: 28px;
@@ -845,6 +1003,7 @@ p {
 ===================================================== */
 
 .countdown {
+
     max-width: 650px;
 
     margin:
@@ -858,7 +1017,9 @@ p {
     gap: 12px;
 }
 
+
 .countdown-item {
+
     padding: 18px 10px;
 
     border-radius: 18px;
@@ -879,19 +1040,25 @@ p {
         rgba(111,91,145,.1);
 }
 
+
 .countdown-item span {
     display: block;
 }
 
+
 .number {
+
     font-size: 28px;
+
     font-weight: 600;
 
     color:
         var(--lilac-dark);
 }
 
+
 .label {
+
     margin-top: 3px;
 
     font-size: 10px;
@@ -910,9 +1077,11 @@ p {
 ===================================================== */
 
 .btn {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 8px;
@@ -940,7 +1109,9 @@ p {
     transition: .25s ease;
 }
 
+
 .btn:hover {
+
     transform:
         translateY(-3px);
 
@@ -955,7 +1126,9 @@ p {
 ===================================================== */
 
 .divider {
+
     width: 90px;
+
     height: 2px;
 
     margin:
@@ -980,11 +1153,14 @@ p {
     margin-top: 30px;
 }
 
+
 .info-box p {
     margin: 5px 0;
 }
 
+
 .info-title {
+
     margin-top: 25px;
 
     font-family:
@@ -997,15 +1173,19 @@ p {
         var(--lilac-dark);
 }
 
+
 .parents {
     margin: 20px 0;
 }
+
 
 .parents strong {
     color: var(--text-dark);
 }
 
+
 .couple-full {
+
     margin: 25px 0;
 
     font-family:
@@ -1018,14 +1198,18 @@ p {
         var(--lilac-dark);
 }
 
+
 .schedule {
     margin-top: 30px;
 }
 
+
 .schedule-row {
+
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
     gap: 20px;
@@ -1044,12 +1228,18 @@ p {
         );
 }
 
+
 .schedule-row span:last-child {
-    color: var(--blue-dark);
+
+    color:
+        var(--blue-dark);
+
     font-weight: 500;
 }
 
+
 .doa {
+
     margin-top: 30px;
 
     padding: 25px;
@@ -1068,13 +1258,17 @@ p {
     font-style: italic;
 }
 
+
 .guest-messages {
+
     margin-top: 30px;
 
     text-align: left;
 }
 
+
 .message {
+
     padding: 18px;
 
     margin-bottom: 12px;
@@ -1089,7 +1283,9 @@ p {
         var(--lilac);
 }
 
+
 .message-name {
+
     color:
         var(--lilac-dark);
 
@@ -1104,6 +1300,7 @@ p {
 ===================================================== */
 
 .contact-person {
+
     margin-top: 20px;
 
     padding: 16px;
@@ -1118,12 +1315,15 @@ p {
         );
 }
 
+
 .contact-person strong {
     color:
         var(--lilac-dark);
 }
 
+
 .contact-actions {
+
     display: flex;
 
     justify-content: center;
@@ -1139,9 +1339,11 @@ p {
 ===================================================== */
 
 .bottom-nav {
+
     position: fixed;
 
     left: 50%;
+
     bottom: 15px;
 
     transform:
@@ -1176,7 +1378,9 @@ p {
         rgba(95,148,181,.18);
 }
 
+
 .bottom-nav button {
+
     flex: 1;
 
     border: none;
@@ -1195,8 +1399,10 @@ p {
     transition: .25s ease;
 }
 
+
 .bottom-nav button:hover,
 .bottom-nav button.active {
+
     background:
         linear-gradient(
             135deg,
@@ -1217,9 +1423,11 @@ p {
 ===================================================== */
 
 .popup-menu {
+
     position: fixed;
 
     left: 50%;
+
     bottom: 90px;
 
     z-index: 6000;
@@ -1265,7 +1473,9 @@ p {
     transition: .3s ease;
 }
 
+
 .popup-menu.open {
+
     opacity: 1;
 
     visibility: visible;
@@ -1277,11 +1487,14 @@ p {
         scale(1);
 }
 
+
 .popup-menu h3 {
     margin-bottom: 15px;
 }
 
+
 .close-popup {
+
     position: absolute;
 
     top: 12px;
@@ -1303,7 +1516,9 @@ p {
     font-size: 20px;
 }
 
+
 .popup-buttons {
+
     display: grid;
 
     gap: 10px;
@@ -1317,6 +1532,7 @@ p {
 ===================================================== */
 
 .rsvp-option {
+
     width: 100%;
 
     padding:
@@ -1343,7 +1559,9 @@ p {
     margin-bottom: 10px;
 }
 
+
 .rsvp-option:hover {
+
     transform:
         translateY(-2px);
 
@@ -1361,7 +1579,9 @@ p {
 ===================================================== */
 
 #successPopup {
+
     position: fixed;
+
     inset: 0;
 
     z-index: 9000;
@@ -1369,6 +1589,7 @@ p {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
@@ -1380,20 +1601,29 @@ p {
         blur(8px);
 
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 
     transition: .3s ease;
 }
 
+
 #successPopup.open {
+
     opacity: 1;
+
     visibility: visible;
+
     pointer-events: auto;
 }
 
+
 .popup-content {
+
     width: 100%;
+
     max-width: 400px;
 
     padding: 35px;
@@ -1421,14 +1651,17 @@ p {
 ===================================================== */
 
 #musicFloating {
+
     position: fixed;
 
     right: 20px;
+
     bottom: 95px;
 
     z-index: 4500;
 
     width: 50px;
+
     height: 50px;
 
     border: none;
@@ -1453,7 +1686,9 @@ p {
     transition: .3s ease;
 }
 
+
 #musicFloating:hover {
+
     transform:
         scale(1.1);
 }
@@ -1464,7 +1699,9 @@ p {
 ===================================================== */
 
 .petal-container {
+
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
@@ -1474,12 +1711,15 @@ p {
     z-index: 3000;
 }
 
+
 .petal {
+
     position: absolute;
 
     top: -30px;
 
     width: 12px;
+
     height: 18px;
 
     border-radius:
@@ -1496,9 +1736,11 @@ p {
         petalFall linear forwards;
 }
 
+
 @keyframes petalFall {
 
     0% {
+
         transform:
             translateY(-30px)
             translateX(0)
@@ -1506,6 +1748,7 @@ p {
     }
 
     50% {
+
         transform:
             translateY(50vh)
             translateX(35px)
@@ -1513,11 +1756,13 @@ p {
     }
 
     100% {
+
         transform:
             translateY(110vh)
             translateX(-30px)
             rotate(360deg);
     }
+
 }
 
 
@@ -1528,157 +1773,237 @@ p {
 @media(max-width:600px) {
 
     section {
+
         padding:
             65px 16px;
     }
 
+
     #home {
+
+        min-height: 100vh;
+
         padding:
-            80px 12px 25px;
+            25px 12px;
+
+        /*
+           Background kekal memenuhi skrin
+        */
+
+        background-size:
+            cover;
+
+        background-position:
+            center center;
     }
+
 
     #home::before {
-        inset: 10px;
-        border-radius: 22px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(247,242,251,.32),
+                rgba(237,249,253,.28)
+            );
     }
 
+
     .home-card {
+
         padding:
             42px 18px 30px;
 
         border-radius: 27px;
+
+        background:
+            rgba(255,255,255,.80);
     }
 
-    .home-card::before {
+
+    .home-card::after {
+
         inset: 9px;
+
         border-radius: 20px;
     }
 
 
-    /* BUNGA MOBILE */
-
-    .home-flower {
-        top: -65px;
-
-        width: 155px;
-
-        max-width: 50vw;
-    }
-
-
     .home-subtitle {
+
         font-size: 11px;
+
         letter-spacing: 3px;
     }
 
+
     .home-names {
+
         font-size:
             clamp(43px, 13vw, 62px);
     }
 
+
     .home-divider {
+
         margin:
             20px auto;
     }
 
+
     .home-divider::before,
     .home-divider::after {
+
         width: 45px;
     }
 
+
     .home-date {
+
         padding:
             10px 20px;
 
         font-size: 12px;
     }
 
+
     .home-hijrah {
+
         font-size: 10px;
     }
 
+
     .home-countdown {
+
         gap: 6px;
+
         margin-top: 25px;
     }
 
+
     .home-countdown-item {
+
         padding:
             13px 4px;
 
         border-radius: 14px;
     }
 
+
     .home-number {
+
         font-size: 21px;
     }
 
+
     .home-label {
+
         font-size: 8px;
+
         letter-spacing: 1px;
     }
 
+
     #seal {
+
         width: 100px;
+
         height: 100px;
     }
 
+
     .countdown {
+
         gap: 7px;
     }
 
+
     .countdown-item {
+
         padding:
             14px 5px;
     }
 
+
     .number {
+
         font-size: 23px;
     }
 
+
     .label {
+
         font-size: 9px;
     }
 
+
     .card {
-        padding: 24px 18px;
+
+        padding:
+            24px 18px;
+
         border-radius: 22px;
     }
 
+
     .bottom-nav {
+
         bottom: 10px;
+
         border-radius: 20px;
     }
 
+
     .bottom-nav button {
+
         font-size: 11px;
-        padding: 9px 3px;
+
+        padding:
+            9px 3px;
     }
 
+
     #musicFloating {
+
         right: 15px;
+
         bottom: 82px;
 
         width: 45px;
+
         height: 45px;
     }
 
+
     .schedule-row {
+
         flex-direction: column;
+
         gap: 2px;
     }
+
 }
 
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
 ::-webkit-scrollbar {
+
     width: 7px;
 }
 
+
 ::-webkit-scrollbar-track {
+
     background:
         #f5f0fa;
 }
 
+
 ::-webkit-scrollbar-thumb {
+
     border-radius: 10px;
 
     background:
@@ -1689,6 +2014,7 @@ p {
 }
 
 </style>
+
 </head>
 
 
@@ -1696,12 +2022,13 @@ p {
 
 
 <!-- =====================================================
-     OPENING / DOOR
+     OPENING
 ===================================================== -->
 
 <div id="opening">
 
     <div class="door-left"></div>
+
     <div class="door-right"></div>
 
     <button
@@ -1713,7 +2040,7 @@ p {
 
 
 <!-- =====================================================
-     VIDEO INTRO
+     VIDEO
 ===================================================== -->
 
 <div id="videoIntro">
@@ -1740,7 +2067,7 @@ p {
 
 
 <!-- =====================================================
-     MAIN CONTENT
+     MAIN
 ===================================================== -->
 
 <main id="mainContent">
@@ -1755,17 +2082,6 @@ p {
     <div class="hero">
 
         <div class="home-card">
-
-            <!-- =========================================
-                 GAMBAR BUNGA
-                 Tukar bunga.png kepada nama fail anda
-            ========================================== -->
-
-            <img
-                src="lilac flower.png"
-                alt=""
-                class="home-flower">
-
 
             <div class="home-ornament">
                 ✦ ♡ ✦
@@ -1791,9 +2107,11 @@ p {
                 Bersamaan 9 Rejab 1448H
             </p>
 
+
             <div class="home-countdown">
 
                 <div class="home-countdown-item">
+
                     <span
                         class="home-number"
                         id="days">
@@ -1803,10 +2121,12 @@ p {
                     <span class="home-label">
                         Hari
                     </span>
+
                 </div>
 
 
                 <div class="home-countdown-item">
+
                     <span
                         class="home-number"
                         id="hours">
@@ -1816,10 +2136,12 @@ p {
                     <span class="home-label">
                         Jam
                     </span>
+
                 </div>
 
 
                 <div class="home-countdown-item">
+
                     <span
                         class="home-number"
                         id="minutes">
@@ -1829,10 +2151,12 @@ p {
                     <span class="home-label">
                         Minit
                     </span>
+
                 </div>
 
 
                 <div class="home-countdown-item">
+
                     <span
                         class="home-number"
                         id="seconds">
@@ -1842,6 +2166,7 @@ p {
                     <span class="home-label">
                         Saat
                     </span>
+
                 </div>
 
             </div>
@@ -1874,13 +2199,17 @@ p {
                 <div class="parents">
 
                     <p>
-                        <strong>M Nasar Bin Bakri</strong>
+                        <strong>
+                            M Nasar Bin Bakri
+                        </strong>
                     </p>
 
                     <p>&</p>
 
                     <p>
-                        <strong>Katirah Binti Mansor</strong>
+                        <strong>
+                            Katirah Binti Mansor
+                        </strong>
                     </p>
 
                     <p style="margin-top:10px;">
@@ -1947,6 +2276,7 @@ p {
 
 
             <br>
+
 
             <button
                 class="btn"
@@ -2060,12 +2390,14 @@ p {
             <div class="doa">
 
                 <p>
+
                     Ya Allah, berkatilah majlis perkahwinan ini,
                     limpahkan baraqah dan rahmat kepada kedua
                     mempelai ini. Kurniakanlah mereka zuriat yang
                     soleh dan solehah. Kekalkanlah jodoh mereka
                     di dunia dan di akhirat dan sempurnakanlah
                     agama mereka dengan berkat ikatan ini.
+
                 </p>
 
             </div>
@@ -2094,6 +2426,7 @@ p {
             <div class="divider"></div>
 
             <div class="guest-messages">
+
 
                 <div class="message">
 
@@ -2148,6 +2481,7 @@ p {
 
                 </div>
 
+
             </div>
 
         </div>
@@ -2196,6 +2530,7 @@ p {
 
                     </button>
 
+
                     <button
                         class="btn"
                         onclick="openWhatsApp('0197261342')">
@@ -2230,6 +2565,7 @@ p {
                         📞 Telefon
 
                     </button>
+
 
                     <button
                         class="btn"
@@ -2281,6 +2617,7 @@ p {
 
             <br>
 
+
             <button
                 class="btn"
                 onclick="addGoogleCalendar()">
@@ -2290,6 +2627,7 @@ p {
             </button>
 
             <br><br>
+
 
             <button
                 class="btn"
@@ -2348,28 +2686,42 @@ p {
 <nav class="bottom-nav">
 
     <button id="homeBtn">
+
         🏠<br>
         Home
+
     </button>
+
 
     <button id="calBtn">
+
         📅<br>
         Calendar
+
     </button>
+
 
     <button id="locBtn">
+
         📍<br>
         Lokasi
+
     </button>
+
 
     <button id="musBtn">
+
         🎵<br>
         Muzik
+
     </button>
 
+
     <button id="rsvpBtn">
+
         💌<br>
         RSVP
+
     </button>
 
 </nav>
@@ -2384,18 +2736,25 @@ p {
     <button
         class="close-popup"
         data-close="calPopup">
+
         ×
+
     </button>
+
 
     <h3>
         📅 Simpan Tarikh
     </h3>
 
+
     <p>
+
         Sabtu, 19 Disember 2026<br>
         9 Rejab 1448H<br>
         11:00 Pagi – 4:00 Petang
+
     </p>
+
 
     <div class="popup-buttons">
 
@@ -2406,6 +2765,7 @@ p {
             Google Calendar
 
         </button>
+
 
         <button
             class="btn"
@@ -2429,20 +2789,28 @@ p {
     <button
         class="close-popup"
         data-close="locPopup">
+
         ×
+
     </button>
+
 
     <h3>
         📍 Lokasi Majlis
     </h3>
 
+
     <p>
+
         No 66 Blok 5B Jalan Merak,<br>
         Felda Nitar 01,<br>
         86800 Mersing, Johor
+
     </p>
 
+
     <br>
+
 
     <div class="popup-buttons">
 
@@ -2453,6 +2821,7 @@ p {
             Google Maps
 
         </button>
+
 
         <button
             class="btn"
@@ -2476,22 +2845,31 @@ p {
     <button
         class="close-popup"
         data-close="musPopup">
+
         ×
+
     </button>
+
 
     <h3>
         🎵 Muzik
     </h3>
 
+
     <p>
-        <strong>GITA GUTAWA</strong>
+        <strong>
+            GITA GUTAWA
+        </strong>
     </p>
+
 
     <p>
         KEMBANG PERAWAN
     </p>
 
+
     <br>
+
 
     <button
         class="btn"
@@ -2513,20 +2891,28 @@ p {
     <button
         class="close-popup"
         data-close="rsvpPopup">
+
         ×
+
     </button>
+
 
     <h3>
         💌 Sahkan Kehadiran
     </h3>
 
+
     <p>
+
         Sila sahkan kehadiran anda
         ke majlis perkahwinan
         Sikin & Aziman.
+
     </p>
 
+
     <br>
+
 
     <button
         class="rsvp-option"
@@ -2535,6 +2921,7 @@ p {
         💙 Ya, saya akan hadir
 
     </button>
+
 
     <button
         class="rsvp-option"
@@ -2559,14 +2946,20 @@ p {
             Terima Kasih! 💙
         </h2>
 
+
         <div class="divider"></div>
 
+
         <p id="successMsg">
+
             Terima kasih kerana
             memaklumkan kepada kami.
+
         </p>
 
+
         <br>
+
 
         <button
             class="btn"
@@ -2632,8 +3025,11 @@ const musicButton =
 const floatingButton =
     document.getElementById("musicFloating");
 
+
 let opened = false;
+
 let petalsStarted = false;
+
 let musicPlaying = false;
 
 
@@ -2647,28 +3043,51 @@ function openInvitation() {
         return;
     }
 
+
     opened = true;
+
 
     startWeddingMusic();
 
+
     if (seal) {
-        seal.classList.add("seal-open");
+
+        seal.classList.add(
+            "seal-open"
+        );
+
     }
+
 
     if (doorLeft) {
-        doorLeft.classList.add("open");
+
+        doorLeft.classList.add(
+            "open"
+        );
+
     }
 
+
     if (doorRight) {
-        doorRight.classList.add("open");
+
+        doorRight.classList.add(
+            "open"
+        );
+
     }
+
 
     setTimeout(
         function () {
 
             if (opening) {
-                opening.classList.add("hide");
+
+                opening.classList.add(
+                    "hide"
+                );
+
             }
+
 
             showIntroVideo();
 
@@ -2689,6 +3108,7 @@ if (seal) {
         "click",
         openInvitation
     );
+
 
     seal.addEventListener(
         "keydown",
@@ -2727,15 +3147,28 @@ function showIntroVideo() {
         return;
     }
 
-    videoIntro.classList.remove("hide");
-    videoIntro.classList.add("show");
+
+    videoIntro.classList.remove(
+        "hide"
+    );
+
+
+    videoIntro.classList.add(
+        "show"
+    );
+
 
     introVideo.muted = true;
+
     introVideo.volume = 0;
 
+
     try {
+
         introVideo.currentTime = 0;
+
     } catch (e) {}
+
 
     introVideo.play()
         .catch(
@@ -2764,22 +3197,35 @@ function finishIntroVideo() {
 
         introVideo.pause();
 
+
         try {
+
             introVideo.currentTime = 0;
+
         } catch (e) {}
 
     }
 
+
     if (videoIntro) {
 
-        videoIntro.classList.remove("show");
-        videoIntro.classList.add("hide");
+        videoIntro.classList.remove(
+            "show"
+        );
+
+
+        videoIntro.classList.add(
+            "hide"
+        );
 
     }
 
+
     setTimeout(
         function () {
+
             showMainContent();
+
         },
         800
     );
@@ -2825,10 +3271,16 @@ function showMainContent() {
 
     if (videoIntro) {
 
-        videoIntro.classList.remove("show");
-        videoIntro.classList.add("hide");
+        videoIntro.classList.remove(
+            "show"
+        );
+
+        videoIntro.classList.add(
+            "hide"
+        );
 
     }
+
 
     if (mainContent) {
 
@@ -2842,14 +3294,20 @@ function showMainContent() {
 
     }
 
+
     document.body.classList.remove(
         "locked"
     );
 
+
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
+
 
     startPetals();
 
@@ -2871,6 +3329,7 @@ function updateMusicButtons() {
 
     }
 
+
     if (floatingButton) {
 
         floatingButton.textContent =
@@ -2889,14 +3348,18 @@ function startWeddingMusic() {
         return;
     }
 
+
     music.loop = true;
+
     music.volume = 0.8;
+
 
     music.play()
         .then(
             function () {
 
                 musicPlaying = true;
+
                 updateMusicButtons();
 
             }
@@ -2905,6 +3368,7 @@ function startWeddingMusic() {
             function (error) {
 
                 musicPlaying = false;
+
                 updateMusicButtons();
 
                 console.log(
@@ -2929,6 +3393,7 @@ function toggleMusic() {
         return;
     }
 
+
     if (musicPlaying) {
 
         music.pause();
@@ -2938,7 +3403,9 @@ function toggleMusic() {
         updateMusicButtons();
 
         return;
+
     }
+
 
     music.play()
         .then(
@@ -2993,29 +3460,38 @@ function createPetal() {
         return;
     }
 
+
     const petal =
         document.createElement("div");
+
 
     petal.className =
         "petal";
 
+
     petal.style.left =
         Math.random() * 100 + "%";
 
+
     petal.style.animationDuration =
         (4 + Math.random() * 5) + "s";
+
 
     petal.style.opacity =
         0.25 +
         Math.random() * 0.5;
 
+
     petalContainer.appendChild(
         petal
     );
 
+
     setTimeout(
         function () {
+
             petal.remove();
+
         },
         9000
     );
@@ -3029,12 +3505,17 @@ function startPetals() {
         petalsStarted ||
         !petalContainer
     ) {
+
         return;
+
     }
+
 
     petalsStarted = true;
 
+
     createPetal();
+
 
     setInterval(
         createPetal,
@@ -3068,35 +3549,47 @@ function updateCountdown() {
     const seconds =
         document.getElementById("seconds");
 
+
     if (
         !days ||
         !hours ||
         !minutes ||
         !seconds
     ) {
+
         return;
+
     }
+
 
     const now =
         new Date();
 
+
     const diff =
         weddingDate - now;
+
 
     if (diff <= 0) {
 
         days.textContent = "00";
+
         hours.textContent = "00";
+
         minutes.textContent = "00";
+
         seconds.textContent = "00";
 
         return;
+
     }
+
 
     const d =
         Math.floor(
             diff / 86400000
         );
+
 
     const h =
         Math.floor(
@@ -3104,11 +3597,13 @@ function updateCountdown() {
             3600000
         );
 
+
     const m =
         Math.floor(
             (diff % 3600000) /
             60000
         );
+
 
     const s =
         Math.floor(
@@ -3116,14 +3611,18 @@ function updateCountdown() {
             1000
         );
 
+
     days.textContent =
         String(d).padStart(2, "0");
+
 
     hours.textContent =
         String(h).padStart(2, "0");
 
+
     minutes.textContent =
         String(m).padStart(2, "0");
+
 
     seconds.textContent =
         String(s).padStart(2, "0");
@@ -3132,6 +3631,7 @@ function updateCountdown() {
 
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
@@ -3148,6 +3648,7 @@ function () {
 
     const url =
         "https://www.google.com/maps/search/?api=1&query=2.3807618,103.7116231";
+
 
     window.open(
         url,
@@ -3166,6 +3667,7 @@ function () {
 
     const url =
         "https://www.waze.com/ul?ll=2.3807618%2C103.7116231&navigate=yes";
+
 
     window.open(
         url,
@@ -3201,9 +3703,11 @@ function (number) {
             "60"
         );
 
+
     const url =
         "https://wa.me/" +
         cleanNumber;
+
 
     window.open(
         url,
@@ -3223,14 +3727,18 @@ function () {
     const title =
         "Majlis Perkahwinan Sikin & Aziman";
 
+
     const start =
         "20261219T030000Z";
+
 
     const end =
         "20261219T080000Z";
 
+
     const location =
         "No 66 Blok 5B Jalan Merak, Felda Nitar 01, 86800 Mersing, Johor";
+
 
     const details =
         "Walimatulurus Sikin & Aziman\n" +
@@ -3239,6 +3747,7 @@ function () {
         "Sabtu, 19 Disember 2026\n" +
         "9 Rejab 1448H\n" +
         "11:00 Pagi - 4:00 Petang";
+
 
     const url =
         "https://calendar.google.com/calendar/render" +
@@ -3253,6 +3762,7 @@ function () {
         encodeURIComponent(location) +
         "&details=" +
         encodeURIComponent(details);
+
 
     window.open(
         url,
@@ -3283,6 +3793,7 @@ UID:sikin-aziman-2026@example.com
 END:VEVENT
 END:VCALENDAR`;
 
+
     const blob =
         new Blob(
             [ics],
@@ -3292,22 +3803,30 @@ END:VCALENDAR`;
             }
         );
 
+
     const url =
         URL.createObjectURL(blob);
+
 
     const a =
         document.createElement("a");
 
+
     a.href = url;
+
 
     a.download =
         "jemputan-sikin-aziman.ics";
 
+
     document.body.appendChild(a);
+
 
     a.click();
 
+
     document.body.removeChild(a);
+
 
     URL.revokeObjectURL(url);
 
@@ -3321,8 +3840,11 @@ END:VCALENDAR`;
 const menus = {
 
     calBtn: "calPopup",
+
     locBtn: "locPopup",
+
     musBtn: "musPopup",
+
     rsvpBtn: "rsvpPopup"
 
 };
@@ -3354,17 +3876,22 @@ Object.entries(menus)
                 buttonId
             );
 
+
         const popup =
             document.getElementById(
                 popupId
             );
 
+
         if (
             !button ||
             !popup
         ) {
+
             return;
+
         }
+
 
         button.addEventListener(
             "click",
@@ -3372,12 +3899,15 @@ Object.entries(menus)
 
                 e.stopPropagation();
 
+
                 const wasOpen =
                     popup.classList.contains(
                         "open"
                     );
 
+
                 closeAllPopups();
+
 
                 if (!wasOpen) {
 
@@ -3412,15 +3942,19 @@ if (homeBtn) {
 
             closeAllPopups();
 
+
             const home =
                 document.getElementById(
                     "home"
                 );
 
+
             if (home) {
 
                 home.scrollIntoView({
+
                     behavior: "smooth"
+
                 });
 
             }
@@ -3447,10 +3981,12 @@ document
                     const id =
                         button.dataset.close;
 
+
                     const popup =
                         document.getElementById(
                             id
                         );
+
 
                     if (popup) {
 
@@ -3508,28 +4044,35 @@ document
                     const value =
                         option.dataset.val;
 
+
                     const popup =
                         document.getElementById(
                             "successPopup"
                         );
+
 
                     const title =
                         document.getElementById(
                             "successTitle"
                         );
 
+
                     const msg =
                         document.getElementById(
                             "successMsg"
                         );
+
 
                     if (
                         !popup ||
                         !title ||
                         !msg
                     ) {
+
                         return;
+
                     }
+
 
                     if (
                         value === "hadir"
@@ -3537,6 +4080,7 @@ document
 
                         title.textContent =
                             "Terima Kasih! 💙";
+
 
                         msg.textContent =
                             "Kami sangat mengalu-alukan kehadiran anda ke majlis Sikin & Aziman.";
@@ -3546,12 +4090,15 @@ document
                         title.textContent =
                             "Terima Kasih! 🙏";
 
+
                         msg.textContent =
                             "Terima kasih kerana memaklumkan kepada kami.";
 
                     }
 
+
                     closeAllPopups();
+
 
                     popup.classList.add(
                         "open"
@@ -3568,5 +4115,7 @@ document
 
 </script>
 
+
 </body>
+
 </html>
