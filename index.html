@@ -432,13 +432,45 @@
         }
 
 
-        /* Content atas flower */
+       /* =====================================================
+   KEDUDUKAN BUTTERFLY SETIAP SECTION
+===================================================== */
 
-        section > .container,
-        section > .hero {
-            position: relative;
-            z-index: 2;
-        }
+/* DETAIL */
+section:nth-of-type(2)::before {
+    top: 20px;
+    left: 40%;
+}
+
+/* ATURCARA */
+section:nth-of-type(3)::before {
+    top: 80px;
+    left: 65%;
+}
+
+/* DOA */
+section:nth-of-type(4)::before {
+    top: -20px;
+    left: 25%;
+}
+
+/* UCAPAN */
+section:nth-of-type(5)::before {
+    top: 50px;
+    left: 75%;
+}
+
+/* HUBUNGI */
+section:nth-of-type(6)::before {
+    top: 100px;
+    left: 35%;
+}
+
+/* CALENDAR */
+section:nth-of-type(7)::before {
+    top: -10px;
+    left: 60%;
+}
 
 
         /* =====================================================
