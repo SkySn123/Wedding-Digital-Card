@@ -2639,20 +2639,6 @@ let videoFinished = false;
 
 /* =====================================================
    OPEN INVITATION
-=====================================================
-
-   TEKAN SEAL
-        ↓
-   SEAL HILANG
-        ↓
-   PINTU MULA BUKA
-        ↓
-   0.7 SAAT
-        ↓
-   LAYER PINTU HILANG
-        ↓
-   VIDEO MUNCUL
-
 ===================================================== */
 
 function openInvitation() {
@@ -2668,9 +2654,7 @@ function openInvitation() {
     );
 
 
-    /* ---------------------------------------------
-       1. SEAL HILANG
-    --------------------------------------------- */
+    /* SEAL HILANG */
 
     if (seal) {
 
@@ -2681,9 +2665,7 @@ function openInvitation() {
     }
 
 
-    /* ---------------------------------------------
-       2. PINTU MULA BUKA
-    --------------------------------------------- */
+    /* PINTU MULA BUKA */
 
     if (doorLeft) {
 
@@ -2702,28 +2684,19 @@ function openInvitation() {
     }
 
 
-    /* ---------------------------------------------
-       3. MUZIK MULA TERUS
-    --------------------------------------------- */
+    /* MUZIK MULA */
 
     startWeddingMusic();
 
 
-    /* ---------------------------------------------
-       4. SELEPAS 0.7 SAAT
-       TERUS MASUK VIDEO
-    --------------------------------------------- */
+    /*
+       Selepas 0.7 saat,
+       opening dibuang sepenuhnya
+       kemudian video dipaparkan.
+    */
 
     setTimeout(
         function () {
-
-
-            /*
-               Hilangkan opening sepenuhnya.
-
-               display:none penting supaya
-               tiada layer kosong di belakang video.
-            */
 
             if (opening) {
 
@@ -2748,13 +2721,7 @@ function openInvitation() {
 
             }
 
-
-            /*
-               TERUS PAPARKAN VIDEO
-            */
-
             showIntroVideo();
-
 
         },
         700
@@ -2764,7 +2731,7 @@ function openInvitation() {
 
 
 /* =====================================================
-   SEAL CLICK SAHAJA
+   SEAL CLICK
 ===================================================== */
 
 if (seal) {
@@ -2774,7 +2741,6 @@ if (seal) {
         function (e) {
 
             e.preventDefault();
-
             e.stopPropagation();
 
             openInvitation();
@@ -2793,7 +2759,6 @@ if (seal) {
             ) {
 
                 e.preventDefault();
-
                 e.stopPropagation();
 
                 openInvitation();
@@ -2807,7 +2772,14 @@ if (seal) {
 
 
 /* =====================================================
-   VIDEO
+   VIDEO INTRO
+===================================================== */
+
+let videoBackupTimer = null;
+
+
+/* =====================================================
+   SHOW VIDEO
 ===================================================== */
 
 function showIntroVideo() {
@@ -2827,9 +2799,18 @@ function showIntroVideo() {
     videoFinished = false;
 
 
-    /*
-       Paparkan video.
-    */
+    if (videoBackupTimer) {
+
+        clearTimeout(
+            videoBackupTimer
+        );
+
+        videoBackupTimer = null;
+
+    }
+
+
+    /* PAPARKAN VIDEO */
 
     videoIntro.classList.remove(
         "hide"
@@ -2839,11 +2820,6 @@ function showIntroVideo() {
         "show"
     );
 
-
-    /*
-       Pastikan video berada
-       paling depan.
-    */
 
     videoIntro.style.display =
         "flex";
@@ -2861,9 +2837,7 @@ function showIntroVideo() {
         "30000";
 
 
-    /* ---------------------------------------------
-       VIDEO SETTINGS
-    --------------------------------------------- */
+    /* VIDEO SETTINGS */
 
     introVideo.muted =
         true;
@@ -2878,9 +2852,7 @@ function showIntroVideo() {
         true;
 
 
-    /* ---------------------------------------------
-       RESET VIDEO
-    --------------------------------------------- */
+    /* RESET VIDEO */
 
     try {
 
@@ -2894,9 +2866,21 @@ function showIntroVideo() {
     catch (e) {}
 
 
-    /* ---------------------------------------------
-       PLAY
-    --------------------------------------------- */
+    /*
+       Pastikan browser tahu
+       video sudah bersedia.
+    */
+
+    try {
+
+        introVideo.load();
+
+    }
+
+    catch (e) {}
+
+
+    /* PLAY VIDEO */
 
     const playPromise =
         introVideo.play();
@@ -2926,10 +2910,230 @@ function showIntroVideo() {
 
 
 /* =====================================================
-   VIDEO ERROR
+   FINISH VIDEO
+===================================================== */
+
+function finishIntroVideo() {
+
+    /*
+       Elakkan finish dipanggil
+       berkali-kali.
+    */
+
+    if (videoFinished) {
+
+        return;
+
+    }
+
+
+    videoFinished = true;
+
+
+    if (videoBackupTimer) {
+
+        clearTimeout(
+            videoBackupTimer
+        );
+
+        videoBackupTimer = null;
+
+    }
+
+
+    console.log(
+        "Video selesai. Menutup video..."
+    );
+
+
+    /* HENTIKAN VIDEO */
+
+    if (introVideo) {
+
+        try {
+
+            introVideo.pause();
+
+        }
+
+        catch (e) {}
+
+    }
+
+
+    /* TUTUP VIDEO DENGAN FADE */
+
+    if (videoIntro) {
+
+        videoIntro.classList.remove(
+            "show"
+        );
+
+        videoIntro.classList.add(
+            "hide"
+        );
+
+        videoIntro.style.opacity =
+            "0";
+
+        videoIntro.style.visibility =
+            "hidden";
+
+        videoIntro.style.pointerEvents =
+            "none";
+
+    }
+
+
+    /*
+       Tunggu transition CSS 0.4s.
+       Selepas itu video dibuang terus
+       daripada paparan.
+    */
+
+    setTimeout(
+        function () {
+
+            if (videoIntro) {
+
+                videoIntro.style.display =
+                    "none";
+
+                videoIntro.style.visibility =
+                    "hidden";
+
+                videoIntro.style.opacity =
+                    "0";
+
+                videoIntro.style.pointerEvents =
+                    "none";
+
+                videoIntro.style.zIndex =
+                    "-1";
+
+            }
+
+
+            /*
+               Selepas video betul-betul
+               hilang, paparkan kad.
+            */
+
+            showMainContent();
+
+        },
+        450
+    );
+
+}
+
+
+/* =====================================================
+   VIDEO ENDED
 ===================================================== */
 
 if (introVideo) {
+
+    introVideo.addEventListener(
+        "ended",
+        function () {
+
+            console.log(
+                "EVENT ENDED: video tamat."
+            );
+
+            finishIntroVideo();
+
+        }
+    );
+
+
+    /*
+       BACKUP UNTUK BROWSER YANG
+       TIDAK MEMANGGIL EVENT ENDED
+       DENGAN BETUL.
+    */
+
+    introVideo.addEventListener(
+        "timeupdate",
+        function () {
+
+            if (
+                videoFinished
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                !introVideo.duration ||
+                !isFinite(
+                    introVideo.duration
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            const remaining =
+                introVideo.duration -
+                introVideo.currentTime;
+
+
+            /*
+               Hanya aktif apabila
+               video sudah hampir benar-benar
+               tamat.
+
+               Tidak akan tutup awal.
+            */
+
+            if (
+                remaining <= 0.15 &&
+                remaining >= 0
+            ) {
+
+                if (
+                    !videoBackupTimer
+                ) {
+
+                    videoBackupTimer =
+                        setTimeout(
+                            function () {
+
+                                if (
+                                    !videoFinished &&
+                                    introVideo &&
+                                    introVideo.duration &&
+                                    introVideo.currentTime >=
+                                    introVideo.duration - 0.25
+                                ) {
+
+                                    console.log(
+                                        "BACKUP: video hampir tamat."
+                                    );
+
+                                    finishIntroVideo();
+
+                                }
+
+                            },
+                            180
+                        );
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* VIDEO ERROR */
 
     introVideo.addEventListener(
         "error",
@@ -2948,74 +3152,6 @@ if (introVideo) {
 
 
 /* =====================================================
-   FINISH VIDEO
-===================================================== */
-
-function finishIntroVideo() {
-
-    if (videoFinished) {
-        return;
-    }
-
-    videoFinished = true;
-
-
-    if (introVideo) {
-
-        introVideo.pause();
-
-        try {
-
-            introVideo.currentTime =
-                0;
-
-        }
-
-        catch (e) {}
-
-    }
-
-
-    if (videoIntro) {
-
-        videoIntro.classList.remove(
-            "show"
-        );
-
-        videoIntro.classList.add(
-            "hide"
-        );
-
-    }
-
-
-    setTimeout(
-        function () {
-
-            showMainContent();
-
-        },
-        400
-    );
-
-}
-
-
-/* =====================================================
-   VIDEO ENDED
-===================================================== */
-
-if (introVideo) {
-
-    introVideo.addEventListener(
-        "ended",
-        finishIntroVideo
-    );
-
-}
-
-
-/* =====================================================
    SKIP VIDEO
 ===================================================== */
 
@@ -3025,6 +3161,7 @@ if (skipVideo) {
         "click",
         function (e) {
 
+            e.preventDefault();
             e.stopPropagation();
 
             finishIntroVideo();
@@ -3042,6 +3179,11 @@ if (skipVideo) {
 function showMainContent() {
 
 
+    /*
+       Pastikan video sudah
+       betul-betul hilang.
+    */
+
     if (videoIntro) {
 
         videoIntro.classList.remove(
@@ -3052,8 +3194,28 @@ function showMainContent() {
             "hide"
         );
 
+        videoIntro.style.display =
+            "none";
+
+        videoIntro.style.visibility =
+            "hidden";
+
+        videoIntro.style.opacity =
+            "0";
+
+        videoIntro.style.pointerEvents =
+            "none";
+
+        videoIntro.style.zIndex =
+            "-1";
+
     }
 
+
+    /*
+       Pastikan opening/pintu juga
+       sudah hilang.
+    */
 
     if (opening) {
 
@@ -3064,8 +3226,24 @@ function showMainContent() {
         opening.style.display =
             "none";
 
+        opening.style.visibility =
+            "hidden";
+
+        opening.style.opacity =
+            "0";
+
+        opening.style.pointerEvents =
+            "none";
+
+        opening.style.zIndex =
+            "-1";
+
     }
 
+
+    /*
+       Paparkan kandungan utama.
+    */
 
     if (mainContent) {
 
@@ -3081,16 +3259,28 @@ function showMainContent() {
     }
 
 
+    /*
+       Unlock scroll.
+    */
+
     document.body.classList.remove(
         "locked"
     );
 
+
+    /*
+       Pergi ke bahagian atas kad.
+    */
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 
+
+    /*
+       Mulakan bunga/petal.
+    */
 
     startPetals();
 
