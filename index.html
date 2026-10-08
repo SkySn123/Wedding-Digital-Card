@@ -430,14 +430,24 @@ button {
         visibility 1s ease;
 
     background:
+
         linear-gradient(
             180deg,
-            #fcfaff,
-            #f5effa 45%,
-            #edf8fc
-        );
-}
+            rgba(252,250,255,.30),
+            rgba(245,239,250,.30) 45%,
+            rgba(237,248,252,.30)
+        ),
 
+        url("background.png");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+}
 
 /* =====================================================
    SECTIONS
